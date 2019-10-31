@@ -1,0 +1,66 @@
+{
+  "name": "myapp",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "start": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cropperjs": "^1.5.6",
+    "echarts": "^4.4.0",
+    "font-awesome": "^4.7.0",
+    "js-cookie": "^2.2.1",
+    "vue": "^2.5.17",
+    "vue-html5-editor": "^1.1.1",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1",
+    "vuex-persistedstate": "^2.7.0",
+    "vux": "^2.9.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.3",
+    "@vue/cli-plugin-eslint": "^3.0.3",
+    "@vue/cli-service": "^3.0.3",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "eslint-import-resolver-node": "^0.3.2",
+    "eslint-plugin-cypress": "^2.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-vue": "^5.2.3",
+    "less": "^3.8.1",
+    "less-loader": "^4.1.0",
+    "vue-loader": "^14.2.2",
+    "vue-template-compiler": "^2.5.17",
+    "vux-loader": "^1.2.9"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
