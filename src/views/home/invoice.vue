@@ -15,11 +15,11 @@
     </div>
 </template>
 <script>
-import { XHeader } from 'vux'
-import { Tab, TabItem, PopupPicker, Group } from 'vux'
+import {XHeader} from 'vux'
+import {Tab, TabItem, PopupPicker, Group} from 'vux'
 export default {
     name: 'invoice',
-    components: { XHeader, Tab, TabItem, PopupPicker, Group },
+    components: {XHeader, Tab, TabItem, PopupPicker, Group},
     data () {
         return {
             yearList: [],
@@ -87,7 +87,7 @@ export default {
                         label: { // 饼图图形上的文本标签
                             normal: {
                                 show: true, position: 'outside', // 标签的位置
-                                textStyle : {
+                                textStyle: {
                                     fontWeight: 300,
                                     fontSize: 14 // 文字的字体大小
                                 },

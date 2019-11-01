@@ -16,7 +16,7 @@ export default {
     methods: {
         isWx () {// 判断是否为微信
             var ua = window.navigator.userAgent.toLowerCase()
-            return ua.match(/MicroMessenger/i) == 'micromessenger'
+            return ua.match(/MicroMessenger/i) === 'micromessenger'
         },
         weChat () {
             if (this.isWx()) {// 判断浏览器是否微信
@@ -25,8 +25,8 @@ export default {
         },
         type () {
             var ua = navigator.userAgent.toLowerCase()
-            if (ua.match(/iPhone\sOS/i) == 'iphone os' || ua.match(/iPad/i)=="ipad") {// ios
-                window.location.href="http:// oa-wap.yunxi.cn/#/login"
+            if (ua.match(/iPhone\sOS/i) === 'iphone os' || ua.match(/iPad/i) == 'ipad') {// ios
+                window.location.href = 'http:// oa-wap.yunxi.cn/#/login'
             }
         }
     },

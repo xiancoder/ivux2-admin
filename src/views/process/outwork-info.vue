@@ -103,7 +103,7 @@ export default {
             },
             approvalList: 0, // 从审批列表转入 0 不是 1 是
             isCurrent: false, // 是否是当前审批人
-            mId: 0, // 流程ID
+            mId: 0 // 流程ID
         }
     },
     methods: {

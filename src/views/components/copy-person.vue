@@ -32,7 +32,7 @@
     </div>
 </template>
 <script>
-import { Icon, Popup, Search} from 'vux'
+import {Icon, Popup, Search} from 'vux'
 export default {
     // dsf-2019-6-4 抄送人组件
     name: 'copy-person',
@@ -41,7 +41,7 @@ export default {
     },
     props: {
         userList: null, // 公司员工
-        ccList: null, // 默认抄送人
+        ccList: null // 默认抄送人
     },
     watch: {
         ccList () {
@@ -59,7 +59,7 @@ export default {
             ccSearch: '',
             ccResult: [],
             cc: [],
-            defaultNum: null, // 默认抄送人个数
+            defaultNum: null // 默认抄送人个数
         }
     },
     filters: {
@@ -98,7 +98,7 @@ export default {
         },
         // 选中某一员工
         resultClickCC (item) {
-            if (item.value*1 === -1) return false
+            if (item.value * 1 === -1) return false
             this.ccShow = false
             // 获取员工头像
             this.$vux.loading.show({

@@ -125,8 +125,8 @@
 <script>
 import Vue from 'vue'
 import VueHtml5Editor from 'vue-html5-editor'
-import { XHeader, Group, Cell, XInput, Loading, XTextarea,
-    Datetime, Popup, Search, Icon, Alert, Actionsheet } from 'vux'
+import {XHeader, Group, Cell, XInput, Loading, XTextarea,
+    Datetime, Popup, Search, Icon, Alert, Actionsheet} from 'vux'
 Vue.use(VueHtml5Editor, {
     name: 'vue-html5-editor',
     showModuleName: false,
@@ -184,7 +184,7 @@ Vue.use(VueHtml5Editor, {
 })
 export default {
     name: 'task-info',
-    components: { Group, Cell, XHeader, XInput, Popup, Search, Alert, Loading, Datetime, Icon, Actionsheet, XTextarea },
+    components: {Group, Cell, XHeader, XInput, Popup, Search, Alert, Loading, Datetime, Icon, Actionsheet, XTextarea},
     data () {
         return {
             id: '',

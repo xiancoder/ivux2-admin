@@ -99,10 +99,9 @@
     </group>
 </template>
 <script>
-import { TransferDom, Popup, Checker, XTable, LoadMore, Scroller,
-CheckerItem, Group, XHeader, Cell, Divider, XButton, XSwitch, Search, ChinaAddressData } from 'vux'
+import {TransferDom, Popup, Checker, XTable, LoadMore, Scroller, CheckerItem, Group, XHeader, Cell, Divider, XButton, XSwitch, Search, ChinaAddressData} from 'vux'
 export default {
-    components: { XTable, LoadMore, Scroller, Divider, Popup, XHeader, Group, Cell, XSwitch, XButton, Search, Checker, CheckerItem },
+    components: {XTable, LoadMore, Scroller, Divider, Popup, XHeader, Group, Cell, XSwitch, XButton, Search, Checker, CheckerItem},
     data () {
         return {
             showdiver: false,
@@ -112,7 +111,7 @@ export default {
                 'projectType': '-1', // 项目，null 不限制1：网维；2：云袭广告；3：加客
                 'cusType': '-1', // 客户类型，null 不限制
                 'cusLevel': '-1', // 客户级别，null 不限制
-                'teamWorkStatus': '-1', // 合作状态，null不限制
+                'teamWorkStatus': '-1' // 合作状态，null不限制
             },
             listData: [],
             searchValue: null,
@@ -130,11 +129,11 @@ export default {
         }
     },
     mounted: function () {
-        this.getList ('', 1)
+        this.getList('', 1)
         this.$nextTick(() => {
             this.$refs.scrollerBottom.reset({top: 0})
         })
-        // this.onFetching=false
+        // this.onFetching = false
     },
     methods: {
         goHome () {
@@ -150,7 +149,7 @@ export default {
                 this.onFetching = true
                 setTimeout(() => {
                     if (this.bottomCount >= this.rowcount) {
-                        this.showdiver=true
+                        this.showdiver = true
                         return false
                     }
                     this.bottomCount += 15
@@ -159,75 +158,75 @@ export default {
                         this.$refs.scrollerBottom.reset()
                     })
                     this.onFetching = false
-                    this.showdiver=false
+                    this.showdiver = false
                 }, 2000)
             }
         },
         submitPopSearch () {
             this.getList('', 1)
-            this.show9=false
-            this.bottomCount=15
-            // this.onFetching=false
+            this.show9 = false
+            this.bottomCount = 15
+            // this.onFetching = false
             this.$nextTick(() => {
                 this.$refs.scrollerBottom.reset({top: 0})
             })
         },
         clearPopSearch () {
-            this.bottomCount=15
+            this.bottomCount = 15
             this.search = {
                 'projectType': '-1', // 项目，null 不限制1：网维；2：云袭广告；3：加客
                 'cusType': '-1', // 客户类型，null 不限制
                 'cusLevel': '-1', // 客户级别，null 不限制
-                'teamWorkStatus': '-1', // 合作状态，null不限制
+                'teamWorkStatus': '-1' // 合作状态，null不限制
             }
-            this.show9=false
-           // this.onFetching=false
+            this.show9 = false
+            // this.onFetching = false
             this.$nextTick(() => {
                 this.$refs.scrollerBottom.reset({top: 0})
             })
             this.getList('', 1)
         },
         serach: function () {
-            this.bottomCount=15
+            this.bottomCount = 15
             this.$nextTick(() => {
                 this.$refs.scrollerBottom.reset({top: 0})
             })
             this.getList('', 1)
         },
         getList: function (page_size, v) {
-            if (v==1) {
-                this.onFetching=true
+            if (v === 1) {
+                this.onFetching = true
             }
-            let pa={
-                    'projectType': this.search.projectType==-1 ? null : this.search.projectType, // 项目，null 不限制1：网维；2：云袭广告；3：加客
-                    'cusType': this.search.cusType==-1 ? null : this.search.cusType, // 客户类型，null 不限制
-                    'cusLevel': this.search.cusLevel==-1 ? null : this.search.cusLevel, // 客户级别，null 不限制
-                    'teamWorkStatus': this.search.teamWorkStatus==-1 ? null : this.search.teamWorkStatus, // 合作状态，null不限制
-                    'keyword': this.searchValue, // 关键字，null不限制
-                    'page_index': 1,
-                    'page_size': 15
-                }
+            let pa = {
+                'projectType': this.search.projectType === -1 ? null : this.search.projectType, // 项目，null 不限制1：网维；2：云袭广告；3：加客
+                'cusType': this.search.cusType === -1 ? null : this.search.cusType, // 客户类型，null 不限制
+                'cusLevel': this.search.cusLevel === -1 ? null : this.search.cusLevel, // 客户级别，null 不限制
+                'teamWorkStatus': this.search.teamWorkStatus === -1 ? null : this.search.teamWorkStatus, // 合作状态，null不限制
+                'keyword': this.searchValue, // 关键字，null不限制
+                'page_index': 1,
+                'page_size': 15
+            }
             if (page_size) {
-                pa.page_size=page_size
+                pa.page_size = page_size
             }
             this.$get('api/customer/get_list_public', pa).then((res) => {
-                this.listData=res.data.data.list
-                this.rowcount=res.data.data.rowcount
-                this.onFetching=false
+                this.listData = res.data.data.list
+                this.rowcount = res.data.data.rowcount
+                this.onFetching = false
             })
         },
         onSubmit () {
-        this.$refs.search.setBlur()
-        this.$vux.toast.show({
-            type: 'text', position: 'top',
-            text: 'on submit'
-        })
+            this.$refs.search.setBlur()
+            this.$vux.toast.show({
+                type: 'text', position: 'top',
+                text: 'on submit'
+            })
         },
         changeSelection (val) {
-            this.stype=val
-            if (val==1) {
+            this.stype = val
+            if (val === 1) {
                 this.$get('api/sys/project_list').then((res) => {
-                    this.pdata=res.data.data.list
+                    this.pdata = res.data.data.list
                 })
             }
         }

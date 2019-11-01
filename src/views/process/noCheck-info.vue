@@ -58,20 +58,12 @@
 </template>
 <script>
 // 引入组件
-import { XHeader, XButton, Confirm, Group, XTextarea } from 'vux'
+import {XHeader, XButton, Confirm, Group, XTextarea} from 'vux'
 import ccInfo from '../components/ccInfo.vue'
 import nodeInfo from '../components/nodeInfo.vue'
 export default {
     name: 'noCheck-info',
-    components: { // 组件声明
-        XHeader,
-        XButton,
-        ccInfo,
-        nodeInfo,
-        Confirm,
-        Group,
-        XTextarea
-    },
+    components: {XHeader, XButton, ccInfo, nodeInfo, Confirm, Group, XTextarea}, // 组件声明
     data () { // 参数声明
         return {
             rejectShow: false, // 驳回弹框显示
@@ -160,7 +152,7 @@ export default {
             })
         },
         refuse () {
-           this.$post('api/workflow/no_check_refuse', {
+            this.$post('api/workflow/no_check_refuse', {
                 mId: this.mId,
                 opinion: this.rejectReason
             }).then(res => {

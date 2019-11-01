@@ -1,6 +1,8 @@
 <template>
     <div class="tab_div">
-        <div v-for="(row, index) in names" :key="row.name" @click="go(row.router)"><span :class="select === index+1 ? 'select' : ''">{{row.name}}</span></div>
+        <div v-for="row in names" :key="row.name" @click="go(row.router)">
+            <span :class="select === index+1 ? 'select' : ''">{{row.name}}</span>
+        </div>
     </div>
 </template>
 <script>
@@ -20,7 +22,7 @@ export default {
     },
     data () {
         return {
-           newNotice: ''
+            newNotice: ''
         }
     },
     methods: {

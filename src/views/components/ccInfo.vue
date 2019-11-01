@@ -14,11 +14,11 @@
     </div>
 </template>
 <script>
-import { Icon, Popup, Search } from 'vux'
+import {Icon, Popup, Search} from 'vux'
 export default {
     // 详情-抄送人 组件
     name: 'ccInfo',
-    components: { Icon, Popup, Search},
+    components: {Icon, Popup, Search},
     props: {
         cclist: Array
     },

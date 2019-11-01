@@ -34,10 +34,10 @@
     </div>
 </template>
 <script>
-import { XHeader, Group, Cell, XDialog } from 'vux'
+import {XHeader, Group, Cell, XDialog} from 'vux'
 export default {
     name: 'follow-detail',
-    components: { XHeader, Group, Cell, XDialog },
+    components: {XHeader, Group, Cell, XDialog},
     data () {
         return {
             mask: false,

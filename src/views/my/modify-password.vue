@@ -20,10 +20,10 @@
 </template>
 <script>
 import Cookies from 'js-cookie'
-import { XHeader, Group, Cell, XInput } from 'vux'
+import {XHeader, Group, Cell, XInput} from 'vux'
 export default {
     name: 'modify-password',
-    components: { Group, Cell, XHeader, XInput },
+    components: {Group, Cell, XHeader, XInput},
     data () {
         return {
             oldPsd: '',

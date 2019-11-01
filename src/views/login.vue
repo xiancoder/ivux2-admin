@@ -43,10 +43,10 @@
 </template>
 <script>
 import Cookies from 'js-cookie'
-import { axios } from './axiosTool'
-import { XHeader, XInput, Group, XButton, CheckIcon, Alert} from 'vux'
+import {axios} from './axiosTool'
+import {XHeader, XInput, Group, XButton, CheckIcon, Alert} from 'vux'
 export default {
-    components: { XHeader, XInput, XButton, Group, CheckIcon, Alert},
+    components: {XHeader, XInput, XButton, Group, CheckIcon, Alert},
     name: 'login',
     data () {
         return {
@@ -95,7 +95,7 @@ export default {
                     this.checkError = '3'
                 }
             })
-        },
+        }
         // qqLogin () {
         //     var url = 'http:// oa.yunxi.cn/Login/QQConnect ? t=' + Math.ceil(Math.random() * 100)
         //     QC.Login.showPopup({

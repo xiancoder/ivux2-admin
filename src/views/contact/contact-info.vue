@@ -51,10 +51,10 @@
     </div>
 </template>
 <script>
-import { XHeader, Group, Cell, XInput } from 'vux'
+import {XHeader, Group, Cell, XInput} from 'vux'
 export default {
     name: 'contact-info',
-    components: { Group, Cell, XHeader, XInput},
+    components: {Group, Cell, XHeader, XInput},
     data () {
         return {
             editMark: false,
@@ -65,7 +65,7 @@ export default {
     methods: {
         init () {
             if (this.$route.query.mark) {
-               this.editMark = true
+                this.editMark = true
             }
             this.$get('api/home/contactdetail', {
                 id: this.$route.query.contactId

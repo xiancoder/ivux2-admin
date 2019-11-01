@@ -35,10 +35,10 @@ export default {
                 {title: '陪产假：', content: '顺产最多5天，剖腹产最多7天，不能分阶段申请。'}
             ],
             dataArr: [
-                { id: 1, typeName: '可用调休时长', hour: '- 小时' },
-                { id: 2, typeName: '即将转换的调休时长', hour: '- 小时' },
-                { id: 3, typeName: '可用转换年假时长', hour: '- 小时' },
-                { id: 4, typeName: '可用年假时长', hour: '- 小时' }
+                {id: 1, typeName: '可用调休时长', hour: '- 小时'},
+                {id: 2, typeName: '即将转换的调休时长', hour: '- 小时'},
+                {id: 3, typeName: '可用转换年假时长', hour: '- 小时'},
+                {id: 4, typeName: '可用年假时长', hour: '- 小时'}
             ]
         }
     },

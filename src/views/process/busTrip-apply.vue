@@ -58,12 +58,12 @@
     </div>
 </template>
 <script>
-import { XHeader, Group, Cell, Loading, Datetime, XTextarea, XAddress, Checker, CheckerItem } from 'vux'
+import {XHeader, Group, Cell, Loading, Datetime, XTextarea, XAddress, Checker, CheckerItem} from 'vux'
 import approver from '../components/approver.vue'
 import copyPerson from '../components/copy-person.vue'
 export default {
     name: 'busTrip-apply',
-    components: { XHeader, Group, Cell, Loading, Datetime, XTextarea, XAddress, Checker, CheckerItem, approver, copyPerson },
+    components: {XHeader, Group, Cell, Loading, Datetime, XTextarea, XAddress, Checker, CheckerItem, approver, copyPerson},
     data () {
         return {
             id: 0,

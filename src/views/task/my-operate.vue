@@ -129,10 +129,10 @@
     </group>
 </template>
 <script>
-import { Popup, Checker, XTable, LoadMore, Scroller, Tab, TabItem, Datetime, CheckerItem, Group, XHeader, Cell, Divider, XButton, Search } from 'vux'
+import {Popup, Checker, XTable, LoadMore, Scroller, Tab, TabItem, Datetime, CheckerItem, Group, XHeader, Cell, Divider, XButton, Search} from 'vux'
 export default {
     name: 'my-operate',
-    components: { XTable, LoadMore, Scroller, Divider, Popup, XHeader, Group, Cell, XButton, Search, Checker, CheckerItem, Tab, TabItem, Datetime },
+    components: {XTable, LoadMore, Scroller, Divider, Popup, XHeader, Group, Cell, XButton, Search, Checker, CheckerItem, Tab, TabItem, Datetime},
     data () {
         return {
             onFetching: false, bottomCount: 15,
@@ -239,15 +239,15 @@ export default {
         },
         submitPopSearch () {
             this.getList('', 1)
-            this.show9=false
-            this.bottomCount=15
-            // this.onFetching=false
+            this.show9 = false
+            this.bottomCount = 15
+            // this.onFetching = false
             this.$nextTick(() => {
                 this.$refs.scrollerBottom.reset({top: 0})
             })
         },
         clearPopSearch () {
-            this.bottomCount=15
+            this.bottomCount = 15
             this.search = {
                 taskPriority: '-1',
                 taskStatus: '-1',
@@ -262,14 +262,14 @@ export default {
             this.personLiable = ''
             this.personLiableName = ''
             this.show9 = false
-            // this.onFetching=false
+            // this.onFetching = false
             this.$nextTick(() => {
                 this.$refs.scrollerBottom.reset({top: 0})
             })
             this.getList('', 1)
         },
         searchList () {
-            this.bottomCount=15
+            this.bottomCount = 15
             this.$nextTick(() => {
                 this.$refs.scrollerBottom.reset({top: 0})
             })
@@ -279,7 +279,7 @@ export default {
             if (v === 1) {
                 this.onFetching = true
             }
-            let pa={
+            let pa = {
                 'taskPriority': this.search.taskPriority === '-1' ? null : this.search.taskPriority,
                 'taskStatus': this.search.taskStatus === '-1' ? null : this.search.taskStatus,
                 'begin': this.search.begin,
@@ -294,20 +294,20 @@ export default {
                 'page_size': 15
             }
             if (page_size) {
-                pa.page_size=page_size
+                pa.page_size = page_size
             }
             this.$get('api/task/myexe', pa).then((res) => {
-                this.listData=res.data.data.list
-                this.rowcount=res.data.data.rowcount
-                this.onFetching=false
+                this.listData = res.data.data.list
+                this.rowcount = res.data.data.rowcount
+                this.onFetching = false
             })
         },
         changeSelection (val) {
-            this.stype=val
+            this.stype = val
         }
     },
     mounted () {
-        this.getList ('', 1)
+        this.getList('', 1)
         this.$nextTick(() => {
             this.$refs.scrollerBottom.reset({top: 0})
         })

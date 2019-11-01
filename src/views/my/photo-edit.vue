@@ -10,11 +10,11 @@
     </div>
 </template>
 <script>
-import { XHeader } from 'vux'
+import {XHeader} from 'vux'
 import Cropper from 'cropperjs'
 export default {
     name: 'photo-edit',
-    components: { XHeader },
+    components: {XHeader},
     data () {
         return {
             headerImage: '',
@@ -137,13 +137,13 @@ export default {
     .tailor .cropper-point.point-sw { bottom: -3px; left: -3px; cursor: sw-resize;}
     .tailor .cropper-point.point-se { right: -3px; bottom: -3px; width: 20px; height: 20px; cursor: se-resize; opacity: 1; }
     @media (min-width: 768px) {
-      .tailor .cropper-point.point-se { width: 15px; height: 15px;}
+        .tailor .cropper-point.point-se { width: 15px; height: 15px;}
     }
     @media (min-width: 992px) {
-      .tailor .cropper-point.point-se { width: 10px; height: 10px;}
+        .tailor .cropper-point.point-se { width: 10px; height: 10px;}
     }
     @media (min-width: 1200px) {
-      .tailor .cropper-point.point-se { width: 5px; height: 5px; opacity: .75;}
+        .tailor .cropper-point.point-se { width: 5px; height: 5px; opacity: .75;}
     }
     .tailor .cropper-point.point-se:before { position: absolute; right: -50%; bottom: -50%;display: block; width: 200%; height: 200%; content: ' '; opacity: 0; background-color: #39f }
     .tailor .cropper-invisible { opacity: 0;}

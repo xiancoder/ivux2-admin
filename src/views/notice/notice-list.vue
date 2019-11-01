@@ -39,8 +39,8 @@
 <script>
 import Cookies from 'js-cookie'
 import bottomMenu from '../components/bottom-menu.vue'
-import { XHeader, Tabbar, TabbarItem, Scroller, LoadMore, Divider, Search } from 'vux'
-import { setTimeout } from 'timers'
+import {XHeader, Tabbar, TabbarItem, Scroller, LoadMore, Divider, Search} from 'vux'
+import {setTimeout} from 'timers'
 export default {
     name: 'notice-list',
     components: {
@@ -64,9 +64,9 @@ export default {
     },
     methods: {
         init () {
-            if (this.$route.query.pageSize) {
+            if (this.$route.query.page_size) {
                 this.keyword = this.$route.query.keyword
-                this.currentCount = parseInt(this.$route.query.pageSize)
+                this.currentCount = parseInt(this.$route.query.page_size)
             }
             this.getList()
             this.setUnRead()
@@ -98,8 +98,8 @@ export default {
                 }
                 this.noticeList = res.data.data.list
                 this.loading = false
-                // window.location.hash = '#/notice/list ? &keyword=' + this.keyword + '&pageSize=' + this.currentCount
-                window.location.replace('#/notice/list ? &keyword=' + this.keyword + '&pageSize=' + this.currentCount)
+                // window.location.hash = '#/notice/list ? &keyword=' + this.keyword + '&page_size=' + this.currentCount
+                window.location.replace('#/notice/list ? &keyword=' + this.keyword + '&page_size=' + this.currentCount)
             })
         },
         isProcess (name) {
@@ -107,6 +107,7 @@ export default {
         },
         onScrollBottom () {
             if (this.loading || this.noticeList.length === 0) {
+                console.log('???')
             } else {
                 if (!this.noMore) {
                     this.loading = true
@@ -119,11 +120,11 @@ export default {
                             this.noticeList = res.data.data.list
                             if (this.currentCount + 15 < res.data.data.rowcount) {
                                 this.currentCount = this.currentCount + 15
-                                window.location.hash = '#/notice/list ? &keyword=' + this.keyword + '&pageSize=' + this.currentCount
+                                window.location.hash = '#/notice/list ? &keyword=' + this.keyword + '&page_size=' + this.currentCount
                             } else {
                                 this.noMore = true
                                 let n = this.currentCount + 15
-                                window.location.hash = '#/notice/list ? &keyword=' + this.keyword + '&pageSize=' + n
+                                window.location.hash = '#/notice/list ? &keyword=' + this.keyword + '&page_size=' + n
                             }
                             this.loading = false
                         })

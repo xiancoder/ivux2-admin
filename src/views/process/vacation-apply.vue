@@ -97,12 +97,12 @@
     </div>
 </template>
 <script>
-import { XHeader, Group, Cell, Loading, Datetime, Popup, Search, Icon, XTextarea, PopupPicker, Confirm  } from 'vux'
+import {XHeader, Group, Cell, Loading, Datetime, Popup, Search, Icon, XTextarea, PopupPicker, Confirm} from 'vux'
 import copyPerson from '../components/copy-person.vue'
 import upImage from '../components/up-imgNoCut.vue'
 export default {
     name: 'vacation-apply',
-    components: { XHeader, Group, Cell, Popup, Search, Loading, Datetime, Icon, XTextarea, copyPerson, PopupPicker, upImage, Confirm },
+    components: {XHeader, Group, Cell, Popup, Search, Loading, Datetime, Icon, XTextarea, copyPerson, PopupPicker, upImage, Confirm},
     data () {
         return {
             showConfirm: false, // 是否确认提交
@@ -122,7 +122,7 @@ export default {
                     begin: '', // 开始时间
                     end: '', // 结束时间
                     day: '', // 天数
-                    hour: '', // 时长
+                    hour: '' // 时长
                 }
             ],
             reason: '', // 事由
@@ -212,7 +212,7 @@ export default {
                 // 获取结束时间的时间戳
                 let e = end.replace(/-/g, '/')
                 let eStr = new Date(e).getTime()
-                if ( bStr >= eStr ) {
+                if (bStr >= eStr) {
                     this.$vux.toast.show({
                         type: 'cancel',
                         text: '开始时间小于结束时间'
@@ -305,7 +305,7 @@ export default {
         },
         // 监听日期是否填完
         listenData (e) {
-            if (this.applyList[e].begin && this.applyList[e].end && this.applyList[e].types[0] && this.applyList[e].types[0].length ) {
+            if (this.applyList[e].begin && this.applyList[e].end && this.applyList[e].types[0] && this.applyList[e].types[0].length) {
                 // 这里是获取时间相差的日期。 (单位 xx 天 xx 小时 )
                 // 条件是，开始结束包括请假的类型都有才进行计算。
                 this.$get('api/workflow/vacation_select', {
@@ -323,7 +323,7 @@ export default {
                         })
                         if (res.data.msg === '结束时间是假期') {
                             this.applyList[e].end = ''
-                        }else if (res.data.msg === '开始时间是假期') {
+                        } else if (res.data.msg === '开始时间是假期') {
                             this.applyList[e].begin = ''
                         }
                     }
@@ -334,14 +334,14 @@ export default {
         listenType (e) {
             // 如果是手动选择切换类型
             // 如果是手动切换类型，也要重新获取请假时间
-            if ( arguments.length ) {
+            if (arguments.length) {
                 this.listenData(e)
             }
-            for (let x=0; x < this.applyList.length; x++) {
+            for (let x = 0; x < this.applyList.length; x++) {
                 // 如果类型等于哪些展示图片上传的类型，就让图片上传展示出来。
                 // 只要这个有一个类型有问题就显示图片上传。
                 let y = this.applyList[x].types[0]
-                if (  y === '5' || y === '6' || y === '7' || y === '8' || y === '9' ) {
+                if (y === '5' || y === '6' || y === '7' || y === '8' || y === '9') {
                     this.showImgProve = true
                     return false
                 }
@@ -418,7 +418,7 @@ export default {
                 }
             }
             // 原因，工作接收人是否都填写完整
-            if ( this.reason === '') {
+            if (this.reason === '') {
                 this.checkFail()
                 return false
             }
@@ -442,7 +442,7 @@ export default {
                 if (funeral && !this.imgProve) {
                     this.showConfirm = true
                     return false
-                }else if (!funeral && !this.imgProve) { // 如果没有丧假（但是有其他需要上传图片的类型）也没有上传图片
+                } else if (!funeral && !this.imgProve) { // 如果没有丧假（但是有其他需要上传图片的类型）也没有上传图片
                     this.checkFail()
                     return false
                 }

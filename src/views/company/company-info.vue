@@ -71,7 +71,7 @@
                 <cell title="关键词" :value="info.keyword||'-'"></cell>
                 <cell title="所属行业" :value="info.industry||'-'"></cell>
                 <cell title="企业法人" :value="info.corp||'-'"></cell>
-                <cell title="联系电话" :value="info.tel||'-'" v-show="type == 2"></cell>
+                <cell title="联系电话" :value="info.tel||'-'" v-show="type === 2"></cell>
                 <cell title="企业地址" :value="info.address||'-'"></cell>
                 <cell title="成立时间" :value="info.foundDates||'-'"></cell>
                 <cell title="企业规模" :value="info.scale||'-'"></cell>
@@ -127,13 +127,11 @@
     </group>
 </template>
 <script>
-import { Group, XHeader, Cell, Badge, ButtonTab, ButtonTabItem } from 'vux'
+import {Group, XHeader, Cell, Badge, ButtonTab, ButtonTabItem} from 'vux'
 export default {
-    components: {
-       Group, XHeader, Cell, Badge, ButtonTab, ButtonTabItem
-    },
+    components: { Group, XHeader, Cell, Badge, ButtonTab, ButtonTabItem },
     data () {
-        return{
+        return {
             type: this.$route.query.type,
             info: {
                 'busName': '', // 企业客户名称
@@ -154,7 +152,7 @@ export default {
                 'createBy': '', // 创建人
                 'createAts': '', // 创建时间
                 'followUpBys': '', // 开始跟进日期/最新转入日期
-                'projectType': '', // 所属项目
+                'projectType': '' // 所属项目
             },
             tab: 0,
             invo_no: true,
@@ -167,8 +165,8 @@ export default {
         },
         getInfo () {
             this.$get('api/customer/detail', {id: this.$route.query.companyId}).then((res) => {
-                this.info=res.data.data.result
-                // this.showdiver=true
+                this.info = res.data.data.result
+                // this.showdiver = true
             })
         },
         getInvoice () {
@@ -178,8 +176,8 @@ export default {
                     return
                 }
                 this.invoData = res.data.data.result
-                if (this.invoData.repaymentDate>0 || this.invoData.repaymentDate==0) {
-                    this.invoData.repaymentDate=this.invoData.repaymentDate+'天'
+                if (this.invoData.repaymentDate > 0 || this.invoData.repaymentDate === 0) {
+                    this.invoData.repaymentDate = this.invoData.repaymentDate + '天'
                 }
             })
         }

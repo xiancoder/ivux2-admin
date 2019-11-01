@@ -36,13 +36,11 @@
 </template>
 <script>
 import Vue from 'vue'
-import { XHeader, Group, Cell, AlertPlugin, Popup, Search, Icon } from 'vux'
+import {XHeader, Group, Cell, AlertPlugin, Popup, Search, Icon} from 'vux'
 Vue.use(AlertPlugin)
 export default {
     name: 'response-edit',
-    components: {
-        Group, Cell, XHeader, Popup, Search, Icon
-    },
+    components: {Group, Cell, XHeader, Popup, Search, Icon},
     data () {
         return {
             userList: [],

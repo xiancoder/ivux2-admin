@@ -37,7 +37,7 @@
                     </div>
                     <div class="pardDiv" v-if="replyData.length > 0 && response.workEnCopy.length>0"></div>
                     <div v-if="replyData.length > 0">
-                        <div class="replyDiv" v-for="(row, index) in replyData" :key="row.id">
+                        <div class="replyDiv" v-for="row in replyData" :key="row.id">
                             <div class="iconDiv">
                                 <img src="../../img/icon-reply.png" alt="">回复
                             </div>
@@ -90,7 +90,7 @@
 </template>
 <script>
 import qs from 'qs'
-import {XHeader, XTable, Loading, Popup, Scroller } from 'vux'
+import {XHeader, XTable, Loading, Popup, Scroller} from 'vux'
 export default {
     components: {XHeader, XTable, Loading, Popup, Scroller},
     data () {
@@ -106,15 +106,15 @@ export default {
             textWid: null,
             textWid2: null,
             isEnd: false,
-            order_list: [], // 缓存工单数据
+            orderList: [], // 缓存工单数据
             order_index: null, // 缓存数据下标
             suffixArr: ['jpg', 'jpeg', 'gif', 'png', 'bmp', 'pcx', 'tiff'], // 图片类型
             bigImgSrc: null,
             bigImg: false, // 查看大图
-            stateShow: false, // 查看通知
+            stateShow: false // 查看通知
         }
     },
-    computed :{
+    computed: {
         handleShow: function () {
             return this.$route.query.handle * 1 === 1 && this.response.workStatus === 0
         },
@@ -126,17 +126,17 @@ export default {
         // 文件类型：img/file
         fileType (val) {
             const n = val.indexOf('.')
-            const suffix = val.substring(n+1)
+            const suffix = val.substring(n + 1)
             const type = this.suffixArr.indexOf(suffix) === -1 ? 'file' : 'img'
             return type
         },
         init () {
             const phoneWid = sessionStorage.getItem('phoneWidth')
-            this.textWid = phoneWid -30
-            this.textWid2 = phoneWid -30
-            this.$refs.contentDiv.style.height = sessionStorage.getItem('phoneHeight') - 96 +'px'
-            this.$refs.bigImgSize.style.width = sessionStorage.getItem('phoneWidth') +'px'
-            this.order_list = JSON.parse(sessionStorage.getItem('order_list'))
+            this.textWid = phoneWid - 30
+            this.textWid2 = phoneWid - 30
+            this.$refs.contentDiv.style.height = sessionStorage.getItem('phoneHeight') - 96 + 'px'
+            this.$refs.bigImgSize.style.width = sessionStorage.getItem('phoneWidth') + 'px'
+            this.orderList = JSON.parse(sessionStorage.getItem('order_list'))
             this.order_index = sessionStorage.getItem('order_index')
             this.$get('api/order/order_info', {
                 id: this.$route.query.id
@@ -175,7 +175,7 @@ export default {
                 this.response.correlationName = correlations.join('、')
                 const paths = this.response.workEnclosure
                 this.response.workEnCopy = []
-                if (paths.length>0) {
+                if (paths.length > 0) {
                     for (let i = 0; i < paths.length; i++) {
                         this.response.workEnCopy.push({url: paths[i], name: this.subUrl(paths[i])})
                     }
@@ -185,7 +185,7 @@ export default {
                         this.replyData[i].workEnCopy = []
                         if (this.replyData[i].workEnclosure) {
                             if (this.replyData[i].workEnclosure.length > 0) {
-                                for (let j=0;j<this.replyData[i].workEnclosure.length;j++) {
+                                for (let j = 0; j < this.replyData[i].workEnclosure.length; j++) {
                                     const someone = this.replyData[i].workEnclosure[j]
                                     const type = this.fileType(someone)
                                     this.replyData[i].workEnCopy.push({url: someone, name: this.subUrl(someone), type: type})
@@ -197,9 +197,9 @@ export default {
                 this.showLoading = false
                 // 更新缓存数据最新回复人
                 this.$nextTick(() => {
-                    if (this.replyData.length > 0 && sessionStorage.getItem('order_list')) {
-                        this.order_list[this.order_index].repleName = this.replyData[this.replyData.length-1].name
-                        sessionStorage.setItem('order_list', JSON.stringify(this.order_list))
+                    if (this.replyData.length > 0 && sessionStorage.getItem('orderList')) {
+                        this.order_list[this.order_index].repleName = this.replyData[this.replyData.length - 1].name
+                        sessionStorage.setItem('orderList', JSON.stringify(this.orderList))
                     }
                 })
             })
@@ -216,14 +216,14 @@ export default {
             return val.substring(index)
         },
         showState () {
-            this.$get('api/order/read_list', {id: this.$route.query.id}).then( res => {
+            this.$get('api/order/read_list', {id: this.$route.query.id}).then(res => {
                 this.readData = res.data.data.list
             })
             this.stateShow = true
             // this.$router.push({name: 'order-info', query: {notice: 1}})
         },
         recall (index, id) {
-            this.$post('api/order/recall', qs.stringify({'id': id}), {headers: { 'content-type': 'application/x-www-form-urlencoded' }}).then( res => {
+            this.$post('api/order/recall', qs.stringify({'id': id}), {headers: { 'content-type': 'application/x-www-form-urlencoded' }}).then(res => {
                 if (res.data.data.res === 1) {
                     this.replyData[index].isBack = 1
                     this.replyData[index].canBack = 0
@@ -247,14 +247,14 @@ export default {
                 content: '确认要同意吗？',
                 onCancel () {},
                 onConfirm () {
-                    self.$post('api/order/closure', qs.stringify({'id': self.$route.query.id}), {headers: { 'content-type': 'application/x-www-form-urlencoded' }}).then( res => {
+                    self.$post('api/order/closure', qs.stringify({'id': self.$route.query.id}), {headers: { 'content-type': 'application/x-www-form-urlencoded' }}).then(res => {
                         if (res.data.data.res === 1) {
                             self.$vux.alert.show({
                                 title: '提示',
                                 content: '操作成功'
                             })
-                            self.order_list.splice(self.order_index, 1)
-                            sessionStorage.setItem('order_list', JSON.stringify(self.order_list))
+                            self.orderList.splice(self.order_index, 1)
+                            sessionStorage.setItem('order_list', JSON.stringify(self.orderList))
                             self.$router.replace({name: 'send-list'})
                         } else {
                             self.$vux.alert.show({
@@ -283,7 +283,7 @@ export default {
         if (this.bigImg) {
             this.bigImg = false
             next(false)
-        }else if (this.stateShow) {
+        } else if (this.stateShow) {
             this.stateShow = false
             next(false)
         } else {

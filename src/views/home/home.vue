@@ -12,7 +12,7 @@
                     <img src="../../img/my-order.png">
                     我的工单
                 </grid-item>
-                <grid-item link="/order/release ? home=1">
+                <grid-item link="/order/release ? home = 1">
                     <img src="../../img/release-order.png">
                     发工单
                 </grid-item>
@@ -115,7 +115,7 @@
 import {removeOrder} from '../../libs/common.js'
 import Cookies from 'js-cookie'
 import bottomMenu from '../components/bottom-menu.vue'
-import { XHeader, Grid, GridItem, Tabbar, TabbarItem} from 'vux'
+import {XHeader, Grid, GridItem, Tabbar, TabbarItem} from 'vux'
 export default {
     name: 'home',
     components: {

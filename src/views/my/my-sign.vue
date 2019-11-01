@@ -17,7 +17,7 @@
     </div>
 </template>
 <script>
-import { XHeader } from 'vux'
+import {XHeader} from 'vux'
 export default {
     name: 'my-sign',
     components: {

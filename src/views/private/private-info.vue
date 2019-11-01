@@ -68,10 +68,10 @@
     </div>
 </template>
 <script>
-import { XHeader, XButton, Badge } from 'vux'
+import {XHeader, XButton, Badge} from 'vux'
 export default {
     name: 'public-info',
-    components: { XHeader, XButton, Badge },
+    components: {XHeader, XButton, Badge},
     data () {
         return {
             type: '',

@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import FastClick from 'fastclick'
-import { ToastPlugin, AlertPlugin, LoadingPlugin, ConfirmPlugin, DatetimePlugin } from 'vux'
+import {ToastPlugin, AlertPlugin, LoadingPlugin, ConfirmPlugin, DatetimePlugin} from 'vux'
 import 'font-awesome/css/font-awesome.min.css'
 import './config/global.js'
 import App from './App'
 import store from './store'
-import { router } from './router/index.js'
+import {router} from './router/index.js'
 
 Vue.use(ToastPlugin)
 Vue.use(AlertPlugin)
@@ -30,7 +30,7 @@ Vue.prototype.resetSetItem = function (key, newVal) {
                 window.dispatchEvent(newStorageEvent)
             }
         }
-        return storage.setItem(key, newVal);
+        return storage.setItem(key, newVal)
     }
 }
 /* eslint-disable no-new */

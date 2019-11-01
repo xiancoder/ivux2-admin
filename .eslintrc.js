@@ -30,6 +30,7 @@ module.exports = {
         'no-unreachable': 0, // 不能有无法执行的代码
         'vue/no-use-v-if-with-v-for': 0, // v-if不要和v-for同标签使用
         'vue/no-unused-components': 0, // 禁止引入代码却不使用
+        'no-constant-condition': 0 // 禁止在条件中使用常量表达式
     },
     parserOptions: {
         parser: 'babel-eslint'

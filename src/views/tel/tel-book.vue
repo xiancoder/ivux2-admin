@@ -41,7 +41,7 @@
 </template>
 <script>
 import bottomMenu from '../components/bottom-menu.vue'
-import { XHeader, Tabbar, TabbarItem, Scroller, LoadMore, Divider, Search, debounce } from 'vux'
+import {XHeader, Tabbar, TabbarItem, Scroller, LoadMore, Divider, Search, debounce} from 'vux'
 export default {
     name: 'tel-book',
     components: {
@@ -58,7 +58,7 @@ export default {
             isEmpty: false,
             keyWord: '',
             contactList: [],
-            search_source: [],
+            searchSource: [],
             userPicture: '',
             pWidth: sessionStorage.getItem('phoneWidth') + 'px',
             angle: '_picture.png',
@@ -85,7 +85,7 @@ export default {
                 page_index: 1,
                 page_size: 500
             }).then((res) => {
-                this.contactList = this.search_source =  res.data.data.list
+                this.contactList = this.searchSource = res.data.data.list
                 this.isEmpty = true
                 this.top_loading = false
             })
@@ -100,7 +100,7 @@ export default {
                 page_index: 1,
                 page_size: 500
             }).then((res) => {
-                this.contactList = this.search_source = res.data.data.list
+                this.contactList = this.searchSource = res.data.data.list
                 this.isEmpty = true
                 this.$vux.loading.hide()
             })
@@ -108,16 +108,16 @@ export default {
         searchContact () {
             this.keyWord = this.keyWord.replace(/\s*/g, '')
             if (this.keyWord) {
-                let tel_search_list = [];// 通讯录临时数据
-                for (let i = 0; i < this.search_source.length; i++) {
-                    if (this.search_source[i].userName.indexOf(this.keyWord) !== -1 || this.search_source[i].emailStr.indexOf(this.keyWord) !== -1) {
-                        tel_search_list.push(this.search_source[i])
+                let telSearchList = [];// 通讯录临时数据
+                for (let i = 0; i < this.searchSource.length; i++) {
+                    if (this.searchSource[i].userName.indexOf(this.keyWord) !== -1 || this.searchSource[i].emailStr.indexOf(this.keyWord) !== -1) {
+                        telSearchList.push(this.searchSource[i])
                     }
                 }
-                this.contactList = tel_search_list
+                this.contactList = telSearchList
                 this.isEmpty = true
             } else {
-                this.contactList = this.search_source
+                this.contactList = this.searchSource
             }
             this.$nextTick(() => {
                 this.$refs.scrollerBottom.reset({top: 0})
@@ -127,13 +127,13 @@ export default {
             this.$router.push({name: 'staff-info', query: {userId: userId}})
         },
         clearTel () {
-            removetel()
+            // removetel()
         },
         firstName (name) {
             return name[0]
         },
         picRandom (url) {
-            return url  + ' ? t=' + Math.ceil(Math.random() * 10000)
+            return url + ' ? t=' + Math.ceil(Math.random() * 10000)
         },
         bigShow (val) {
             this.userPicture = val

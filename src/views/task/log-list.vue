@@ -19,7 +19,7 @@
     </div>
 </template>
 <script>
-import { XTable, LoadMore, Scroller, XHeader, Divider } from 'vux'
+import {XTable, LoadMore, Scroller, XHeader, Divider} from 'vux'
 export default {
     name: 'log-list',
     components: {
@@ -35,20 +35,20 @@ export default {
     methods: {
         getList (page_size, v) {
             if (v === 1) {
-                this.onFetching=true
+                this.onFetching = true
             }
-            let pa={
+            let pa = {
                 'taskId': this.$route.query.taskId,
                 'page_index': 1,
                 'page_size': 15
             }
             if (page_size) {
-                pa.page_size=page_size
+                pa.page_size = page_size
             }
             this.$get('api/task/tasklog', pa).then((res) => {
-                this.logList=res.data.data.list
-                this.rowCount=res.data.data.rowcount
-                this.onFetching=false
+                this.logList = res.data.data.list
+                this.rowCount = res.data.data.rowcount
+                this.onFetching = false
             })
         },
         onScrollBottom () {
@@ -71,7 +71,7 @@ export default {
         }
     },
     mounted () {
-        this.getList ('', 1)
+        this.getList('', 1)
         this.$nextTick(() => {
             this.$refs.scrollerBottom.reset({top: 0})
         })

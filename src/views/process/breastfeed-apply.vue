@@ -44,7 +44,7 @@
     </div>
 </template>
 <script>
-import { XHeader, Group, Cell, Loading, Datetime, Popup, Search, Icon, PopupPicker } from 'vux'
+import {XHeader, Group, Cell, Loading, Datetime, Popup, Search, Icon, PopupPicker} from 'vux'
 import approver from '../components/approver.vue'
 import copyPerson from '../components/copy-person.vue'
 import upImage from '../components/up-imgNoCut.vue'

@@ -58,10 +58,10 @@
     </div>
 </template>
 <script>
-import { XHeader, XButton } from 'vux'
+import {XHeader, XButton} from 'vux'
 export default {
     name: 'public-info',
-    components: { XHeader, XButton },
+    components: {XHeader, XButton},
     data () {
         return {
             cusName: '',

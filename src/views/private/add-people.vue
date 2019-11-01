@@ -54,16 +54,16 @@
 import Vue from 'vue'
 Vue.use(AlertPlugin)
 Vue.use(ConfirmPlugin)
-import { Group, XHeader, AlertPlugin, ConfirmPlugin, PopupPicker, Picker, Popup, PopupHeader } from 'vux'
+import {Group, XHeader, AlertPlugin, ConfirmPlugin, PopupPicker, Picker, Popup, PopupHeader} from 'vux'
 export default {
     components: {
-       Group, XHeader, ConfirmPlugin, AlertPlugin, PopupPicker, Picker, Popup, PopupHeader
+        Group, XHeader, ConfirmPlugin, AlertPlugin, PopupPicker, Picker, Popup, PopupHeader
     },
     mounted: function () {
         this.getInfo()
     },
     data () {
-        return{
+        return {
             type: '',
             unions: [],
             leader: [],
@@ -80,62 +80,58 @@ export default {
     methods: {
         getInfo () {
             this.type = sessionStorage.getItem('listType')
-            this.$get('api/customer/get_leader_unioner',
-            {
+            this.$get('api/customer/get_leader_unioner', {
                 id: this.$route.query.companyId
             }).then((res) => {
-                if (res.data.data.leader.length==0) {
-                    this.leaderName=[]
+                if (res.data.data.leader.length === 0) {
+                    this.leaderName = []
                     this.leaderPhoto=''
                 } else {
-                    this.leaderName=res.data.data.leader.userName
-                    this.leaderPhoto=res.data.data.leader.userPhoto
+                    this.leaderName = res.data.data.leader.userName
+                    this.leaderPhoto = res.data.data.leader.userPhoto
                 }
-                if (res.data.data.unioner.length==0) {
-                    this.unions=[]
+                if (res.data.data.unioner.length === 0) {
+                    this.unions = []
                 } else {
-                    this.unions=res.data.data.unioner
+                    this.unions = res.data.data.unioner
                 }
             })
-            // this.userData=[]
+            // this.userData = []
         },
         makeValue (data) {
-            let newData=[]
-            for (var i=0; i<data.length; i++) {
+            let newData = []
+            for (var i = 0; i < data.length; i++) {
                 newData.push({value: data[i].id, name: data[i].name})
             }
             return newData
         },
         openLeaderList () {
-            this.showLeaders=true
-            this.$get('api/customer/get_leader_drop',
-            {
+            this.showLeaders = true
+            this.$get('api/customer/get_leader_drop',{
                 id: this.$route.query.companyId
             }).then((res) => {
-                let leaderList=[]
-                leaderList=res.data.data.list
-                this.leaderData=this.makeValue(leaderList)
+                let leaderList = []
+                leaderList = res.data.data.list
+                this.leaderData = this.makeValue(leaderList)
             })
         },
         openUnionList () {
-            this.showUnioners=true
-            this.$get('api/customer/get_unioner_drop',
-            {
+            this.showUnioners = true
+            this.$get('api/customer/get_unioner_drop', {
                 id: this.$route.query.companyId
             }).then((res) => {
-                let leaderList=[]
-                leaderList=res.data.data.list
-                this.unionData=this.makeValue(leaderList)
+                let leaderList = []
+                leaderList = res.data.data.list
+                this.unionData = this.makeValue(leaderList)
             })
         },
         changeLeader (type) {
             if (type) {
-                this.$post('api/customer/change_leader',
-                {
+                this.$post('api/customer/change_leader', {
                     id: this.$route.query.companyId,
                     userId: this.leader[0]
                 }).then((res) => {
-                    if (res.data.data.res==1) {
+                    if (res.data.data.res === 1) {
                         let that = this
                         this.$vux.alert.show({
                             content: '操作成功',
@@ -147,13 +143,13 @@ export default {
                                 }
                             }
                         })
-                    }else if (res.data.data.res==0) {
+                    } else if (res.data.data.res === 0) {
                         this.$vux.alert.show({
-                            content: res.data.data.msg||'操作失败'
+                            content: res.data.data.msg || '操作失败'
                         })
                     } else {
                         this.$vux.alert.show({
-                            content: res.data.data||'操作失败'
+                            content: res.data.data || '操作失败'
                         })
                     }
                 })
@@ -161,26 +157,25 @@ export default {
         },
         changeUnioner (type) {
             if (type) {
-                this.$post('api/customer/add_union',
-                {
+                this.$post('api/customer/add_union',{
                     id: this.$route.query.companyId,
                     userId: this.unioner[0]
                 }).then((res) => {
-                    if (res.data.data.res==1) {
+                    if (res.data.data.res === 1) {
                         let that = this
                         this.$vux.alert.show({
                             content: '操作成功',
                             onHide () {
-                                 that.getInfo()
+                                that.getInfo()
                             }
                         })
-                    }else if (res.data.data.res==0) {
+                    } else if (res.data.data.res === 0) {
                         this.$vux.alert.show({
-                            content: res.data.data.msg||'操作失败'
+                            content: res.data.data.msg || '操作失败'
                         })
                     } else {
                         this.$vux.alert.show({
-                            content: res.data.data||'操作失败'
+                            content: res.data.data || '操作失败'
                         })
                     }
                 })
@@ -191,26 +186,25 @@ export default {
             this.$vux.confirm.show({
                 content: '确认删除该联合跟进人？',
                 onConfirm () {
-                    that.$post('api/customer/del_union',
-                    {
+                    that.$post('api/customer/del_union', {
                         id: that.$route.query.companyId,
                         userId: id
                     }).then((res) => {
-                       // let that = this
-                        if (res.data.data.res==1) {
+                        // let that = this
+                        if (res.data.data.res === 1) {
                             that.$vux.alert.show({
                                 content: '操作成功',
                                 onHide () {
                                     that.getInfo()
                                 }
                             })
-                        }else if (res.data.data.res==0) {
+                        } else if (res.data.data.res === 0) {
                             that.$vux.alert.show({
-                                content: res.data.data.msg||'操作失败'
+                                content: res.data.data.msg || '操作失败'
                             })
                         } else {
                             that.$vux.alert.show({
-                                content: res.data.data||'操作失败'
+                                content: res.data.data || '操作失败'
                             })
                         }
                     })

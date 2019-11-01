@@ -94,12 +94,12 @@
 </template>
 <script>
 // 引入组件
-import { XHeader, XButton, Confirm, XTextarea, Group} from 'vux'
+import {XHeader, XButton, Confirm, XTextarea, Group} from 'vux'
 import ccInfo from '../components/ccInfo.vue'
 import nodeInfo from '../components/nodeInfo.vue'
 export default {
     name: 'overtime-info',
-    components: { XHeader, XButton, ccInfo, nodeInfo, Confirm, XTextarea, Group},
+    components: {XHeader, XButton, ccInfo, nodeInfo, Confirm, XTextarea, Group},
     data () { // 参数声明
         return {
             rejectShow: false, // 驳回弹框显示

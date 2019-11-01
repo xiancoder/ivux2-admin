@@ -10,7 +10,7 @@
                 <img slot="icon" :src="row.src" alt=""/>
                 <span slot="label">{{row.name}}</span>
             </grid-item>
-            <grid-item v-if="sex == 2" link="breastfeed-apply">
+            <grid-item v-if="sex === 2" link="breastfeed-apply">
                 <img slot="icon" :src="require('../../img/lactation.png')" alt=""/>
                 <span slot="label">哺乳假</span>
             </grid-item>

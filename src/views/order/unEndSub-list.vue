@@ -50,7 +50,7 @@ export default {
             request: {
                 keyword: null,
                 pageIndex: 1,
-                pageSize: 10
+                page_size: 10
             },
             response: {
                 list: [],
@@ -61,21 +61,21 @@ export default {
             loadOne: 0, // 解决下拉触发多次
             noMore: false,
             loading: false,
-            tdWidth: document.body.clientWidth-50,
+            tdWidth: document.body.clientWidth - 50,
             debSearch: ''
         }
     },
     methods: {
         init () {
-            const scrollHei = sessionStorage.getItem('phoneHeight')*1 - 138
+            const scrollHei = sessionStorage.getItem('phoneHeight') * 1 - 138
             this.$refs.scroll.styles.height = scrollHei + 'px'
             this.debSearch = debounce(this.submiting, 500)
-            const order_list = JSON.parse(sessionStorage.getItem('order_list'))
-            if (order_list) {
+            const orderList = JSON.parse(sessionStorage.getItem('order_list'))
+            if (orderList) {
                 this.loadOne = sessionStorage.getItem('order_loadOne')
                 this.noMore = sessionStorage.getItem('order_noMore') === '1'
                 this.firstload = false
-                this.response.list = order_list
+                this.response.list = orderList
                 this.request.pageIndex = parseInt(sessionStorage.getItem('order_pageIndex'))
                 this.request.keyword = sessionStorage.getItem('order_keyword')
             } else {
@@ -89,11 +89,11 @@ export default {
         update () {
             removeOrder()
             const scrollDom = document.querySelector('.xs-container')
-            scrollDom.style.transform='translateY(0)'
-             this.request={
+            scrollDom.style.transform = 'translateY(0)'
+            this.request = {
                 keyword: this.request.keyword,
                 pageIndex: 1,
-                pageSize: 10
+                page_size: 10
             }
             this.first = 0
             this.firstload = true
@@ -105,11 +105,11 @@ export default {
             })
         },
         getList (val) {
-            let para={
+            let para = {
                 'workStatus': 0,
                 'keyword': this.request.keyword,
                 'pageIndex': this.request.pageIndex,
-                'pageSize': this.request.pageSize
+                'page_size': this.request.page_size
             }
             this.$get('api/order/order_sub_list', para).then(res => {
                 this.first++
@@ -195,7 +195,7 @@ export default {
     },
     mounted () {
         this.init()
-        this.$nextTick( res => {
+        this.$nextTick(res => {
             const scrollHei = sessionStorage.getItem('order_scroll')
             if (scrollHei) {
                 const scrollDom = document.querySelector('.xs-container')

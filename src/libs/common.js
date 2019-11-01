@@ -21,8 +21,8 @@ export const removetel = function () {
 // 匹配超链接, 转化为a标签
 export const urlToLink = function (val) {
     const re = /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/g
-    const str = val.replace(re, function(website){
-        return "<a style='color:#0094eb' href='" + website +"' target='_blank'>" + website + "</a>"
+    const str = val.replace(re, function (website) {
+        return '<a style="color:#0094eb" href="' + website + '" target="_blank">' + website + '</a>'
     });
     return str
 }

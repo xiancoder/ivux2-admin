@@ -21,10 +21,10 @@
     </div>
 </template>
 <script>
-import { XHeader, Group, Cell, XInput, XTextarea } from 'vux'
+import {XHeader, Group, Cell, XInput, XTextarea} from 'vux'
 export default {
     name: 'add-contact',
-    components: { Group, Cell, XHeader, XInput, XTextarea},
+    components: {Group, Cell, XHeader, XInput, XTextarea},
     data () {
         return {
             contactInfo: {

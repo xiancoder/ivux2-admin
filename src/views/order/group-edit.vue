@@ -43,10 +43,10 @@
     </div>
 </template>
 <script>
-import { XHeader, Group, Cell, XInput, PopupPicker, Popup, Search, Icon, CheckIcon } from 'vux'
+import {XHeader, Group, Cell, XInput, PopupPicker, Popup, Search, Icon, CheckIcon} from 'vux'
 export default {
     name: 'group-edit',
-    components: { Group, Cell, XHeader, XInput, Popup, Search, PopupPicker, Icon, CheckIcon },
+    components: {Group, Cell, XHeader, XInput, Popup, Search, PopupPicker, Icon, CheckIcon},
     data () {
         return {
             title: '新建组',

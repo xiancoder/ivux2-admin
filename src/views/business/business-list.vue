@@ -121,7 +121,7 @@ export default {
     },
     methods: {
         init () {
-            const scrollHei = sessionStorage.getItem('phoneHeight')*1 - 110.5
+            const scrollHei = sessionStorage.getItem('phoneHeight') * 1 - 110.5
             this.$refs.scroll.styles.height = scrollHei + 'px'
             this.getList()
             this.debounceSearch = debounce(this.submiting, 500)
@@ -130,7 +130,7 @@ export default {
             this.$router.replace({name: 'home_index'})
         },
         openScreen () {
-            this.screen=true
+            this.screen = true
             this.firstClick++
             if (this.firstClick === 1) {
                 this.$get('api/sys/project_list').then((res) => {
@@ -148,8 +148,8 @@ export default {
             }
         },
         getList () {
-            let getData =() => {
-                let para={
+            let getData = () => {
+                let para = {
                     'begin': this.search.begin,
                     'end': this.search.end,
                     'projectType': this.search.projectId === -1 ? null : this.search.projectId,
@@ -158,7 +158,7 @@ export default {
                     'status': this.search.statusId === -1 ? null : this.search.statusId,
                     'keyword': this.keyword,
                     'pageIndex': this.search.pageIndex,
-                    'pageSize': 15
+                    'page_size': 15
                 }
                 this.$get('api/workflow/getallworklist', para).then(res => {
                     this.first++
@@ -223,10 +223,10 @@ export default {
             if (this.$route.query.keyword !== undefined) {
                 this.search.begin = this.$route.query.begin
                 this.search.end = this.$route.query.end
-                this.search.projectId = this.$route.query.projectId*1
-                this.search.processId = this.$route.query.processId*1
-                this.search.companyId = this.$route.query.companyId*1
-                this.search.statusId = this.$route.query.statusId*1
+                this.search.projectId = this.$route.query.projectId * 1
+                this.search.processId = this.$route.query.processId * 1
+                this.search.companyId = this.$route.query.companyId * 1
+                this.search.statusId = this.$route.query.statusId * 1
                 this.keyword = this.$route.query.keyword
                 getData()
                 return false
@@ -324,6 +324,7 @@ export default {
         },
         loadData () {
             if (this.load) {
+                console.log('???')
             } else {
                 this.load = true
                 this.loading = true

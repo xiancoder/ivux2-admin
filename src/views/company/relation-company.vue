@@ -60,15 +60,15 @@
 </template>
 <script>
 import Vue from 'vue'
-import { Group, XHeader, Badge, ButtonTab, XTable, Swipeout, SwipeoutItem, Cell, XButton, SwipeoutButton, ButtonTabItem, AlertPlugin} from 'vux'
+import {Group, XHeader, Badge, ButtonTab, XTable, Swipeout, SwipeoutItem, Cell, XButton, SwipeoutButton, ButtonTabItem, AlertPlugin} from 'vux'
 Vue.use(AlertPlugin)
 export default {
-    components: { Group, XHeader, Badge, ButtonTab, Swipeout, SwipeoutItem, Cell, XButton, SwipeoutButton, ButtonTabItem, XTable },
+    components: {Group, XHeader, Badge, ButtonTab, Swipeout, SwipeoutItem, Cell, XButton, SwipeoutButton, ButtonTabItem, XTable},
     mounted: function () {
         this.getUser()
     },
     data () {
-        return{
+        return {
             type: this.$route.query.type,
             disabled: false,
             demo01: parseInt(this.$route.query.tab),
@@ -82,31 +82,31 @@ export default {
     methods: {
         getUser () {
             this.$get('api/customer/relation_customer', {id: this.$route.query.companyId}).then((res) => {
-                this.maybelist=res.data.data.maybelist
-                this.relist=res.data.data.relist
-                // this.showdiver=true
+                this.maybelist = res.data.data.maybelist
+                this.relist = res.data.data.relist
+                // this.showdiver = true
             })
         },
         onButtonClick (id, type) {// 忽略// 关联
             this.oprate(id, type)
         },
         oprate (rid, type) {
-            let pa={
+            let pa = {
                 'cusId': this.$route.query.companyId, // 基准客户id
                 'releId': rid, // 关联客户id
-                'status': type, // -1 忽略/取消关联，2关联，
+                'status': type // -1 忽略/取消关联，2关联，
             }
             this.$post('api/customer/relation_operate', pa).then((res) => {
                 let that = this
-                if (res.data.data.res==1) {
+                if (res.data.data.res === 1) {
                     this.$vux.alert.show({
                         content: '操作成功',
-                       onhide () {
+                        onhide () {
                             that.getUser()
                         }
                     })
                 }
-                // this.showdiver=true
+                // this.showdiver = true
             })
         }
     }

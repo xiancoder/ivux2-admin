@@ -56,7 +56,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 import VueHtml5Editor from 'vue-html5-editor'
-import { XHeader, Group, Cell, XInput, PopupPicker, Loading, Datetime, Popup, Search, Icon } from 'vux'
+import {XHeader, Group, Cell, XInput, PopupPicker, Loading, Datetime, Popup, Search, Icon} from 'vux'
 Vue.use(VueHtml5Editor, {
     name: 'vue-html5-editor',
     showModuleName: false,
@@ -114,7 +114,7 @@ Vue.use(VueHtml5Editor, {
 })
 export default {
     name: 'task-release',
-    components: { Group, Cell, XHeader, XInput, Popup, Search, PopupPicker, Loading, Icon },
+    components: {Group, Cell, XHeader, XInput, Popup, Search, PopupPicker, Loading, Icon},
     data () {
         return {
             userList: [],

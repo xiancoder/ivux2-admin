@@ -21,7 +21,7 @@
             cancel-text  :auto-fixed="autoFixed" @on-cancel="serach()"
             @on-clear="serach()"
             placeholder="请输入客户名称（全称）"
-             ></search> -->
+            ></search> -->
         <!-- <x-input type="text" class="follow_search" placeholder="请输入客户名称（全称）"  v-model="searchName" >
             <i slot="right" class="fa fa-search fa-lg" @click="search()"></i>
         </x-input> -->
@@ -56,20 +56,18 @@
 </template>
 <script>
 import Vue from 'vue'
-import  { LoadingPlugin } from 'vux'
-import {Loading, Group, XHeader, Cell, Badge, Search, XInput, XTable, XButton, AlertPlugin, ConfirmPlugin } from 'vux'
+import {LoadingPlugin} from 'vux'
+import {Loading, Group, XHeader, Cell, Badge, Search, XInput, XTable, XButton, AlertPlugin, ConfirmPlugin} from 'vux'
 Vue.use(ConfirmPlugin)
 Vue.use(AlertPlugin)
 Vue.use(LoadingPlugin)
 export default {
-    components: {
-       Group, XHeader, Cell, Badge, Search, XInput, XTable, XButton, ConfirmPlugin, Loading
-    },
+    components: { Group, XHeader, Cell, Badge, Search, XInput, XTable, XButton, ConfirmPlugin, Loading },
     mounted: function () {
         // this.getInfo()
     },
     data () {
-        return{
+        return {
             autoFixed: false,
             searchName: '',
             userData: []
@@ -86,35 +84,33 @@ export default {
         },
         search () {
             this.showLoading()
-            this.$get('api/customer/get_customer',
-            {
+            this.$get('api/customer/get_customer', {
                 busName: this.searchName
             }).then((res) => {
-                this.userData=res.data.data
+                this.userData = res.data.data
                 this.$vux.loading.hide()
-                // this.showdiver=true
+                // this.showdiver = true
             })
-            this.userData=[]
+            this.userData = []
         },
         addRelation (id) {
-            let pa={
+            let pa = {
                 'cusId': this.$route.query.companyId, // 基准客户id
                 'releId': id, // 关联客户id
-                'status': 2, // -1 忽略/取消关联，2关联，
+                'status': 2 // -1 忽略/取消关联，2关联，
             }
             this.$post('api/customer/relation_operate', pa).then((res) => {
-                if (res.data.data.res==1) {
+                if (res.data.data.res === 1) {
                     let that = this
                     this.$vux.alert.show({
                         content: '操作成功',
-                       // onCancel () {this.getUser();},
                         onHide () {
                             that.goRelationList()
-                            // http:// localhost: 8080/#/company/relation ? companyId=1175&type=2
+                            // http:// localhost: 8080/#/company/relation ? companyId = 1175&type = 2
                         }
                     })
                 }
-                // this.showdiver=true
+                // this.showdiver = true
             })
         },
         goRelationList () {

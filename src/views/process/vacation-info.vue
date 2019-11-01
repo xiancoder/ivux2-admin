@@ -147,7 +147,7 @@
     </div>
 </template>
 <script>
-import { XHeader, Confirm, XTextarea, Group  } from 'vux'
+import {XHeader, Confirm, XTextarea, Group} from 'vux'
 import ccInfo from '../components/ccInfo.vue'
 export default {
     name: 'vacation-info',
@@ -183,15 +183,15 @@ export default {
                     approverName: '', // 审批人姓名
                     userPhoto: null, // 审批人头像地址
                     createdTimeStr: null, // 审批时间
-                    status: null, // 审批状态 0：审批中 1：驳回 2：通过
+                    status: null // 审批状态 0：审批中 1：驳回 2：通过
                 }],
                 correlation: [{ // 抄送人列表
                     correlationUserName: '', // 抄送人名字
-                    userPhoto: null, // 抄送人头像
+                    userPhoto: null // 抄送人头像
                 }],
                 status: null, // 0：审批中 1：驳回 2：通过 4 已撤回
                 isBack: null, // 1 可撤回 0不可撤回
-                isCurrent: null, // true false 是否是当前审批人
+                isCurrent: null // true false 是否是当前审批人
             },
             vacationNew: {}, // 当前申请单详情
             vacationOld: {}, // 以前申请单详情
@@ -218,8 +218,8 @@ export default {
             const hei = document.documentElement.clientHeight || document.body.clientHeight
             this.$refs.screenDiv.style.minHeight = hei + 'px'
             this.mId = this.$route.query.id
-            this.approvalList = this.$route.query.type ? this.$route.query.type*1 : 0
-            this.processMy = this.$route.query.processMy ? this.$route.query.processMy*1 : 0
+            this.approvalList = this.$route.query.type ? this.$route.query.type * 1 : 0
+            this.processMy = this.$route.query.processMy ? this.$route.query.processMy * 1 : 0
             this.$get('api/workflow/vacation_info', {
                 mId: this.mId
             }).then(res => {
@@ -227,11 +227,11 @@ export default {
                 // 请假类型
                 const vacaLength = this.info.vacationList.length
                 this.vacationNew = this.info.vacationList[0]
-                this.vacationOld = vacaLength > 1 ? this.info.vacationList[vacaLength-1] : {}
+                this.vacationOld = vacaLength > 1 ? this.info.vacationList[vacaLength - 1] : {}
                 // 判断流程到了哪个节点
                 if (this.info.status === 0 || this.info.status === 1) {
-                    for (let x = 0; x <this.info.approverList.length; x++) {
-                        for (let y = 0; y < this.info.approverList[x].length; y++ ) {
+                    for (let x = 0; x < this.info.approverList.length; x++) {
+                        for (let y = 0; y < this.info.approverList[x].length; y++) {
                             if (this.info.approverList[x][y].status === 0 || this.info.approverList[x][y].status === 1) {
                                 this.approvalNode = x
                                 return

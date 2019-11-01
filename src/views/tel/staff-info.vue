@@ -51,13 +51,10 @@
 </template>
 <script>
 // 引入组件
-import { XHeader, XButton} from 'vux'
+import {XHeader, XButton} from 'vux'
 export default {
     name: 'staff-info',
-    components: { // 组件声明
-        XHeader,
-        XButton
-    },
+    components: { XHeader, XButton }, // 组件声明
     data () { // 参数声明
         return {
             info: {
@@ -71,7 +68,7 @@ export default {
                 userPicture: null
             },
             pWidth: sessionStorage.getItem('phoneWidth') + 'px',
-            bigImg: false, // 查看大图
+            bigImg: false // 查看大图
         }
     },
     methods: {
@@ -84,7 +81,7 @@ export default {
                     deparArr.push(this.info.department[i].name)
                 }
                 this.info.department = deparArr.join('，')
-                this.info.userPicture=this.info.userPicture ? this.info.userPicture+' ? t='+Math.ceil(Math.random() * 10000) : null
+                this.info.userPicture = this.info.userPicture ? this.info.userPicture + ' ? t=' + Math.ceil(Math.random() * 10000) : null
             })
         },
         toTelBook () {
@@ -97,7 +94,7 @@ export default {
             this.bigImg = false
         },
         picRandom (url) {
-            return url  + ' ? t=' + Math.ceil(Math.random() * 10000)
+            return url + ' ? t=' + Math.ceil(Math.random() * 10000)
         },
         deg (url) {
             if (!url) {

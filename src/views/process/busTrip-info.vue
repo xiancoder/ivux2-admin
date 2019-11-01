@@ -74,7 +74,7 @@
     <!-- 弹框提示已撤回使用 XDialog 组件 -->
 </template>
 <script>
-import { XHeader, XButton, Confirm, XTextarea, Group} from 'vux'
+import {XHeader, XButton, Confirm, XTextarea, Group} from 'vux'
 import ccInfo from '../components/ccInfo.vue'
 import nodeInfo from '../components/nodeInfo.vue'
 export default {

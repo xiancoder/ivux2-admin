@@ -27,11 +27,11 @@
     </div>
 </template>
 <script>
-import { Tabbar, TabbarItem } from 'vux'
+import {Tabbar, TabbarItem} from 'vux'
 export default {
     // dsf-2019-10-21 底部菜单组件
     name: 'button-menu',
-    components: { Tabbar, TabbarItem },
+    components: {Tabbar, TabbarItem},
     props: {
         select: {
             type: Number,

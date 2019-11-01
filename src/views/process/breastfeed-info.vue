@@ -68,7 +68,7 @@
     </div>
 </template>
 <script>
-import { XHeader, Confirm, XTextarea, Group} from 'vux'
+import {XHeader, Confirm, XTextarea, Group} from 'vux'
 import ccInfo from '../components/ccInfo.vue'
 import nodeInfo from '../components/nodeInfo.vue'
 export default {
@@ -96,14 +96,14 @@ export default {
                     approverUserName: '', // 审批人姓名
                     userPhoto: null, // 审批人头像地址
                     createdTimeStr: null, // 审批时间
-                    status: null, // 审批状态 0：审批中 1：驳回 2：通过
+                    status: null // 审批状态 0：审批中 1：驳回 2：通过
                 }],
                 correlation: [{ // 抄送人列表
                     correlationUserName: '', // 抄送人名字
                     userPhoto: null // 抄送人头像
                 }],
                 status: null, // 0：审批中 1：驳回 2：通过
-                isCurrent: true, // true false 是否是当前审批人
+                isCurrent: true // true false 是否是当前审批人
             },
             approvalList: 0, // 从审批列表转入 0 不是 1 是
             mId: 0, // 流程ID
@@ -115,13 +115,13 @@ export default {
             return this.info.isCurrent && this.info.status === 0 && this.approvalList === 1
         },
         bigImg: function () {
-            return this.$route.query.id ? false : true
+            return !this.$route.query.id
         }
     },
     methods: {
         init () { // 初始化 列表
             this.mId = this.$route.query.id
-            this.approvalList = this.$route.query.type ? this.$route.query.type*1 : 0
+            this.approvalList = this.$route.query.type ? this.$route.query.type * 1 : 0
             this.$get('api/workflow/breastfeed_info', {
                 mId: this.mId
             }).then(res => {

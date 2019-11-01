@@ -46,11 +46,11 @@
     </div>
 </template>
 <script>
-import { XHeader } from 'vux'
-import { PopupPicker, debounce, throttle, Checker, CheckerItem, Qrcode } from 'vux'
+import {XHeader} from 'vux'
+import {PopupPicker, debounce, throttle, Checker, CheckerItem, Qrcode} from 'vux'
 export default {
     name: 'invoice',
-    components: { XHeader, PopupPicker, Checker, CheckerItem, Qrcode },
+    components: {XHeader, PopupPicker, Checker, CheckerItem, Qrcode},
     data () {
         return {
             debounceNum: 0,

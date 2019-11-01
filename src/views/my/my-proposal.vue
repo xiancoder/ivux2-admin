@@ -18,13 +18,13 @@
     </div>
 </template>
 <script>
-import { XHeader, Group, XInput, AlertPlugin, PopupRadio, XTextarea } from 'vux'
+import {XHeader, Group, XInput, AlertPlugin, PopupRadio, XTextarea} from 'vux'
 export default {
     name: 'modify-password',
-    components: { Group, XHeader, XInput, AlertPlugin, PopupRadio, XTextarea},
+    components: {Group, XHeader, XInput, AlertPlugin, PopupRadio, XTextarea},
     data () {
         return {
-            types: [ { key: 1, value: '功能建议'}, { key: 2, value: '用户体验'}, { key: 3, value: '页面设计'}, { key: 4, value: '其他'}, ],
+            types: [{key: 1, value: '功能建议'}, {key: 2, value: '用户体验'}, {key: 3, value: '页面设计'}, {key: 4, value: '其他'}],
             type_id: '',
             text1: '请留下您的吐槽与建议，我们会充分考虑，感谢您的配合！',
             text2: ''
@@ -40,7 +40,7 @@ export default {
                 return
             }
             if (this.text2.length === 0) {
-                 this.$vux.alert.show({
+                this.$vux.alert.show({
                     title: '提示',
                     content: '请填写吐槽或建议的内容！'
                 })

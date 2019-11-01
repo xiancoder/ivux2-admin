@@ -19,12 +19,12 @@
     </div>
 </template>
 <script>
-import { XHeader, Group, Loading, Datetime, XTextarea } from 'vux'
+import {XHeader, Group, Loading, Datetime, XTextarea} from 'vux'
 import approver from '../components/approver.vue'
 import copyPerson from '../components/copy-person.vue'
 export default {
     name: 'noCheck-apply',
-    components: { XHeader, Group, Loading, Datetime, XTextarea, approver, copyPerson },
+    components: {XHeader, Group, Loading, Datetime, XTextarea, approver, copyPerson},
     data () {
         return {
             id: 0,

@@ -30,19 +30,10 @@
     </div>
 </template>
 <script>
-import { XHeader, XInput, Group, Cell, Scroller, LoadMore, Divider, Search} from 'vux'
+import {XHeader, XInput, Group, Cell, Scroller, LoadMore, Divider, Search} from 'vux'
 export default {
     name: 'contact-list',
-    components: {
-        XHeader,
-        XInput,
-        Group,
-        Cell,
-        Scroller,
-        LoadMore,
-        Divider,
-        Search
-    },
+    components: {XHeader, XInput, Group, Cell, Scroller, LoadMore, Divider, Search},
     data () {
         return {
             keyWord: null,
@@ -89,6 +80,7 @@ export default {
         },
         onScrollBottom () {
             if (this.loading || this.contactList.length === 0) {
+                console.log('???')
             } else {
                 if (!this.noMore) {
                     this.loading = true

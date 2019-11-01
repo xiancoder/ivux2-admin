@@ -4,8 +4,7 @@
     </div>
 </template>
 <script>
-import { Loading } from 'vux'
-import { mapState } from 'vuex'
+import {Loading} from 'vux'
 export default {
     name: 'app',
     components: {

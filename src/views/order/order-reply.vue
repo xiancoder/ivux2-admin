@@ -30,12 +30,10 @@
 <script>
 import axios from 'axios'
 import {urlToLink} from '../../libs/common.js'
-import { XHeader, Group, Cell, Loading, XTextarea, Icon } from 'vux'
+import {XHeader, Group, Cell, Loading, XTextarea, Icon} from 'vux'
 export default {
     name: 'order-reply',
-    components: {
-        Group, Cell, XHeader, Loading, XTextarea, Icon
-    },
+    components: {Group, Cell, XHeader, Loading, XTextarea, Icon},
     data () {
         return {
             id: this.$route.query.id,

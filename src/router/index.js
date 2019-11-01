@@ -8,7 +8,7 @@ Vue.use(VueRouter);
 
 // 路由配置
 const RouterConfig = {
-    routes: routers,
+    routes: routers
 };
 
 export const router = new VueRouter(RouterConfig);
@@ -22,27 +22,25 @@ router.beforeEach((to, from, next) => {
         next({
             name: 'login'
         });
-        Cookies.remove('mark');
-    } else if (sessionStorage.getItem('to_name')){
+        Cookies.remove('mark')
+    } else if (sessionStorage.getItem('to_name')) {
         // 特定条件下路由不跳转(解决历史回退问题)
-        sessionStorage.removeItem('to_name');
-        return;
+        sessionStorage.removeItem('to_name')
     } else {
         Vue.$vux.loading.show({
             text: 'Loading'
-        });
-        Util.toDefaultPage([...routers], to.name, router, next);
+        })
+        Util.toDefaultPage([...routers], to.name, router, next)
     }
     // else if (Cookies.get('mark') && to.name === 'login') { // 判断是否已经登录且前往的是登录页
-    //     Util.title();
+    //     Util.title()
     //     next({
     //         name: 'home_index'
-    //     });
+    //     })
     // }
-
-});
+})
 router.afterEach((to) => {
-    Vue.$vux.loading.hide();
-    // Util.openNewPage(router.app, to.name, to.params, to.query);
-    window.scrollTo(0, 0);
-});
+    Vue.$vux.loading.hide()
+    // Util.openNewPage(router.app, to.name, to.params, to.query)
+    window.scrollTo(0, 0)
+})

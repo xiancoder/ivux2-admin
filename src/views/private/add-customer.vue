@@ -51,18 +51,10 @@
     </div>
 </template>
 <script>
-import { XHeader, Group, Cell, PopupPicker, XInput, XTextarea, Datetime  } from 'vux'
+import {XHeader, Group, Cell, PopupPicker, XInput, XTextarea, Datetime} from 'vux'
 export default {
     name: 'add-customer',
-    components: {
-        Group,
-        Cell,
-        XHeader,
-        PopupPicker,
-        XInput,
-        XTextarea,
-        Datetime
-    },
+    components: {Group, Cell, XHeader, PopupPicker, XInput, XTextarea, Datetime},
     data () {
         return {
             showProject: true,

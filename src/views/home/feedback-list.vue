@@ -42,7 +42,7 @@
     </div>
 </template>
 <script>
-import { XHeader, XTable, LoadMore, Scroller, Divider, Group } from 'vux'
+import {XHeader, XTable, LoadMore, Scroller, Divider, Group} from 'vux'
 export default {
     name: 'feedback-list',
     components: {
@@ -64,7 +64,7 @@ export default {
             this.loading = true
             this.$get('api/system/getfeedback', {
                 pageIndex: 1,
-                pageSize: 15
+                page_size: 15
             }).then((res) => {
                 this.listData = res.data.data.list
                 this.loading = false
@@ -72,13 +72,14 @@ export default {
         },
         onScrollBottom () {
             if (this.loading || this.listData.length === 0) {
+                console.log('???')
             } else {
                 if (!this.noMore) {
                     this.loading = true
                     setTimeout(() => {
                         this.$get('api/system/getfeedback', {
                             pageIndex: 1,
-                            pageSize: this.currentCount
+                            page_size: this.currentCount
                         }).then((res) => {
                             this.listData = res.data.data.list
                             if (this.currentCount < res.data.data.rowcount) {

@@ -32,7 +32,7 @@ import bottomMenu from '../components/bottom-menu.vue'
 import {Tabbar, TabbarItem} from 'vux'
 export default {
     name: 'my',
-    components: { bottomMenu },
+    components: {bottomMenu},
     data () {
         return {
             randomNum: ' ? t=' + Math.ceil(Math.random() * 10000),

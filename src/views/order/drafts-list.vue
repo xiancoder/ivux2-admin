@@ -13,7 +13,7 @@
                 <x-table :cell-bordered="false" class="myprocessTable">
                     <tbody>
                         <tr><load-more v-show="firstload" tip="loading"></load-more></tr>
-                        <tr v-for="(row, index) in response.list" :key="row.id" @click="toRelease(row.id, index)">
+                        <tr v-for="row in response.list" :key="row.id" @click="toRelease(row.id, index)">
                             <td style="padding-top: 6px;text-align: left;">
                                 <div :style="{width: tdWidth + 'px'}" class="overhide" style="display: flex;display: -webkit-flex;">
                                     <p class="pName overhide">{{row.listName}}</p>
@@ -36,9 +36,9 @@
 import tab from './tab'
 import noData from './no-data'
 import {setOrder, removeOrder} from '../../libs/common.js'
-import {Group, XHeader, Tab, TabItem, XTable, Scroller, LoadMore, Divider, Search, debounce } from 'vux'
+import {Group, XHeader, Tab, TabItem, XTable, Scroller, LoadMore, Divider, Search, debounce} from 'vux'
 export default {
-    components: {Group, XHeader, Tab, TabItem, XTable, Scroller, LoadMore, Divider, Search, tab, noData },
+    components: {Group, XHeader, Tab, TabItem, XTable, Scroller, LoadMore, Divider, Search, tab, noData},
     data () {
         return {
             names: [
@@ -50,7 +50,7 @@ export default {
             request: {
                 keyword: null,
                 pageIndex: 1,
-                pageSize: 10
+                page_size: 10
             },
             response: {
                 list: [],
@@ -61,21 +61,21 @@ export default {
             loadOne: 0, // 解决下拉触发多次
             noMore: false,
             loading: false,
-            tdWidth: document.body.clientWidth-50,
+            tdWidth: document.body.clientWidth - 50,
             debSearch: ''
         }
     },
     methods: {
         init () {
-            const scrollHei = sessionStorage.getItem('phoneHeight')*1 - 138
+            const scrollHei = sessionStorage.getItem('phoneHeight') * 1 - 138
             this.$refs.scroll.styles.height = scrollHei + 'px'
             this.debSearch = debounce(this.submiting, 500)
-            const order_list = JSON.parse(sessionStorage.getItem('order_list'))
-            if (order_list) {
+            const orderList = JSON.parse(sessionStorage.getItem('order_list'))
+            if (orderList) {
                 this.loadOne = sessionStorage.getItem('order_loadOne')
                 this.noMore = sessionStorage.getItem('order_noMore') === '1'
                 this.firstload = false
-                this.response.list = order_list
+                this.response.list = orderList
                 this.request.pageIndex = parseInt(sessionStorage.getItem('order_pageIndex'))
                 this.request.keyword = sessionStorage.getItem('order_keyword')
             } else {
@@ -89,11 +89,11 @@ export default {
         update () {
             removeOrder()
             const scrollDom = document.querySelector('.xs-container')
-            scrollDom.style.transform='translateY(0)'
-             this.request={
+            scrollDom.style.transform = 'translateY(0)'
+            this.request = {
                 keyword: this.request.keyword,
                 pageIndex: 1,
-                pageSize: 10
+                page_size: 10
             }
             this.first = 0
             this.firstload = true
@@ -105,11 +105,11 @@ export default {
             })
         },
         getList (val) {
-            let para={
+            let para = {
                 'type': 3,
                 'keyword': this.request.keyword,
                 'pageIndex': this.request.pageIndex,
-                'pageSize': this.request.pageSize
+                'page_size': this.request.page_size
             }
             this.$get('api/order/order_list', para).then(res => {
                 this.first++
@@ -196,7 +196,7 @@ export default {
             setOrder(setData)
         },
         del (index, id) {
-            this.$get('api/order/order_delete', {id: id}).then( res => {
+            this.$get('api/order/order_delete', {id: id}).then(res => {
                 if (!res.data.data) {
                     this.$vux.alert.show({
                         title: '提示',
@@ -204,7 +204,7 @@ export default {
                     })
                 } else if (res.data.data.res === 1) {
                     this.response.list.splice(index, 1)
-                    event.cancelBubble=true
+                    event.cancelBubble = true
                 } else {
                     this.$Message.info({
                         content: res.data.msg || '操作失败'
@@ -215,7 +215,7 @@ export default {
     },
     mounted () {
         this.init()
-        this.$nextTick( res => {
+        this.$nextTick(res => {
             const scrollHei = sessionStorage.getItem('order_scroll')
             if (scrollHei) {
                 const scrollDom = document.querySelector('.xs-container')

@@ -28,10 +28,10 @@
     </div>
 </template>
 <script>
-import { XHeader, Group, Cell } from 'vux'
+import {XHeader, Group, Cell} from 'vux'
 export default {
     name: 'my-info',
-    components: { XHeader, Group, Cell },
+    components: {XHeader, Group, Cell},
     data () {
         return {
             randomNum: ' ? t=' + Math.ceil(Math.random() * 10000),

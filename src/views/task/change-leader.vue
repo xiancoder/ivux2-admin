@@ -17,11 +17,11 @@
 </template>
 <script>
 import Vue from 'vue'
-import { XHeader, Group, Cell, AlertPlugin, Popup, Search } from 'vux'
+import {XHeader, Group, Cell, AlertPlugin, Popup, Search} from 'vux'
 Vue.use(AlertPlugin)
 export default {
     name: 'change-leader',
-    components: { Group, Cell, XHeader, Popup, Search },
+    components: {Group, Cell, XHeader, Popup, Search},
     data () {
         return {
             userList: [],

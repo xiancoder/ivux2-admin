@@ -27,11 +27,7 @@
 </template>
 <script>
 import axios from 'axios'
-import { XHeader } from 'vux'
-import Vue from 'vue'
-// import Viewer from 'v-viewer'
-// import 'viewerjs/dist/viewer.css'
-// Vue.use(Viewer)
+import {XHeader} from 'vux'
 export default {
     name: 'modify-picture',
     components: {
@@ -132,7 +128,7 @@ export default {
         inited (viewer) {
             this.viewer = viewer
             const self = this
-            this.$el.querySelector('.images').addEventListener ('hide', function (e) {
+            this.$el.querySelector('.images').addEventListener('hide', function (e) {
                 self.showModal = false
                 let n = self.angle < 0 ? self.angle + 360 : self.angle
                 self.angle = 0
@@ -142,7 +138,7 @@ export default {
         showAction () {
             const self = this
             this.viewer.show()
-            setTimeout (function () {
+            setTimeout(function () {
                 self.viewer.rotate(90)
             }, 500)
             this.showModal = true

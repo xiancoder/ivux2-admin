@@ -89,7 +89,7 @@ export default {
             debounceSearch: '',
             vacationList: [],
             dataArr: [],
-            pageSize: 15,
+            page_size: 15,
             rowcount: null,
             noMore: false,
             loading: false,
@@ -132,7 +132,7 @@ export default {
     },
     methods: {
         init () {
-            const scrollHei = sessionStorage.getItem('phoneHeight')*1 - 154.5
+            const scrollHei = sessionStorage.getItem('phoneHeight') * 1 - 154.5
             this.$refs.scroll.styles.height = scrollHei + 'px'
             this.getList()
             this.debounceSearch = debounce(this.submiting, 500)
@@ -149,7 +149,8 @@ export default {
             }
         },
         openScreen () {
-            this.screen=true, this.firstClick++
+            this.screen = true
+            this.firstClick++
             if (this.firstClick === 1) {
                 this.$get('api/workflow/type', {typeId: 1}).then(res => {
                     this.processTypes = res.data.data.list
@@ -163,7 +164,7 @@ export default {
             }
         },
         getList (val) {
-            let para={
+            let para = {
                 'begin': this.search.begin,
                 'end': this.search.end,
                 'vacationType': this.search.vacationType === -1 ? null : this.search.vacationType,
@@ -171,7 +172,7 @@ export default {
                 'status': this.search.status === -1 ? null : this.search.status,
                 'keyword': this.keyword,
                 'pageIndex': this.search.pageIndex,
-                'pageSize': this.pageSize
+                'page_size': this.page_size
             }
             this.$get('api/workflow/correlate', para).then(res => {
                 let data = res.data.data.list

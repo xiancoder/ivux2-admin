@@ -17,7 +17,7 @@
     </div>
 </template>
 <script>
-import {Icon } from 'vux'
+import {Icon} from 'vux'
 import Cropper from 'cropperjs'
 export default {
     // dsf-2019-6-6 上传图片
@@ -36,16 +36,16 @@ export default {
             imgShow: false,
             delShow: false,
             addShow: true,
-            only: false, // 确认按钮点击一次
+            only: false // 确认按钮点击一次
         }
     },
     methods: {
         delImg () {
-             this.imgShow = false
-             this.delShow = false
-             this.addShow = true
-             this.panel = false
-             this.$refs.imgValue.value = ''
+            this.imgShow = false
+            this.delShow = false
+            this.addShow = true
+            this.panel = false
+            this.$refs.imgValue.value = ''
         },
         getObjectURL (file) {
             var url = null
@@ -75,6 +75,7 @@ export default {
         },
         crop () {
             if (this.only) {
+                console.log('???')
             } else {
                 this.only = true
                 this.$vux.loading.show({

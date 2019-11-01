@@ -13,13 +13,12 @@ export default {
     components: {bottomMenu},
     data () {
         return {
-            show_list: ['home_index', 'notice-list', 'tel-book', 'my'],
-            // unReadNum: null,
+            show_list: ['home_index', 'notice-list', 'tel-book', 'my']
         }
     },
     computed: {
         menu_show: function () {
-            return this.show_list.indexOf(this.$route.name) === -1 ? false : true
+            return this.show_list.indexOf(this.$route.name) !== -1
         },
         select: function () {
             return this.show_list.indexOf(this.$route.name)

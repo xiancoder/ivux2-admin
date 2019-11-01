@@ -13,11 +13,11 @@
     </div>
 </template>
 <script>
-import { XHeader } from 'vux'
-import { Tab, TabItem } from 'vux'
+import {XHeader} from 'vux'
+import {Tab, TabItem} from 'vux'
 export default {
     name: 'charts',
-    components: { XHeader, Tab, TabItem },
+    components: {XHeader, Tab, TabItem},
     data () {
         return {
             list: [],
@@ -46,18 +46,19 @@ export default {
             require('echarts/lib/chart/pie')
             var myChart = echarts.init(document.getElementById('main'))
             myChart.setOption({ color: ['#ed4014', '#2db7f5', '#ff9900'],
-                series : [
+                series: [
                     {
                         name: '访问来源',
                         type: 'pie',
-                        radius : '60%',
+                        radius: '60%',
                         center: ['50%', '54%'],
-                        label: {            // 饼图图形上的文本标签
+                        label: { // 饼图图形上的文本标签
                             normal: {
-                                show: true, position: 'outside', // 标签的位置
-                                textStyle : {
-                                    fontWeight : 300,
-                                    fontSize : 14    // 文字的字体大小
+                                show: true,
+                                position: 'outside', // 标签的位置
+                                textStyle: {
+                                    fontWeight: 300,
+                                    fontSize: 14 // 文字的字体大小
                                 },
                                 formatter: '{d}%'
                             }

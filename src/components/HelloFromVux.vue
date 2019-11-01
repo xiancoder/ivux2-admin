@@ -10,13 +10,10 @@
     </div>
 </template>
 <script>
-import { Group, Cell } from 'vux'
+import {Group, Cell} from 'vux'
 export default {
-    components: {
-        Group,
-        Cell
-    },
-        name: 'Vux',
+    components: { Group, Cell},
+    name: 'Vux',
     data () {
         return {
             // note: changing this line won't causes changes
@@ -27,9 +24,9 @@ export default {
         }
     },
     methods: {
-            go () {
-                    this.$router.push({name: 'hello'})
-            }
+        go () {
+            this.$router.push({name: 'hello'})
+        }
     }
 }
 </script>

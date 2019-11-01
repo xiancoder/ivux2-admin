@@ -25,7 +25,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 import VueHtml5Editor from 'vue-html5-editor'
-import { XHeader, Group, Cell, AlertPlugin, Loading, Icon } from 'vux'
+import {XHeader, Group, Cell, AlertPlugin, Loading, Icon} from 'vux'
 Vue.use(AlertPlugin)
 Vue.use(VueHtml5Editor, {
     name: 'vue-html5-editor',
@@ -84,9 +84,7 @@ Vue.use(VueHtml5Editor, {
 })
 export default {
     name: 'add-request',
-    components: {
-        Group, Cell, XHeader, Loading, Icon
-    },
+    components: { Group, Cell, XHeader, Loading, Icon},
     data () {
         return {
             addContent: '',

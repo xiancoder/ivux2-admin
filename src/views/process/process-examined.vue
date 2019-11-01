@@ -39,12 +39,12 @@
                     </div>
                     <div class="pop-right" v-show="condition === 2">
                         <checker class="my-check-item" radio-required  v-model="search.process_type" default-item-class="demo1-item" selected-item-class="demo1-item-selected">
-                            <checker-item v-for="(row, index) in processTypes" :value='row.id' :key="row.id">{{row.name}}</checker-item>
+                            <checker-item v-for="row in processTypes" :value='row.id' :key="row.id">{{row.name}}</checker-item>
                         </checker>
                     </div>
                     <div class="pop-right" v-show="condition === 3">
                         <checker class="my-check-item" radio-required  v-model="search.vacationType" default-item-class="demo1-item" selected-item-class="demo1-item-selected">
-                            <checker-item v-for="(row, index) in vacationList" :value='row.value' :key="row.value">{{row.name}}</checker-item>
+                            <checker-item v-for="row in vacationList" :value='row.value' :key="row.value">{{row.name}}</checker-item>
                         </checker>
                     </div>
                     <div class="pop-footer">
@@ -93,7 +93,7 @@ export default {
             debounceSearch: '',
             vacationList: [],
             dataArr: [],
-            pageSize: 15,
+            page_size: 15,
             rowcount: null,
             noMore: false,
             loading: false,
@@ -112,12 +112,12 @@ export default {
                 end: null,
                 pageIndex: 1
             },
-            loadOne: 0, // 解决下拉触发多次
+            loadOne: 0 // 解决下拉触发多次
         }
     },
     methods: {
         init () {
-            const scrollHei = sessionStorage.getItem('phoneHeight')*1 - 154.5
+            const scrollHei = sessionStorage.getItem('phoneHeight') * 1 - 154.5
             this.$refs.scroll.styles.height = scrollHei + 'px'
             this.getList()
             this.debounceSearch = debounce(this.submiting, 500)
@@ -134,7 +134,8 @@ export default {
             }
         },
         openScreen () {
-            this.screen=true, this.firstClick++
+            this.screen = true
+            this.firstClick++
             if (this.firstClick === 1) {
                 this.$get('api/workflow/type', {typeId: 1}).then(res => {
                     this.processTypes = res.data.data.list
@@ -148,14 +149,14 @@ export default {
             }
         },
         getList (val) {
-            let para={
+            let para = {
                 'begin': this.search.begin,
                 'end': this.search.end,
                 'vacationType': this.search.vacationType === -1 ? null : this.search.vacationType,
                 'processType': this.search.process_type === -1 ? null : this.search.process_type,
                 'keyword': this.keyword,
                 'pageIndex': this.search.pageIndex,
-                'pageSize': this.pageSize
+                'page_size': this.page_size
             }
             this.$get('api/workflow/approved', para).then(res => {
                 this.first++

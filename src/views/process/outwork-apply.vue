@@ -50,12 +50,12 @@
     </div>
 </template>
 <script>
-import { XHeader, Group, Datetime, Checker, CheckerItem, XTextarea } from 'vux'
+import {XHeader, Group, Datetime, Checker, CheckerItem, XTextarea} from 'vux'
 import approver from '../components/approver.vue'
 import copyPerson from '../components/copy-person.vue'
 export default {
     name: 'overtime-apply',
-    components: { XHeader, Group, Datetime, Checker, CheckerItem, XTextarea, approver, copyPerson },
+    components: {XHeader, Group, Datetime, Checker, CheckerItem, XTextarea, approver, copyPerson},
     data () {
         return {
             check: 1,

@@ -17,12 +17,12 @@
     </div>
 </template>
 <script>
-import { XHeader, Loading } from 'vux'
+import {XHeader, Loading} from 'vux'
 export default {
     name: 'sign-setting',
-    components: { XHeader, Loading },
+    components: {XHeader, Loading},
     data () {
-        return{
+        return {
             points: [],
             canvasTxt: null,
             startX: 0,
@@ -41,10 +41,10 @@ export default {
     },
     mounted () {
         setTimeout(() => {
-            let canvas=this.$refs.canvasF
+            let canvas = this.$refs.canvasF
             canvas.height = this.$refs.canvasHW.offsetHeight
             canvas.width = this.$refs.canvasHW.offsetWidth
-            this.canvasTxt=canvas.getContext('2d')
+            this.canvasTxt = canvas.getContext('2d')
             this.canvasTxt.lineWidth = 3
         }, 1000)
     },
@@ -53,33 +53,33 @@ export default {
         mouseDown (ev) {
             ev = ev || event
             ev.preventDefault()
-            if (1) {
-                let obj={
+            if (1 !== 2) {
+                let obj = {
                     x: ev.offsetX,
                     y: ev.offsetY
                 }
-                this.startX=obj.x
-                this.startY=obj.y
+                this.startX = obj.x
+                this.startY = obj.y
                 this.canvasTxt.beginPath()
                 this.canvasTxt.moveTo(this.startX, this.startY)
                 this.canvasTxt.lineTo(obj.x, obj.y)
                 this.canvasTxt.stroke()
                 this.canvasTxt.closePath()
                 this.points.push(obj)
-                this.isDown=true
+                this.isDown = true
             }
         },
         // 移动设备事件
         touchStart (ev) {
             ev = ev || event
             ev.preventDefault()
-            if (ev.touches.length == 1) {
-                let obj={
+            if (ev.touches.length === 1) {
+                let obj = {
                     x: ev.targetTouches[0].clientX,
-                    y: ev.targetTouches[0].clientY-48
+                    y: ev.targetTouches[0].clientY - 48
                 }
-                this.startX=obj.x
-                this.startY=obj.y
+                this.startX = obj.x
+                this.startY = obj.y
                 this.canvasTxt.beginPath()
                 this.canvasTxt.moveTo(this.startX, this.startY)
                 this.canvasTxt.lineTo(obj.x, obj.y)
@@ -93,19 +93,19 @@ export default {
             ev = ev || event
             ev.preventDefault()
             if (this.isDown) {
-                let obj={
+                let obj = {
                     x: ev.offsetX,
                     y: ev.offsetY
                 }
-                this.moveY=obj.y
-                this.moveX=obj.x
+                this.moveY = obj.y
+                this.moveX = obj.x
                 this.canvasTxt.beginPath()
                 this.canvasTxt.moveTo(this.startX, this.startY)
                 this.canvasTxt.lineTo(obj.x, obj.y)
                 this.canvasTxt.stroke()
                 this.canvasTxt.closePath()
-                this.startY=obj.y
-                this.startX=obj.x
+                this.startY = obj.y
+                this.startX = obj.x
                 this.points.push(obj)
             }
         },
@@ -113,20 +113,20 @@ export default {
         touchMove (ev) {
             ev = ev || event
             ev.preventDefault()
-            if (ev.touches.length == 1) {
-                let obj={
+            if (ev.touches.length === 1) {
+                let obj = {
                     x: ev.targetTouches[0].clientX,
-                    y: ev.targetTouches[0].clientY-48
+                    y: ev.targetTouches[0].clientY - 48
                 }
-                this.moveY=obj.y
-                this.moveX=obj.x
+                this.moveY = obj.y
+                this.moveX = obj.x
                 this.canvasTxt.beginPath()
                 this.canvasTxt.moveTo(this.startX, this.startY)
                 this.canvasTxt.lineTo(obj.x, obj.y)
                 this.canvasTxt.stroke()
                 this.canvasTxt.closePath()
-                this.startY=obj.y
-                this.startX=obj.x
+                this.startY = obj.y
+                this.startX = obj.x
                 this.points.push(obj)
             }
         },
@@ -134,8 +134,8 @@ export default {
         mouseUp (ev) {
             ev = ev || event
             ev.preventDefault()
-            if (1) {
-                let obj={
+            if (1 !== 2) {
+                let obj = {
                     x: ev.offsetX,
                     y: ev.offsetY
                 }
@@ -146,17 +146,17 @@ export default {
                 this.canvasTxt.closePath()
                 this.points.push(obj)
                 this.points.push({x: -1, y: -1})
-                this.isDown=false
+                this.isDown = false
             }
         },
         // 移动设备事件
         touchEnd (ev) {
             ev = ev || event
             ev.preventDefault()
-            if (ev.touches.length == 1) {
-                let obj={
+            if (ev.touches.length === 1) {
+                let obj = {
                     x: ev.targetTouches[0].clientX,
-                    y: ev.targetTouches[0].clientY-48
+                    y: ev.targetTouches[0].clientY - 48
                 }
                 this.canvasTxt.beginPath()
                 this.canvasTxt.moveTo(this.startX, this.startY)
@@ -170,13 +170,13 @@ export default {
         // 重写
         overwrite () {
             this.canvasTxt.clearRect(0, 0, this.$refs.canvasF.width, this.$refs.canvasF.height)
-            this.points=[]
+            this.points = []
         },
         isCanvasBlank (canvas) {
             var blank = document.createElement('canvas');// 系统获取一个空canvas对象
             blank.width = canvas.width
             blank.height = canvas.height
-            return canvas.toDataURL() == blank.toDataURL();// 比较值相等则为空
+            return canvas.toDataURL() === blank.toDataURL();// 比较值相等则为空
         },
         saveSign () {
             let canvas = this.$refs.canvasF

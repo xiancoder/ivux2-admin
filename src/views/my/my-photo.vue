@@ -11,7 +11,7 @@
     </div>
 </template>
 <script>
-import { XHeader } from 'vux'
+import {XHeader} from 'vux'
 export default {
     name: 'my-photo',
     components: {
@@ -45,11 +45,11 @@ export default {
         // 获取本地图片路径
         getObjectURL (file) {
             var url = null
-            if (window.createObjectURL!=undefined) { // basic
+            if (window.createObjectURL !== undefined) { // basic
                 url = window.createObjectURL(file)
-            } else if (window.URL!=undefined) { // mozilla(firefox)
+            } else if (window.URL !== undefined) { // mozilla(firefox)
                 url = window.URL.createObjectURL(file)
-            } else if (window.webkitURL!=undefined) { // webkit or chrome
+            } else if (window.webkitURL !== undefined) { // webkit or chrome
                 url = window.webkitURL.createObjectURL(file)
             }
             return url
