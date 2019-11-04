@@ -99,9 +99,9 @@
     </group>
 </template>
 <script>
-import {TransferDom, Popup, Checker, XTable, LoadMore, Scroller, CheckerItem, Group, XHeader, Cell, Divider, XButton, XSwitch, Search, ChinaAddressData} from 'vux'
+import {TransferDom, Popup, Checker, XTable, LoadMore, Scroller, CheckerItem, Group, Cell, Divider, XButton, XSwitch, Search, ChinaAddressData} from 'vux'
 export default {
-    components: {XTable, LoadMore, Scroller, Divider, Popup, XHeader, Group, Cell, XSwitch, XButton, Search, Checker, CheckerItem},
+    components: {XTable, LoadMore, Scroller, Divider, Popup, Group, Cell, XSwitch, XButton, Search, Checker, CheckerItem},
     data () {
         return {
             showdiver: false,

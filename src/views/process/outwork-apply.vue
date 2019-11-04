@@ -1,5 +1,4 @@
 <style>
-    @import '../main.less';
     .font14 .weui-cells{ font-size: 14px; padding: 10px 15px; line-height: 25px;}
     .font14 .vux-checker-box{ margin-left: 20px;display: inline-block;}
 </style>
@@ -50,12 +49,12 @@
     </div>
 </template>
 <script>
-import {XHeader, Group, Datetime, Checker, CheckerItem, XTextarea} from 'vux'
+import {Group, Datetime, Checker, CheckerItem, XTextarea} from 'vux'
 import approver from '../components/approver.vue'
 import copyPerson from '../components/copy-person.vue'
 export default {
     name: 'overtime-apply',
-    components: {XHeader, Group, Datetime, Checker, CheckerItem, XTextarea, approver, copyPerson},
+    components: {Group, Datetime, Checker, CheckerItem, XTextarea, approver, copyPerson},
     data () {
         return {
             check: 1,

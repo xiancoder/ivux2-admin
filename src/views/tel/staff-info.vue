@@ -51,10 +51,10 @@
 </template>
 <script>
 // 引入组件
-import {XHeader, XButton} from 'vux'
+import {XButton} from 'vux'
 export default {
     name: 'staff-info',
-    components: { XHeader, XButton }, // 组件声明
+    components: { XButton }, // 组件声明
     data () { // 参数声明
         return {
             info: {

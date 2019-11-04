@@ -14,7 +14,9 @@ const RouterConfig = {
 export const router = new VueRouter(RouterConfig);
 
 router.beforeEach((to, from, next) => {
-    Util.title(to.meta.title);
+    // 根据路由修改标题
+    const title = to.meta.title || 'OA-WAP'
+    window.document.title = title
     if (Cookies.get('mark') && to.name !== 'login') { // 判断是否已经登录且前往的页面不是登录页
         Vue.$vux.loading.show({
             text: 'Loading'
@@ -26,18 +28,16 @@ router.beforeEach((to, from, next) => {
     } else if (sessionStorage.getItem('to_name')) {
         // 特定条件下路由不跳转(解决历史回退问题)
         sessionStorage.removeItem('to_name')
+    } else if (Cookies.get('mark') && to.name === 'login') { // 判断是否已经登录且前往的是登录页
+        next({
+            name: 'home_index'
+        })
     } else {
         Vue.$vux.loading.show({
             text: 'Loading'
         })
         Util.toDefaultPage([...routers], to.name, router, next)
     }
-    // else if (Cookies.get('mark') && to.name === 'login') { // 判断是否已经登录且前往的是登录页
-    //     Util.title()
-    //     next({
-    //         name: 'home_index'
-    //     })
-    // }
 })
 router.afterEach((to) => {
     Vue.$vux.loading.hide()

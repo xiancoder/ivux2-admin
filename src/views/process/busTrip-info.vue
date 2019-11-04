@@ -74,12 +74,12 @@
     <!-- 弹框提示已撤回使用 XDialog 组件 -->
 </template>
 <script>
-import {XHeader, XButton, Confirm, XTextarea, Group} from 'vux'
+import {XButton, Confirm, XTextarea, Group} from 'vux'
 import ccInfo from '../components/ccInfo.vue'
 import nodeInfo from '../components/nodeInfo.vue'
 export default {
     name: 'busTrip-info',
-    components: {XHeader, XButton, ccInfo, nodeInfo, Confirm, XTextarea, Group},
+    components: {XButton, ccInfo, nodeInfo, Confirm, XTextarea, Group},
     data () { // 参数声明
         return {
             rejectShow: false, // 驳回弹框显示
@@ -196,6 +196,3 @@ export default {
     }
 }
 </script>
-<style lang="less">
-    @import '../main.less';
-</style>

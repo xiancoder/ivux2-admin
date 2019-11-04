@@ -13,11 +13,11 @@
     </div>
 </template>
 <script>
-import {XHeader} from 'vux'
+
 import {Tab, TabItem} from 'vux'
 export default {
     name: 'charts',
-    components: {XHeader, Tab, TabItem},
+    components: {Tab, TabItem},
     data () {
         return {
             list: [],

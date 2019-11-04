@@ -30,10 +30,10 @@
     </div>
 </template>
 <script>
-import {XHeader, XInput, Group, Cell, Scroller, LoadMore, Divider, Search} from 'vux'
+import {XInput, Group, Cell, Scroller, LoadMore, Divider, Search} from 'vux'
 export default {
     name: 'contact-list',
-    components: {XHeader, XInput, Group, Cell, Scroller, LoadMore, Divider, Search},
+    components: {XInput, Group, Cell, Scroller, LoadMore, Divider, Search},
     data () {
         return {
             keyWord: null,

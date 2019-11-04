@@ -30,11 +30,11 @@
 </template>
 <script>
 import Vue from 'vue'
-import {XHeader, Group, Cell, AlertPlugin, Datetime, Popup, Search, Icon} from 'vux'
+import {Group, Cell, AlertPlugin, Datetime, Popup, Search, Icon} from 'vux'
 Vue.use(AlertPlugin)
 export default {
     name: 'accept-task',
-    components: {Group, Cell, XHeader, Popup, Datetime, Search, Icon},
+    components: {Group, Cell, Popup, Datetime, Search, Icon},
     data () {
         return {
             userList: [],

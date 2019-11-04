@@ -1,17 +1,9 @@
-<style>
-    .user_name .weui-cells{ margin-top: 0;}
-    .user_name .weui-cells:before{ border: none;}
-    .user_password .weui-cells:before{ border: none;}
-    .input_active .weui-cells:after{ border-color: #2599e4;}
-    .options .weui-icon-circle{ font-size: 18px;}
-    .options .weui-icon-success{ font-size: 18px;}
-</style>
 <template>
     <div>
         <x-header :left-options="{showBack: false}" style="background-color: #0094eb">用户登录</x-header>
         <div class="login_container">
             <div class="logo_container">
-                <div style="margin-bottom: 10px"><img src="../img/logo.png"/></div>
+                <div class="xxxx"><img src="../img/logo.png"/></div>
                 云袭移动OA
             </div>
             <div v-show="checkError === '3'" style="color: red;font-size: 12px;text-align: left;padding: 0 10px">用户名或密码错误</div>
@@ -43,10 +35,9 @@
 </template>
 <script>
 import Cookies from 'js-cookie'
-import {axios} from './axiosTool'
-import {XHeader, XInput, Group, XButton, CheckIcon, Alert} from 'vux'
+import {XInput, Group, XButton, CheckIcon, Alert} from 'vux'
 export default {
-    components: {XHeader, XInput, XButton, Group, CheckIcon, Alert},
+    components: {XInput, XButton, Group, CheckIcon, Alert},
     name: 'login',
     data () {
         return {
@@ -114,13 +105,5 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-    .login_container{ padding: 0 15%; text-align: center;}
-    .logo_container{ padding: 40px 0 20px 0; font-size: 18px; color: #9A9A9A;}
-    .logo_container img{ width: 30%;}
-    .icon_focus{ color: #2599e4; }
-    .login_icon{ margin-right: 10px;}
-    .options{ font-size: 13px; height: 40px; line-height: 40px;}
-    .login_button{ margin-top: 30px; background-color: #0094eb; line-height: 36px; border-radius: 18px; color: #ffffff;}
-    .qq_login{ font-size: 13px; color: #9A9A9A; margin-top: 15px;}
-    .qq_login img{ width: 50px;}
+    @import '../style/login.less';
 </style>

@@ -155,7 +155,6 @@ export default {
 }
 </script>
 <style lang='less'>
-    @import '../main.less';
     .tailor .cropper-view-box,
     .cropper-face { border-radius: 4%;}
     .tailor .cropper-container { font-size: 0; line-height: 0; position: relative; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; direction: ltr; -ms-touch-action: none; touch-action: none;}

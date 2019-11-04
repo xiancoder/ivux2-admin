@@ -125,12 +125,12 @@
     </group>
 </template>
 <script>
-import {Popup, Checker, XTable, LoadMore, Scroller, Tab, TabItem, Datetime, CheckerItem, Group, XHeader, Cell, Divider, XButton, XSwitch, Search} from 'vux'
+import {Popup, Checker, XTable, LoadMore, Scroller, Tab, TabItem, Datetime, CheckerItem, Group, Cell, Divider, XButton, XSwitch, Search} from 'vux'
 export default {
     name: 'task-all',
     components: {
         XTable, LoadMore, Scroller, Divider,
-        Popup, XHeader, Group, Cell, XSwitch,
+        Popup, Group, Cell, XSwitch,
         XButton, Search, Checker, CheckerItem,
         Tab, TabItem, Datetime
     },

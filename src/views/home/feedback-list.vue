@@ -42,11 +42,11 @@
     </div>
 </template>
 <script>
-import {XHeader, XTable, LoadMore, Scroller, Divider, Group} from 'vux'
+import {XTable, LoadMore, Scroller, Divider, Group} from 'vux'
 export default {
     name: 'feedback-list',
     components: {
-        XHeader, XTable, LoadMore, Scroller, Divider, Group
+        XTable, LoadMore, Scroller, Divider, Group
     },
     data () {
         return {

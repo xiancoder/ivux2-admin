@@ -30,10 +30,10 @@
 <script>
 import axios from 'axios'
 import {urlToLink} from '../../libs/common.js'
-import {XHeader, Group, Cell, Loading, XTextarea, Icon} from 'vux'
+import {Group, Cell, Loading, XTextarea, Icon} from 'vux'
 export default {
     name: 'order-reply',
-    components: {Group, Cell, XHeader, Loading, XTextarea, Icon},
+    components: {Group, Cell, Loading, XTextarea, Icon},
     data () {
         return {
             id: this.$route.query.id,
@@ -52,7 +52,6 @@ export default {
             let self = this
             this.$refs.uploadFile.onchange = function () {
                 if (this.files[0]) {
-                    self.resetSetItem('watchStorage', '1')
                     let fd = new FormData()
                     fd.append('file', this.files[0])
                     let config = {
@@ -62,7 +61,6 @@ export default {
                         timeout: 300000
                     }
                     axios.post('api/order/file_url', fd, config).then(res => {
-                        self.resetSetItem('watchStorage', '0')
                         if (res.data.data.fileurl) {
                             self.fileList.push(res.data.data.fileurl)
                         } else {
@@ -114,9 +112,6 @@ export default {
         }
     },
     mounted () {
-        window.addEventListener('setItem', () => {
-            this.loadingShow = sessionStorage.getItem('watchStorage')
-        })
         this.init()
     }
 }

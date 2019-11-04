@@ -18,10 +18,10 @@
     </div>
 </template>
 <script>
-import {XHeader} from 'vux'
+
 export default {
     name: 'request-list',
-    components: {XHeader},
+    components: {},
     data () {
         return {
             additionList: [],

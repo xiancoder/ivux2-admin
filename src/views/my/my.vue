@@ -29,7 +29,6 @@
 <script>
 import Cookies from 'js-cookie'
 import bottomMenu from '../components/bottom-menu.vue'
-import {Tabbar, TabbarItem} from 'vux'
 export default {
     name: 'my',
     components: {bottomMenu},
@@ -73,14 +72,17 @@ export default {
                     })
                 }
             })
-        }, tophoto () {
+        },
+        toPhoto () {
             this.$router.push({name: 'my-photo'})
         },
         toInfo () {
             this.$router.push({name: 'my-info'})
-        }, topassword () {
+        },
+        toPassword () {
             this.$router.push({name: 'modify-password'})
-        }, toproposal () {
+        },
+        toProposal () {
             // 吐槽与建议
             this.$router.push({name: 'my-proposal'})
         },
@@ -91,13 +93,12 @@ export default {
             this.$router.push({name: 'modify-picture'})
         },
         userLogout () {
-            const self = this; // 需要注意 onCancel 和 onConfirm 的 this 指向
+            const self = this // 需要注意 onCancel 和 onConfirm 的 this 指向
             this.$vux.confirm.show({
                 content: '确认要退出吗？',
                 onCancel () {},
                 onConfirm () {
-                    self.$get('api/system/loginout', {
-                    }).then((res) => {
+                    self.$get('api/system/loginout').then((res) => {
                         if (res.data.data.res === 1) {
                             if (Cookies.get('type')) {
                                 // window.webkit.messageHandlers.gologin.postMessage('123')

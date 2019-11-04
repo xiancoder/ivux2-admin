@@ -1,6 +1,3 @@
-<style>
-    @import '../main.less';
-</style>
 <style scoped>
     .nodeDiv{ position: relative; padding-right: 44px; }
     .paddR54{ padding-right: 54px; }

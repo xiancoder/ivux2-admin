@@ -1,5 +1,4 @@
 <style lang='less'>
-    @import '../main.less';
     .my-group .weui-cells{ margin-top: 0; border-bottom: 1px solid #D9D9D9;}
     .my-group .weui-cells .weui-cell__ft{ font-size: 15px; color: #666;}
     .my-group .weui-cells .vux-label{ overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 226px;}
@@ -60,10 +59,10 @@
 </template>
 <script>
 import Vue from 'vue'
-import {Group, XHeader, Badge, ButtonTab, XTable, Swipeout, SwipeoutItem, Cell, XButton, SwipeoutButton, ButtonTabItem, AlertPlugin} from 'vux'
+import {Group, Badge, ButtonTab, XTable, Swipeout, SwipeoutItem, Cell, XButton, SwipeoutButton, ButtonTabItem, AlertPlugin} from 'vux'
 Vue.use(AlertPlugin)
 export default {
-    components: {Group, XHeader, Badge, ButtonTab, Swipeout, SwipeoutItem, Cell, XButton, SwipeoutButton, ButtonTabItem, XTable},
+    components: {Group, Badge, ButtonTab, Swipeout, SwipeoutItem, Cell, XButton, SwipeoutButton, ButtonTabItem, XTable},
     mounted: function () {
         this.getUser()
     },

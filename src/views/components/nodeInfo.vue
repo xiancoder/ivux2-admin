@@ -96,9 +96,6 @@ export default {
     }
 }
 </script>
-<style lang="less">
-    @import '../main.less';
-</style>
 <style scoped>
     .borderBlue{ border: 1px dashed #0395ec; padding: 5px;}
     .hei_auto{ min-height: 70px; height: auto !important;}

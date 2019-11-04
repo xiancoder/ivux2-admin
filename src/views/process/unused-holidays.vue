@@ -22,10 +22,10 @@
     </group>
 </template>
 <script>
-import {Group, XHeader, Grid, GridItem} from 'vux'
+import {Group, Grid, GridItem} from 'vux'
 export default {
     name: 'unused-holidays',
-    components: {Group, XHeader, Grid, GridItem},
+    components: {Group, Grid, GridItem},
     data () {
         return {
             holidays: [

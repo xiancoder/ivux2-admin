@@ -97,12 +97,12 @@
     </div>
 </template>
 <script>
-import {XHeader, Group, Cell, Loading, Datetime, Popup, Search, Icon, XTextarea, PopupPicker, Confirm} from 'vux'
+import {Group, Cell, Loading, Datetime, Popup, Search, Icon, XTextarea, PopupPicker, Confirm} from 'vux'
 import copyPerson from '../components/copy-person.vue'
 import upImage from '../components/up-imgNoCut.vue'
 export default {
     name: 'vacation-apply',
-    components: {XHeader, Group, Cell, Popup, Search, Loading, Datetime, Icon, XTextarea, copyPerson, PopupPicker, upImage, Confirm},
+    components: {Group, Cell, Popup, Search, Loading, Datetime, Icon, XTextarea, copyPerson, PopupPicker, upImage, Confirm},
     data () {
         return {
             showConfirm: false, // 是否确认提交
@@ -452,7 +452,6 @@ export default {
         },
         // 提交申请
         subData () {
-            this.resetSetItem('watchStorage', '1')
             let dataList = []
             for (let x = 0; x < this.applyList.length; x++) {
                 let obj = {}
@@ -471,7 +470,6 @@ export default {
                 correlation: this.ccData // 抄送人列表
             }
             this.$post('api/workflow/vacation_apply', pam).then((res) => {
-                this.resetSetItem('watchStorage', '0')
                 if (res.data.data && res.data.data.res === 1) {
                     this.$vux.alert.show({
                         title: '提示',
@@ -488,9 +486,6 @@ export default {
         }
     },
     mounted () {
-        window.addEventListener('setItem', () => {
-            this.loadingShow = sessionStorage.getItem('watchStorage')
-        })
         this.init()
     },
     filters: {

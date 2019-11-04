@@ -39,19 +39,11 @@
 <script>
 import Cookies from 'js-cookie'
 import bottomMenu from '../components/bottom-menu.vue'
-import {XHeader, Tabbar, TabbarItem, Scroller, LoadMore, Divider, Search} from 'vux'
+import {Tabbar, TabbarItem, Scroller, LoadMore, Divider, Search} from 'vux'
 import {setTimeout} from 'timers'
 export default {
     name: 'notice-list',
-    components: {
-        XHeader,
-        Tabbar,
-        TabbarItem,
-        Scroller,
-        LoadMore,
-        Divider, bottomMenu,
-        Search
-    },
+    components: { Tabbar, TabbarItem, Scroller, LoadMore, Divider, bottomMenu, Search },
     data () {
         return {
             mark: false,
@@ -103,7 +95,9 @@ export default {
             })
         },
         isProcess (name) {
-            return name === '请假流程审批' || name === '加班流程审批' || name === '未打卡流程审批' || name === '外出流程审批' || name === '出差流程审批'
+            return name === '请假流程审批' || name === '加班流程审批' ||
+                name === '未打卡流程审批' || name === '外出流程审批' ||
+                name === '出差流程审批'
         },
         onScrollBottom () {
             if (this.loading || this.noticeList.length === 0) {
@@ -120,11 +114,13 @@ export default {
                             this.noticeList = res.data.data.list
                             if (this.currentCount + 15 < res.data.data.rowcount) {
                                 this.currentCount = this.currentCount + 15
-                                window.location.hash = '#/notice/list ? &keyword=' + this.keyword + '&page_size=' + this.currentCount
+                                window.location.hash = '#/notice/list ? &keyword=' + this.keyword +
+                                    '&page_size=' + this.currentCount
                             } else {
                                 this.noMore = true
                                 let n = this.currentCount + 15
-                                window.location.hash = '#/notice/list ? &keyword=' + this.keyword + '&page_size=' + n
+                                window.location.hash = '#/notice/list ? &keyword=' + this.keyword +
+                                    '&page_size=' + n
                             }
                             this.loading = false
                         })

@@ -1,6 +1,3 @@
-<style lang='less' scoped>
-    @import '../main.less';
-</style>
 <template>
     <div>
         <x-header @on-click-back="goList" :left-options="{backText: '', preventGoBack: true}" style="background-color: #0094eb">客户信息</x-header>
@@ -58,10 +55,10 @@
     </div>
 </template>
 <script>
-import {XHeader, XButton} from 'vux'
+import {XButton} from 'vux'
 export default {
     name: 'public-info',
-    components: {XHeader, XButton},
+    components: {XButton},
     data () {
         return {
             cusName: '',

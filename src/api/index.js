@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import '../main'
 
 import {AlertPlugin} from 'vux';
 Vue.use(AlertPlugin);
@@ -26,7 +25,6 @@ axios.interceptors.response.use(config => {
     return config;
 }, error => {
     // 错误的请求结果处理，这里的代码根据后台的状态码来决定错误的输出信息
-    Vue.prototype.resetSetItem('watchStorage', '0');
     if (error && error.response) {
         switch (error.response.status) {
             case 400:
@@ -36,7 +34,7 @@ axios.interceptors.response.use(config => {
                 if (Cookies.get('type')) {
                     if (!Cookies.get('timeCheck')) {
                         Cookies.set('timeCheck', '1');
-                        $App.gologin();
+                        window.$App.gologin();
                     }
                     // window.webkit.messageHandlers.gologin.postMessage('123');
                 } else {

@@ -1,5 +1,4 @@
 <style lang='less'>
-    @import '../main.less';
     .vux-popup-header-right{ color: #0094eb!important;}
     .vux-popup-picker-placeholder { color: #777!important;}
     .vux-popup-picker-value{ color: #333!important;}
@@ -51,10 +50,10 @@
     </div>
 </template>
 <script>
-import {XHeader, Group, Cell, PopupPicker, XInput, XTextarea, Datetime} from 'vux'
+import {Group, Cell, PopupPicker, XInput, XTextarea, Datetime} from 'vux'
 export default {
     name: 'add-customer',
-    components: {Group, Cell, XHeader, PopupPicker, XInput, XTextarea, Datetime},
+    components: {Group, Cell, PopupPicker, XInput, XTextarea, Datetime},
     data () {
         return {
             showProject: true,

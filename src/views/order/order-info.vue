@@ -90,9 +90,9 @@
 </template>
 <script>
 import qs from 'qs'
-import {XHeader, XTable, Loading, Popup, Scroller} from 'vux'
+import {XTable, Loading, Popup, Scroller} from 'vux'
 export default {
-    components: {XHeader, XTable, Loading, Popup, Scroller},
+    components: {XTable, Loading, Popup, Scroller},
     data () {
         return {
             response: {

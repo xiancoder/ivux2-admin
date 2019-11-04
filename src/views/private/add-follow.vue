@@ -43,10 +43,10 @@
 </template>
 <script>
 import axios from 'axios'
-import {XHeader, Group, Cell, XInput, XTextarea, PopupPicker, Loading} from 'vux'
+import {Group, Cell, XInput, XTextarea, PopupPicker, Loading} from 'vux'
 export default {
     name: 'add-follow',
-    components: {Group, Cell, XHeader, XTextarea, PopupPicker, Loading},
+    components: {Group, Cell, XTextarea, PopupPicker, Loading},
     data () {
         return {
             cusId: '',
@@ -155,7 +155,6 @@ export default {
                     content: '请选择跟进方式！'
                 })
             } else {
-                this.resetSetItem('watchStorage', '1')
                 var fd = new FormData()
                 fd.append('cusId', this.cusId)
                 fd.append('content', this.content)
@@ -175,7 +174,6 @@ export default {
                     timeout: 300000
                 }
                 axios.post('api/customer/followup_add', fd, config).then(res => {
-                    this.resetSetItem('watchStorage', '0')
                     if (res.data.data.res === 1) {
                         this.$vux.alert.show({
                             title: '提示',
@@ -201,9 +199,6 @@ export default {
         }
     },
     mounted () {
-        window.addEventListener('setItem', () => {
-            this.loadingShow = sessionStorage.getItem('watchStorage')
-        })
         this.init()
     }
 }
