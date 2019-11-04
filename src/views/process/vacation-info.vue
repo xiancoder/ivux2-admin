@@ -147,11 +147,11 @@
     </div>
 </template>
 <script>
-import {XHeader, Confirm, XTextarea, Group} from 'vux'
+import {Confirm, XTextarea, Group} from 'vux'
 import ccInfo from '../components/ccInfo.vue'
 export default {
     name: 'vacation-info',
-    components: {XHeader, ccInfo, Confirm, XTextarea, Group},
+    components: {ccInfo, Confirm, XTextarea, Group},
     data () {
         return {
             mId: 0, // 流程ID

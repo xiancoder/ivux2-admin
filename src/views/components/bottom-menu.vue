@@ -1,6 +1,3 @@
-<style>
-    @import '../main.less';
-</style>
 <style scoped>
     .color999{ color: #999;}
 </style>

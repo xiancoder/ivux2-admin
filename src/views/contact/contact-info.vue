@@ -51,10 +51,10 @@
     </div>
 </template>
 <script>
-import {XHeader, Group, Cell, XInput} from 'vux'
+import {Group, Cell, XInput} from 'vux'
 export default {
     name: 'contact-info',
-    components: {Group, Cell, XHeader, XInput},
+    components: {Group, Cell, XInput},
     data () {
         return {
             editMark: false,

@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "start": "vue-cli-service serve --open",
+    "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -35,6 +36,7 @@
     "eslint-plugin-vue": "^5.2.3",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
+    "postcss-pxtorem": "^4.0.1",
     "vue-loader": "^14.2.2",
     "vue-template-compiler": "^2.5.17",
     "vux-loader": "^1.2.9"
@@ -55,7 +57,11 @@
   },
   "postcss": {
     "plugins": {
-      "autoprefixer": {}
+      "autoprefixer": {},
+      "postcss-pxtorem": {
+        "rootValue": 16,
+        "propList": ["*"]
+      }
     }
   },
   "browserslist": [

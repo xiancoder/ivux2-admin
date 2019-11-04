@@ -24,6 +24,15 @@ module.exports = {
             plugins: ['vux-ui']
         })
     },
+    css: {
+        loaderOptions: {
+            postcss: {
+                plugins: [
+                    require('postcss-pxtorem')()
+                ]
+            }
+        }
+    },
     // 设为false打包时不生成.map文件
     productionSourceMap: false,
     // 这里写你调用接口的基础路径，来解决跨域，如果设置了代理
@@ -33,7 +42,7 @@ module.exports = {
         inline: true,
         historyApiFallback: true,
         stats: { colors: true },
-        port: 4011, // 设置访问的端口号
+        port: 4012, // 设置访问的端口号
         proxy: {
             // 匹配代理的url
             '/api': {

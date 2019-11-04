@@ -38,9 +38,9 @@
 import tab from './tab'
 import noData from './no-data'
 import {setOrder, removeOrder} from '../../libs/common.js'
-import {Group, XHeader, Tab, TabItem, XTable, Scroller, LoadMore, Divider, Search, debounce} from 'vux'
+import {Group, Tab, TabItem, XTable, Scroller, LoadMore, Divider, Search, debounce} from 'vux'
 export default {
-    components: {Group, XHeader, Tab, TabItem, XTable, Scroller, LoadMore, Divider, Search, tab, noData},
+    components: {Group, Tab, TabItem, XTable, Scroller, LoadMore, Divider, Search, tab, noData},
     data () {
         return {
             names: [

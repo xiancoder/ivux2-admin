@@ -18,10 +18,10 @@
     </div>
 </template>
 <script>
-import {XHeader, Group, XInput, AlertPlugin, PopupRadio, XTextarea} from 'vux'
+import {Group, XInput, AlertPlugin, PopupRadio, XTextarea} from 'vux'
 export default {
     name: 'modify-password',
-    components: {Group, XHeader, XInput, AlertPlugin, PopupRadio, XTextarea},
+    components: {Group, XInput, AlertPlugin, PopupRadio, XTextarea},
     data () {
         return {
             types: [{key: 1, value: '功能建议'}, {key: 2, value: '用户体验'}, {key: 3, value: '页面设计'}, {key: 4, value: '其他'}],

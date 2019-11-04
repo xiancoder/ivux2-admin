@@ -37,9 +37,6 @@ export default {
     }
 }
 </script>
-<style lang="less">
-    @import '../main.less';
-</style>
 <style scoped>
 .copier{ color: #666; font-size: 14px; width: 90%; margin: 0 auto; border-top: 1px solid #f0f0f0; padding-top: 10px;}
 </style>

@@ -1,5 +1,4 @@
 <style lang='less'>
-    @import '../main.less';
     .follow_search1{ background-color: #f9f9f9; padding: 15px;}
     .follow_search1 .weui-cells{ margin-top: 0; border-radius: 17px;}
     .follow_search1 .weui-cells:before{ border: none;}
@@ -57,12 +56,12 @@
 <script>
 import Vue from 'vue'
 import {LoadingPlugin} from 'vux'
-import {Loading, Group, XHeader, Cell, Badge, Search, XInput, XTable, XButton, AlertPlugin, ConfirmPlugin} from 'vux'
+import {Loading, Group, Cell, Badge, Search, XInput, XTable, XButton, AlertPlugin, ConfirmPlugin} from 'vux'
 Vue.use(ConfirmPlugin)
 Vue.use(AlertPlugin)
 Vue.use(LoadingPlugin)
 export default {
-    components: { Group, XHeader, Cell, Badge, Search, XInput, XTable, XButton, ConfirmPlugin, Loading },
+    components: { Group, Cell, Badge, Search, XInput, XTable, XButton, ConfirmPlugin, Loading },
     mounted: function () {
         // this.getInfo()
     },

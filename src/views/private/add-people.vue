@@ -1,5 +1,4 @@
 <style lang='less'>
-    @import '../main.less';
     .title .left{ float: left; width: 100px;}
     .title .right{ width: 80px; text-align: right; float: right; color: #0094EB; margin-right: -45px;}
     .title{ padding: 10px; height: 24px; background-color: #FBFBFB;}
@@ -52,12 +51,12 @@
 </template>
 <script>
 import Vue from 'vue'
+import {Group, AlertPlugin, ConfirmPlugin, PopupPicker, Picker, Popup, PopupHeader} from 'vux'
 Vue.use(AlertPlugin)
 Vue.use(ConfirmPlugin)
-import {Group, XHeader, AlertPlugin, ConfirmPlugin, PopupPicker, Picker, Popup, PopupHeader} from 'vux'
 export default {
     components: {
-        Group, XHeader, ConfirmPlugin, AlertPlugin, PopupPicker, Picker, Popup, PopupHeader
+        Group, ConfirmPlugin, AlertPlugin, PopupPicker, Picker, Popup, PopupHeader
     },
     mounted: function () {
         this.getInfo()
@@ -85,7 +84,7 @@ export default {
             }).then((res) => {
                 if (res.data.data.leader.length === 0) {
                     this.leaderName = []
-                    this.leaderPhoto=''
+                    this.leaderPhoto = ''
                 } else {
                     this.leaderName = res.data.data.leader.userName
                     this.leaderPhoto = res.data.data.leader.userPhoto
@@ -107,7 +106,7 @@ export default {
         },
         openLeaderList () {
             this.showLeaders = true
-            this.$get('api/customer/get_leader_drop',{
+            this.$get('api/customer/get_leader_drop', {
                 id: this.$route.query.companyId
             }).then((res) => {
                 let leaderList = []
@@ -157,7 +156,7 @@ export default {
         },
         changeUnioner (type) {
             if (type) {
-                this.$post('api/customer/add_union',{
+                this.$post('api/customer/add_union', {
                     id: this.$route.query.companyId,
                     userId: this.unioner[0]
                 }).then((res) => {

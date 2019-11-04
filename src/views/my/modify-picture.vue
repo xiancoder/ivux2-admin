@@ -27,12 +27,10 @@
 </template>
 <script>
 import axios from 'axios'
-import {XHeader} from 'vux'
+
 export default {
     name: 'modify-picture',
-    components: {
-        XHeader
-    },
+    components: { },
     data () {
         return {
             imgFile: null,

@@ -11,12 +11,10 @@
     </div>
 </template>
 <script>
-import {XHeader} from 'vux'
+
 export default {
     name: 'my-photo',
-    components: {
-        XHeader
-    },
+    components: { },
     data () {
         return {
             randomNum: ' ? t=' + Math.ceil(Math.random() * 10000),

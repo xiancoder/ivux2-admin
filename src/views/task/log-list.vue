@@ -19,12 +19,10 @@
     </div>
 </template>
 <script>
-import {XTable, LoadMore, Scroller, XHeader, Divider} from 'vux'
+import {XTable, LoadMore, Scroller, Divider} from 'vux'
 export default {
     name: 'log-list',
-    components: {
-        XTable, LoadMore, Scroller, Divider, XHeader
-    },
+    components: { XTable, LoadMore, Scroller, Divider },
     data () {
         return {
             logList: [],

@@ -15,11 +15,11 @@
     </div>
 </template>
 <script>
-import {XHeader} from 'vux'
+
 import {Tab, TabItem, PopupPicker, Group} from 'vux'
 export default {
     name: 'invoice',
-    components: {XHeader, Tab, TabItem, PopupPicker, Group},
+    components: {Tab, TabItem, PopupPicker, Group},
     data () {
         return {
             yearList: [],

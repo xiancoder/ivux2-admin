@@ -1,5 +1,4 @@
 <style lang='less'>
-    @import '../main.less';
     .is_public .weui-icon-circle{ font-size: 18px;}
     .is_public .weui-icon-success{ font-size: 18px;}
 </style>
@@ -43,10 +42,10 @@
     </div>
 </template>
 <script>
-import {XHeader, Group, Cell, XInput, PopupPicker, Popup, Search, Icon, CheckIcon} from 'vux'
+import {Group, Cell, XInput, PopupPicker, Popup, Search, Icon, CheckIcon} from 'vux'
 export default {
     name: 'group-edit',
-    components: {Group, Cell, XHeader, XInput, Popup, Search, PopupPicker, Icon, CheckIcon},
+    components: {Group, Cell, XInput, Popup, Search, PopupPicker, Icon, CheckIcon},
     data () {
         return {
             title: '新建组',

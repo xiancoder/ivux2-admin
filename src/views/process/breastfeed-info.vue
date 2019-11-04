@@ -68,12 +68,12 @@
     </div>
 </template>
 <script>
-import {XHeader, Confirm, XTextarea, Group} from 'vux'
+import {Confirm, XTextarea, Group} from 'vux'
 import ccInfo from '../components/ccInfo.vue'
 import nodeInfo from '../components/nodeInfo.vue'
 export default {
     name: 'breastfeed-info',
-    components: {XHeader, ccInfo, nodeInfo, Confirm, XTextarea, Group},
+    components: {ccInfo, nodeInfo, Confirm, XTextarea, Group},
     data () {
         return {
             rejectShow: false, // 驳回弹框显示

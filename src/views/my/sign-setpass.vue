@@ -19,10 +19,10 @@
     </div>
 </template>
 <script>
-import {XHeader, Group, Cell, XInput} from 'vux'
+import {Group, Cell, XInput} from 'vux'
 export default {
     name: 'sign-setpass',
-    components: {Group, Cell, XHeader, XInput},
+    components: {Group, Cell, XInput},
     data () {
         return {
             newPsd: '',

@@ -10,6 +10,3 @@ export default {
     name: 'no-data'
 }
 </script>
-<style lang="less">
-    @import '../main.less';
-</style>

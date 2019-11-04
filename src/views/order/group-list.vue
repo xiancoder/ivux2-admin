@@ -59,10 +59,10 @@
     </div>
 </template>
 <script>
-import {XHeader, Search, Alert} from 'vux'
+import {Search, Alert} from 'vux'
 export default {
     name: 'group-list',
-    components: {Search, XHeader, Alert},
+    components: {Search, Alert},
     data () {
         return {
             pageHeight: sessionStorage.getItem('phoneHeight'),

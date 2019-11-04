@@ -4,10 +4,6 @@ import packjson from '../../package.json';
 
 const env = 'development'
 let util = {}
-util.title = function (title) {
-    title = title || 'OA-WAP'
-    window.document.title = title
-}
 
 const ajaxUrl = env === 'development' ? 'http:// 127.0.0.1:8888' : env === 'production' ? 'https:// www.url.com' : 'https:// debug.url.com';
 

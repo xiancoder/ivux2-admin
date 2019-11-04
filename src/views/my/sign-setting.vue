@@ -17,10 +17,10 @@
     </div>
 </template>
 <script>
-import {XHeader, Loading} from 'vux'
+import {Loading} from 'vux'
 export default {
     name: 'sign-setting',
-    components: {XHeader, Loading},
+    components: {Loading},
     data () {
         return {
             points: [],

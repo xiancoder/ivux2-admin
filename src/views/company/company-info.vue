@@ -1,5 +1,4 @@
 <style lang='less'>
-    @import '../main.less';
     .my-group .weui-cells{ margin-top: 0;}
     .detail_container .weui-cells{ font-size: 14px; margin-top: 0;}
     .detail_container{ padding-right: 15px;}
@@ -127,9 +126,9 @@
     </group>
 </template>
 <script>
-import {Group, XHeader, Cell, Badge, ButtonTab, ButtonTabItem} from 'vux'
+import {Group, Cell, Badge, ButtonTab, ButtonTabItem} from 'vux'
 export default {
-    components: { Group, XHeader, Cell, Badge, ButtonTab, ButtonTabItem },
+    components: { Group, Cell, Badge, ButtonTab, ButtonTabItem },
     data () {
         return {
             type: this.$route.query.type,

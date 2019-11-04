@@ -130,10 +130,10 @@
 </template>
 <script>
 import {Popup, Checker, XTable, LoadMore, Scroller, Tab, TabItem, Datetime,
-    CheckerItem, Group, XHeader, Cell, Divider, XButton, Search} from 'vux'
+    CheckerItem, Group, Cell, Divider, XButton, Search} from 'vux'
 export default {
     name: 'my-task',
-    components: {XTable, LoadMore, Scroller, Divider, Popup, XHeader, Group, Cell, XButton, Search, Checker, CheckerItem, Tab, TabItem, Datetime},
+    components: {XTable, LoadMore, Scroller, Divider, Popup, Group, Cell, XButton, Search, Checker, CheckerItem, Tab, TabItem, Datetime},
     data () {
         return {
             onFetching: false, bottomCount: 15,

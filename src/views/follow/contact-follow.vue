@@ -48,10 +48,10 @@
     </div>
 </template>
 <script>
-import {XHeader, XInput, Group, Scroller, LoadMore, Divider, Search} from 'vux'
+import {XInput, Group, Scroller, LoadMore, Divider, Search} from 'vux'
 export default {
     name: 'contact-follow',
-    components: {XHeader, Scroller, LoadMore, Divider, Search},
+    components: {Scroller, LoadMore, Divider, Search},
     data () {
         return {
             noFollow: false,

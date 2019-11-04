@@ -1,6 +1,3 @@
-<style>
-    @import '../main.less';
-</style>
 <template>
     <div>
         <div class="scroll_container info_container">

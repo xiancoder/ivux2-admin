@@ -84,10 +84,10 @@
     </group>
 </template>
 <script>
-import {Group, XHeader, Tab, TabItem, XTable, Scroller, LoadMore, Divider, Search, Popup, Checker, CheckerItem, Datetime, debounce} from 'vux'
+import {Group, Tab, TabItem, XTable, Scroller, LoadMore, Divider, Search, Popup, Checker, CheckerItem, Datetime, debounce} from 'vux'
 export default {
     name: 'process-notexamine',
-    components: {Group, XHeader, Tab, TabItem, XTable, Scroller, LoadMore, Divider, Search, Popup, Checker, CheckerItem, Datetime},
+    components: {Group, Tab, TabItem, XTable, Scroller, LoadMore, Divider, Search, Popup, Checker, CheckerItem, Datetime},
     data () {
         return {
             debounceSearch: '',

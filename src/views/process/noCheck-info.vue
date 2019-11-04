@@ -58,12 +58,12 @@
 </template>
 <script>
 // 引入组件
-import {XHeader, XButton, Confirm, Group, XTextarea} from 'vux'
+import {XButton, Confirm, Group, XTextarea} from 'vux'
 import ccInfo from '../components/ccInfo.vue'
 import nodeInfo from '../components/nodeInfo.vue'
 export default {
     name: 'noCheck-info',
-    components: {XHeader, XButton, ccInfo, nodeInfo, Confirm, Group, XTextarea}, // 组件声明
+    components: {XButton, ccInfo, nodeInfo, Confirm, Group, XTextarea}, // 组件声明
     data () { // 参数声明
         return {
             rejectShow: false, // 驳回弹框显示

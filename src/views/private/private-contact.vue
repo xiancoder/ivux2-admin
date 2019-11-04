@@ -23,10 +23,10 @@
     </div>
 </template>
 <script>
-import {XHeader, Group, Cell} from 'vux'
+import {Group, Cell} from 'vux'
 export default {
     name: 'private-contact',
-    components: {Group, Cell, XHeader},
+    components: {Group, Cell},
     data () {
         return {
             show: false,

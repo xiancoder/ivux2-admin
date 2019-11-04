@@ -1,5 +1,4 @@
 <style scoped lang="less">
-    @import '../main.less';
     .customer_mark span{ background-color: #FF4844; color: white; }
     .info-btns{ float: left; width: 110px; padding: 0; font-size: 15px; border-radius: 18px; margin: 15px 5px 0 5px; color: #0094EB;}
 </style>
@@ -68,10 +67,10 @@
     </div>
 </template>
 <script>
-import {XHeader, XButton, Badge} from 'vux'
+import {XButton, Badge} from 'vux'
 export default {
     name: 'public-info',
-    components: {XHeader, XButton, Badge},
+    components: {XButton, Badge},
     data () {
         return {
             type: '',

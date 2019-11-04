@@ -35,11 +35,11 @@
 </template>
 <script>
 import Vue from 'vue'
-import {XHeader, Group, Cell, XInput, PopupPicker, AlertPlugin, Loading, Datetime, Popup, Search, Icon} from 'vux'
+import {Group, Cell, XInput, PopupPicker, AlertPlugin, Loading, Datetime, Popup, Search, Icon} from 'vux'
 Vue.use(AlertPlugin)
 export default {
     name: 'task-restart',
-    components: {Group, Cell, XHeader, XInput, Popup, Search, PopupPicker, Loading, Datetime, Icon},
+    components: {Group, Cell, XInput, Popup, Search, PopupPicker, Loading, Datetime, Icon},
     data () {
         return {
             userList: [],

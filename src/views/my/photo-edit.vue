@@ -10,11 +10,11 @@
     </div>
 </template>
 <script>
-import {XHeader} from 'vux'
+
 import Cropper from 'cropperjs'
 export default {
     name: 'photo-edit',
-    components: {XHeader},
+    components: {},
     data () {
         return {
             headerImage: '',
@@ -98,7 +98,6 @@ export default {
     #demo #image { max-width: 100%;}
 </style>
 <style lang='less'>
-    @import '../main.less';
     .tailor .cropper-view-box, .cropper-face { border-radius: 4%;}
     .tailor .cropper-container { font-size: 0; line-height: 0; position: relative; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; direction: ltr; -ms-touch-action: none; touch-action: none }
     .tailor .cropper-container img { /* Avoid margin top issue (Occur only when margin-top <= -height) */display: block; min-width: 0 !important; max-width: none !important; min-height: 0 !important; max-height: none !important; width: 100%; height: 100%; image-orientation: 0deg }

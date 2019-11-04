@@ -1,6 +1,6 @@
 <template>
     <div class="tab_div">
-        <div v-for="row in names" :key="row.name" @click="go(row.router)">
+        <div v-for="(row, index) in names" :key="row.name" @click="go(row.router)">
             <span :class="select === index+1 ? 'select' : ''">{{row.name}}</span>
         </div>
     </div>
@@ -35,9 +35,6 @@ export default {
     }
 }
 </script>
-<style>
-    @import '../main.less';
-</style>
 <style scoped lang="less">
     .tab_div{ line-height: 50px;display: flex;display: -webkit-flex; color: #333; font-size: 14px;
         div{ flex: 1; text-align: center;

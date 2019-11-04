@@ -80,12 +80,12 @@
 </template>
 <script>
 // 引入组件
-import {XHeader} from 'vux'
+
 import ccInfo from '../components/ccInfo.vue'
 import nodeInfo from '../components/nodeInfo.vue'
 export default {
     name: 'contract-info',
-    components: { XHeader, ccInfo, nodeInfo }, // 组件声明
+    components: { ccInfo, nodeInfo }, // 组件声明
     data () { // 参数声明
         return {
             info: {

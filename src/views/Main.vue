@@ -39,6 +39,6 @@ export default {
     }
 }
 </script>
-<style>
-    @import './main.less';
+<style lang="less">
+    @import '../style/main.less';
 </style>

@@ -115,16 +115,10 @@
 import {removeOrder} from '../../libs/common.js'
 import Cookies from 'js-cookie'
 import bottomMenu from '../components/bottom-menu.vue'
-import {XHeader, Grid, GridItem, Tabbar, TabbarItem} from 'vux'
+import {Grid, GridItem, Tabbar, TabbarItem} from 'vux'
 export default {
     name: 'home',
-    components: {
-        XHeader,
-        Grid,
-        GridItem,
-        Tabbar,
-        TabbarItem, bottomMenu
-    },
+    components: { Grid, GridItem, Tabbar, TabbarItem, bottomMenu },
     data () {
         return {
             menuData: [],
