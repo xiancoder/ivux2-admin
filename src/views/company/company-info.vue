@@ -1,4 +1,4 @@
-<style lang='less'>
+<style lang='less' scoped>
     .my-group .weui-cells{ margin-top: 0;}
     .detail_container .weui-cells{ font-size: 14px; margin-top: 0;}
     .detail_container{ padding-right: 15px;}
@@ -13,13 +13,15 @@
     .title-back .center .vux-badge{ position: absolute; top: 13px; right: 128px; height: 20px; line-height: 20px; background-color: #FFBE2A;}
     .weui-cells .weui-cell__ft{ font-size: 14px; color: #666; word-break: break-all;}
     .my-group .weui-cells .vux-cell-primary p{ width: 160px;}
-    .tabDiv .vux-button-group > a.vux-button-tab-item-first { border-top-left-radius: 6px; border-bottom-left-radius: 6px;}
-    .tabDiv .vux-button-group > a.vux-button-tab-item-last { border-top-right-radius: 6px; border-bottom-right-radius: 6px;}
-    .tabDiv .vux-button-group > a.vux-button-tab-item-last:after{ border-top-right-radius: 8px; border-bottom-right-radius: 8px;}
-    .tabDiv .vux-button-group > a.vux-button-tab-item-first:after{ border-top-left-radius: 8px; border-bottom-left-radius: 8px;}
-</style>
-<style scoped>
-    .tabDiv{ background-color: #0094EB; padding: 10px 50px; }
+    .tabDiv{
+        background-color: #0094EB; padding: 10px 50px;
+        .vux-button-group {
+            > a.vux-button-tab-item-first { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+            > a.vux-button-tab-item-last { border-top-right-radius: 6px; border-bottom-right-radius: 6px;}
+            > a.vux-button-tab-item-last:after{ border-top-right-radius: 8px; border-bottom-right-radius: 8px;}
+            > a.vux-button-tab-item-first:after{ border-top-left-radius: 8px; border-bottom-left-radius: 8px;}
+        }
+     }
     .imgStyle{ width: 40px;}
     .fontStyle{ color: #9a9a9a;}
     .noData{ margin-top: 30%; text-align: center;}

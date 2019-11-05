@@ -29,9 +29,7 @@
     </div>
 </template>
 <script>
-import Vue from 'vue'
-import {Group, Cell, AlertPlugin, Datetime, Popup, Search, Icon} from 'vux'
-Vue.use(AlertPlugin)
+import {Group, Cell, Datetime, Popup, Search, Icon} from 'vux'
 export default {
     name: 'release-edit',
     components: {Group, Cell, Popup, Datetime, Search, Icon},

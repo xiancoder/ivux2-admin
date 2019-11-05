@@ -9,28 +9,13 @@
             </div>
             <div class="applicant_data">
                 <table>
-                    <tr>
-                        <td>提交时间</td>
-                        <td>{{info.createdTimeStr}}</td>
-                    </tr>
-                    <tr>
-                        <td>所在部门</td>
-                        <td>{{info.departments}}</td>
-                    </tr>
-                    <tr>
-                        <td>所属职位</td>
-                        <td>{{info.postName}}</td>
-                    </tr>
+                    <tr> <td>提交时间</td> <td>{{info.createdTimeStr}}</td> </tr>
+                    <tr> <td>所在部门</td> <td>{{info.departments}}</td> </tr>
+                    <tr> <td>所属职位</td> <td>{{info.postName}}</td> </tr>
                 </table>
                 <table style="margin-top: 10px">
-                    <tr>
-                        <td>未打卡时间</td>
-                        <td>{{info.clockTimeStr}}</td>
-                    </tr>
-                    <tr>
-                        <td>事由</td>
-                        <td>{{info.reason}}</td>
-                    </tr>
+                    <tr> <td>未打卡时间</td> <td>{{info.clockTimeStr}}</td> </tr>
+                    <tr> <td>事由</td> <td>{{info.reason}}</td> </tr>
                 </table>
             </div>
         </div>

@@ -10,61 +10,28 @@
             </div>
             <div class="applicant_data">
                 <table>
-                    <tr>
-                        <td>所属项目</td>
-                        <td>{{info.projectName}}</td>
-                    </tr>
-                    <tr>
-                        <td>所在部门</td>
-                        <td>{{info.department}}</td>
-                    </tr>
-                    <tr>
-                        <td>所属职位</td>
-                        <td>{{info.post}}</td>
-                    </tr>
-                    <tr>
-                        <td>申请时间</td>
-                        <td>{{info.createdTime}}</td>
-                    </tr>
+                    <tr> <td>所属项目</td> <td>{{info.projectName}}</td> </tr>
+                    <tr> <td>所在部门</td> <td>{{info.department}}</td> </tr>
+                    <tr> <td>所属职位</td> <td>{{info.post}}</td> </tr>
+                    <tr> <td>申请时间</td> <td>{{info.createdTime}}</td> </tr>
                 </table>
                 <table style="margin-top: 10px" v-show="showAll === 1">
-                    <tr>
-                        <td>合同主体</td>
-                        <td>{{info.invoiceCompanyName || '-'}}</td>
-                    </tr>
-                    <tr>
-                        <td>客户名称</td>
-                        <td>{{info.customerName || '-'}}</td>
-                    </tr>
-                    <tr>
-                        <td>客户类型</td>
-                        <td>{{info.customerType || '-'}}</td>
-                    </tr>
-                    <tr>
-                        <td>所属合同编号</td>
-                        <td>{{info.contractNum || '-'}}</td>
-                    </tr>
+                    <tr> <td>合同主体</td> <td>{{info.invoiceCompanyName || '-'}}</td> </tr>
+                    <tr> <td>客户名称</td> <td>{{info.customerName || '-'}}</td> </tr>
+                    <tr> <td>客户类型</td> <td>{{info.customerType || '-'}}</td> </tr>
+                    <tr> <td>所属合同编号</td> <td>{{info.contractNum || '-'}}</td> </tr>
                     <tr>
                         <td>款项结算周期</td>
                         <td>
-                        <span v-show="info.invoiceBeginStr">
-                            {{info.invoiceBeginStr}} 至 {{info.invoiceEndStr}}
-                        </span>
+                            <span v-show="info.invoiceBeginStr">
+                                {{info.invoiceBeginStr}} 至 {{info.invoiceEndStr}}
+                            </span>
                             <span v-show="!info.invoiceBegin">-</span>
                         </td>
                     </tr>
-                    <tr>
-                        <td>发票金额</td>
-                        <td>{{info.money}}元</td>
-                    </tr>
-                    <tr>
-                        <td>发票类型</td>
-                        <td>{{info.invoiceType === 1 ? '增值税普通发票' : '增值税专用发票'}}</td>
-                    </tr>
-                    <tr>
-                        <td>大写金额</td>
-                        <td>{{info.capMoney || '-'}}</td>
-                    </tr>
+                    <tr> <td>发票金额</td> <td>{{info.money}}元</td> </tr>
+                    <tr> <td>发票类型</td> <td>{{info.invoiceType===1?'增值税普通发票':'增值税专用发票'}}</td> </tr>
+                    <tr> <td>大写金额</td> <td>{{info.capMoney || '-'}}</td> </tr>
                 </table>
                 <p style="margin-top: 10px;" class="showAll" @click="showAllFun">
                     {{showAll === 1 ? '收起' : '展开'}}
@@ -80,8 +47,6 @@
     </div>
 </template>
 <script>
-// 引入组件
-
 import ccInfo from '../components/ccInfo.vue'
 import nodeInfo from '../components/nodeInfo.vue'
 export default {

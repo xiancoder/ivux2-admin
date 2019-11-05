@@ -1,13 +1,3 @@
-<style lang='less'>
-    .title .left{ float: left; width: 100px;}
-    .title .right{ width: 80px; text-align: right; float: right; color: #0094EB; margin-right: -45px;}
-    .title{ padding: 10px; height: 24px; background-color: #FBFBFB;}
-    .user-photo{ width: 50px; height: 50px; border: 1px solid #ddd; border-radius: 25px; text-align: center; line-height: 50px;}
-    .undiv{ float: left;padding: 5px 10px; position: relative;}
-    .la-names{ color: #666;width: 58px; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
-    .right .weui-cell { padding: 0;}
-    .right .weui-cell__ft{display: none;}
-</style>
 <template>
     <group class="my-group">
         <x-header :left-options="{backText: ''}" style="background-color: #0094eb">跟进人
@@ -50,13 +40,10 @@
     </group>
 </template>
 <script>
-import Vue from 'vue'
-import {Group, AlertPlugin, ConfirmPlugin, PopupPicker, Picker, Popup, PopupHeader} from 'vux'
-Vue.use(AlertPlugin)
-Vue.use(ConfirmPlugin)
+import {Group, PopupPicker, Picker, Popup, PopupHeader} from 'vux'
 export default {
     components: {
-        Group, ConfirmPlugin, AlertPlugin, PopupPicker, Picker, Popup, PopupHeader
+        Group, PopupPicker, Picker, Popup, PopupHeader
     },
     mounted: function () {
         this.getInfo()
@@ -213,3 +200,13 @@ export default {
     }
 }
 </script>
+<style scoped>
+    .title .left{ float: left; width: 100px;}
+    .title .right{ width: 80px; text-align: right; float: right; color: #0094EB; margin-right: -45px;}
+    .title{ padding: 10px; height: 24px; background-color: #FBFBFB;}
+    .user-photo{ width: 50px; height: 50px; border: 1px solid #ddd; border-radius: 25px; text-align: center; line-height: 50px;}
+    .undiv{ float: left;padding: 5px 10px; position: relative;}
+    .la-names{ color: #666;width: 58px; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+    .right .weui-cell { padding: 0;}
+    .right .weui-cell__ft{display: none;}
+</style>

@@ -6,7 +6,7 @@
             <popup-picker @on-change="getInfo" show-name :columns="1" title="选择月份" :data="monthList" v-model="month"></popup-picker>
         </group>
         <div ref="pie" style="width: 100%;height: 300px"></div>
-        <div class="tc">开票总金额：{{total}}元</div>
+        <div class="textCen">开票总金额：{{total}}元</div>
         <div class="links">
             <div style="color: #ed4014;font-size: 16px">任礼游<br>{{rly}}元</div>
             <div style="color: #2db7f5;font-size: 16px">云袭加客<br>{{yxjk}}元</div>

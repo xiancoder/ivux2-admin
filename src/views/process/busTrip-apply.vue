@@ -25,24 +25,24 @@
             </div>
             <group gutter="0" class="info_container">
                 <x-address title="" v-model="modal.address" :list="addressData" placeholder="请选择">
-                    <div slot="title" slot-scope="props"><span class="red">* </span><span class="color_333">选择地区</span></div>
+                    <div slot="title" slot-scope="props"><span class="red">* </span><span class="color333">选择地区</span></div>
                 </x-address>
             </group>
             <group gutter="0">
                 <x-textarea v-model="modal.detail" placeholder="请输入详细地址" :max="100" style="font-size: 14px">
-                    <div slot="label" class="color_333" style="padding-right: 10px"><span class="red">* </span>详细地址</div>
+                    <div slot="label" class="color333" style="padding-right: 10px"><span class="red">* </span>详细地址</div>
                 </x-textarea>
             </group>
         </div>
-        <div class="divide tc blue" @click="addApply">+ 添加目的地</div>
+        <div class="divide textCen blue" @click="addApply">+ 添加目的地</div>
         <group gutter="0">
             <x-textarea v-model="reason" placeholder="请输入出差事由" :max="50" style="font-size: 14px">
-                <div slot="label" class="color_333" style="padding-right: 10px"><span class="red">* </span>出差事由</div>
+                <div slot="label" class="color333" style="padding-right: 10px"><span class="red">* </span>出差事由</div>
             </x-textarea>
         </group>
         <div class="grey_line"></div>
         <div class="check_container">
-            <div style="line-height: 35px" class="color_333"><span class="red">* </span>出行方式（多选）</div>
+            <div style="line-height: 35px" class="color333"><span class="red">* </span>出行方式（多选）</div>
             <checker v-model="tripType" type="checkbox" default-item-class="unSelect" selected-item-class="isSelect">
                 <checker-item value="飞机">飞机</checker-item>
                 <checker-item value="火车">火车</checker-item>

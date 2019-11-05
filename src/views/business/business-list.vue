@@ -1,12 +1,16 @@
 <template>
     <group class="my-group">
-        <x-header @on-click-back="goHome" :left-options="{backText: '', preventGoBack: true}" style="background-color: #0094eb">商务流程</x-header>
+        <x-header @on-click-back="goHome" :left-options="{backText: '', preventGoBack: true}" style="background-color: #0094eb">
+            商务流程
+        </x-header>
         <div class="my-search-form">
             <div class="filter-left" @click="openScreen()">
                 <img style="width: 20px" src="../../img/filter.png"/>
                 <div style="font-size: 11px; color: #999999;">筛选</div>
             </div>
-            <search class="searchInput" style="width: 90%" v-model="keyword" :auto-fixed="false"  placeholder="请输入流程单号" @on-change="debounceSearch" @on-cancel="cancel" @on-submit="submiting()"></search>
+            <search class="searchInput" style="width: 90%" v-model="keyword" :auto-fixed="false"  placeholder="请输入流程单号"
+                @on-change="debounceSearch" @on-cancel="cancel" @on-submit="submiting()">
+            </search>
         </div>
         <div>
             <popup class="search-pop" v-model="screen" position="right">
@@ -24,23 +28,35 @@
                         <datetime inline-desc="结束日期" v-model="search.end" placeholder="请选择"></datetime>
                     </div>
                     <div class="pop-right" v-show="condition === 2">
-                        <checker v-model="search.projectId" class="my-check-item" radio-required default-item-class="demo1-item" selected-item-class="demo1-item-selected" >
-                            <checker-item v-for="(row, index) in projects" :value='row.id' :key="index">{{row.name}}</checker-item>
+                        <checker v-model="search.projectId" class="my-check-item" radio-required d
+                            efault-item-class="demo1-item" selected-item-class="demo1-item-selected" >
+                            <checker-item v-for="(row, index) in projects" :value='row.id' :key="index">
+                                {{row.name}}
+                            </checker-item>
                         </checker>
                     </div>
                     <div class="pop-right" v-show="condition === 3">
-                        <checker v-model="search.processId" class="my-check-item" radio-required default-item-class="demo1-item" selected-item-class="demo1-item-selected" >
-                            <checker-item v-for="(row, index) in process" :value='row.id' :key="index">{{row.procedureName}}</checker-item>
+                        <checker v-model="search.processId" class="my-check-item" radio-required
+                            default-item-class="demo1-item" selected-item-class="demo1-item-selected" >
+                            <checker-item v-for="(row, index) in process" :value='row.id' :key="index">
+                                {{row.procedureName}}
+                            </checker-item>
                         </checker>
                     </div>
                     <div class="pop-right" v-show="condition === 4">
-                        <checker v-model="search.companyId" class="my-check-item" radio-required default-item-class="demo1-item" selected-item-class="demo1-item-selected" >
-                            <checker-item v-for="(row, index) in companys" :value='row.id' :key="index">{{row.name}}</checker-item>
+                        <checker v-model="search.companyId" class="my-check-item" radio-required
+                            default-item-class="demo1-item" selected-item-class="demo1-item-selected" >
+                            <checker-item v-for="(row, index) in companys" :value='row.id' :key="index">
+                                {{row.name}}
+                            </checker-item>
                         </checker>
                     </div>
                     <div class="pop-right" v-show="condition === 5">
-                        <checker v-model="search.statusId" class="my-check-item" radio-required default-item-class="demo1-item" selected-item-class="demo1-item-selected" >
-                            <checker-item v-for="(row, index) in status" :value='row.id' :key="index">{{row.name}}</checker-item>
+                        <checker v-model="search.statusId" class="my-check-item" radio-required
+                            default-item-class="demo1-item" selected-item-class="demo1-item-selected" >
+                            <checker-item v-for="(row, index) in status" :value='row.id' :key="index">
+                                {{row.name}}
+                            </checker-item>
                         </checker>
                     </div>
                     <div class="pop-footer">
@@ -385,17 +401,6 @@ export default {
     .myprocessTable tr td:before{ border: none;}
     .myprocessTable tr td{ line-height: 24px;}
     table tr{ border-bottom: 1px solid #e0e0e0;}
-    .pad15{ box-sizing: border-box; padding: 0 15px;}
-    .textLef{ text-align: left;}
-    .textRig{ text-align: right;}
     table tr td{ line-height: 26px;}
-    .overhide{ overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
     tbody tr td{ border: none;}
-    .color999{ color: #999;}
-    .wid28{display: inline-block; width: 28%;}
-    .wid70{display: inline-block; width: 70%;}
-    .wid100{ width: 100%;}
-    .color1{ color: rgb(3, 149, 236);}
-    .color2{ color: rgb(36, 177, 136);}
-    .color3{ color: red;}
 </style>

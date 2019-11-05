@@ -40,11 +40,10 @@
     </div>
 </template>
 <script>
-import bottomMenu from '../components/bottom-menu.vue'
 import {Tabbar, TabbarItem, Scroller, LoadMore, Divider, Search, debounce} from 'vux'
 export default {
     name: 'tel-book',
-    components: { Tabbar, TabbarItem, Scroller, LoadMore, Divider, Search, bottomMenu },
+    components: { Tabbar, TabbarItem, Scroller, LoadMore, Divider, Search },
     data () {
         return {
             isEmpty: false,

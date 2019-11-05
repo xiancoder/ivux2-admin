@@ -1,10 +1,3 @@
-<style>
-    .sign .weui-cells{ font-size: 16px; margin-top: 0;}
-    .sign .weui-cell{ height: 35px; padding-right: 0;}
-    .sign .weui-cells:after{ border: none;}
-    .sign .vux-cell-primary{ color: #333;}
-    .sign .weui-cell__ft{ color: #666;}
-</style>
 <template>
     <div>
         <x-header :left-options="{backText: ''}" style="background-color: #0094eb">设置授权密码<a slot="right" style="color: #fff" @click="savePsd">下一步</a></x-header>
@@ -60,3 +53,10 @@ export default {
     }
 }
 </script>
+<style scoped>
+    .sign .weui-cells{ font-size: 16px; margin-top: 0;}
+    .sign .weui-cell{ height: 35px; padding-right: 0;}
+    .sign .weui-cells:after{ border: none;}
+    .sign .vux-cell-primary{ color: #333;}
+    .sign .weui-cell__ft{ color: #666;}
+</style>

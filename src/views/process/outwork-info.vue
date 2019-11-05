@@ -1,6 +1,3 @@
-<style scoped>
-    .hei10{ height: 10px; background: #f5f6f8;}
-</style>
 <template>
     <div>
         <x-header @on-click-back="toList" :left-options="{backText: '', preventGoBack: true}" class="header_fix">外出详情</x-header>
@@ -198,3 +195,6 @@ export default {
     }
 }
 </script>
+<style scoped>
+    .hei10{ height: 10px; background: #f5f6f8;}
+</style>

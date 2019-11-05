@@ -116,40 +116,34 @@ export default {
             }
         },
         getRoundedCanvas (sourceCanvas) {
-                var canvas = document.createElement('canvas')
-                var context = canvas.getContext('2d')
-                var width = sourceCanvas.width
-                var height = sourceCanvas.height
-                canvas.width = width
-                canvas.height = height
-                context.imageSmoothingEnabled = true
-                context.drawImage(sourceCanvas, 0, 0, width, height)
-                context.globalCompositeOperation = 'destination-in'
-                context.beginPath()
-                context.arc( width / 2, height / 2,
-                        Math.min(width, height) / 2,
-                        0,
-                        2 * Math.PI,
-                        true
-                )
-                context.fill()
-                return canvas
+            var canvas = document.createElement('canvas')
+            var context = canvas.getContext('2d')
+            var width = sourceCanvas.width
+            var height = sourceCanvas.height
+            canvas.width = width
+            canvas.height = height
+            context.imageSmoothingEnabled = true
+            context.drawImage(sourceCanvas, 0, 0, width, height)
+            context.globalCompositeOperation = 'destination-in'
+            context.beginPath()
+            context.arc(width / 2, height / 2, Math.min(width, height) / 2, 0, 2 * Math.PI, true)
+            context.fill()
+            return canvas
         },
         postImg () {
-                // 这边写图片的上传
+            // 这边写图片的上传
         }
     },
     mounted () {
         // 初始化这个裁剪框
-        var self = this
         var image = document.getElementById('image')
         this.cropper = new Cropper(image, {
-                aspectRatio: 1 / 1,
-                viewMode: 1, background: false,
-                zoomable: false,
-                ready: function () {
-                        self.croppable = true
-                }
+            aspectRatio: 1 / 1,
+            viewMode: 1, background: false,
+            zoomable: false,
+            ready: () => {
+                this.croppable = true
+            }
         })
     }
 }

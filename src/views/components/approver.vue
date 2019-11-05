@@ -10,7 +10,7 @@
     <div>
         <div class="scroll_container">
             <div style="padding: 10px 15px">审批人</div>
-            <div class="node_error red tc" v-if="!this.status">
+            <div class="node_error red textCen" v-if="!this.status">
                 <div>请联系人事配置审批流程</div>
                 <div style="height: 20px;"></div>
             </div >
@@ -18,7 +18,7 @@
                 <nav class="scroll_list">
                     <div class="inline_block nodeDiv" :class="row.length>1 ? 'paddR54' : ''" v-for="(row, index) in data" :key="index">
                         <div :class="row.length>1 ? 'nodeBorder' : ''" style="display: flex;">
-                            <div class="node2 tc"  v-for="(row2, index2) in row" :key="index2" >
+                            <div class="node2 textCen"  v-for="(row2, index2) in row" :key="index2" >
                                 <img :src="row2.photo" v-show="row2.photo !== ''" class="photo_img">
                                 <span class="first_name" v-show="row2.photo === ''">{{row2.userName | firstName}}</span>
                                 <br>{{row2.userName}}

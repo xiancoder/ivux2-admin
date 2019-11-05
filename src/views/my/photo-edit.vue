@@ -10,7 +10,6 @@
     </div>
 </template>
 <script>
-
 import Cropper from 'cropperjs'
 export default {
     name: 'photo-edit',
@@ -28,9 +27,7 @@ export default {
             this.$router.go(-1)
             var croppedCanvas
             var roundedCanvas
-            if (!this.croppable) {
-                return
-            }
+            if (!this.croppable) { return }
             // Crop
             croppedCanvas = this.cropper.getCroppedCanvas()
             // Round
@@ -90,14 +87,11 @@ export default {
 }
 </script>
 <style scoped>
-    *{ margin: 0; padding: 0;}
     #demo #button { position: absolute; right: 10px; top: 10px; width: 80px; height: 40px; border: none; border-radius: 5px; background: white;}
     #demo .show { width: 100px; height: 100px; overflow: hidden; position: relative; border-radius: 50%; border: 1px solid #d5d5d5;}
     #demo .picture { width: 100%; height: 100%; overflow: hidden; background-position: center center; background-repeat: no-repeat; background-size: cover;}
     #demo .container { z-index: 99; position: fixed; padding-top: 60px; left: 0; top: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 1);}
     #demo #image { max-width: 100%;}
-</style>
-<style lang='less'>
     .tailor .cropper-view-box, .cropper-face { border-radius: 4%;}
     .tailor .cropper-container { font-size: 0; line-height: 0; position: relative; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; direction: ltr; -ms-touch-action: none; touch-action: none }
     .tailor .cropper-container img { /* Avoid margin top issue (Occur only when margin-top <= -height) */display: block; min-width: 0 !important; max-width: none !important; min-height: 0 !important; max-height: none !important; width: 100%; height: 100%; image-orientation: 0deg }
@@ -146,7 +140,7 @@ export default {
     }
     .tailor .cropper-point.point-se:before { position: absolute; right: -50%; bottom: -50%;display: block; width: 200%; height: 200%; content: ' '; opacity: 0; background-color: #39f }
     .tailor .cropper-invisible { opacity: 0;}
-    .tailor .cropper-bg { background-image: url('data: image/png;base64, iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAAA3NCSVQICAjb4U/gAAAABlBMVEXMzMz// // TjRV2AAAACXBIWXMAAArrAAAK6wGCiw1aAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAABFJREFUCJlj+M/AgBVhF/0PAH6/D/HkDxOGAAAAAElFTkSuQmCC');}
+    .tailor .cropper-bg { background-image: url('data: image/png;base64, iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAAA3NCSVQICAjb4U/gAAAABlBMVEXMzMz// //TjRV2AAAACXBIWXMAAArrAAAK6wGCiw1aAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAABFJREFUCJlj+M/AgBVhF/0PAH6/D/HkDxOGAAAAAElFTkSuQmCC');}
     .tailor .cropper-hide { position: absolute;display: block; width: 0; height: 0;}
     .tailor .cropper-hidden {display: none !important;}
     .tailor .cropper-move { cursor: move;}

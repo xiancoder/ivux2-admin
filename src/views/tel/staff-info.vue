@@ -17,26 +17,20 @@
             <div class="applicant_data">
                 <table>
                     <tbody>
-                        <tr>
-                            <td>所在部门</td>
-                            <td>{{info.department || '-'}}</td>
-                        </tr>
-                        <!-- <tr>
-                            <td>所在职位</td>
-                            <td>{{info.postName || '-'}}</td>
-                        </tr> -->
-                        <tr>
-                            <td>邮箱</td>
-                            <td>{{info.email || '-'}}</td>
-                        </tr>
-                        <tr>
-                            <td>电话</td>
-                            <td>{{info.tel || '-'}}</td>
-                        </tr>
+                        <tr> <td>所在部门</td> <td>{{info.department || '-'}}</td> </tr>
+                        <!-- <tr> <td>所在职位</td> <td>{{info.postName || '-'}}</td> </tr> -->
+                        <tr> <td>邮箱</td> <td>{{info.email || '-'}}</td> </tr>
+                        <tr> <td>电话</td> <td>{{info.tel || '-'}}</td> </tr>
                         <tr>
                             <td>个人照片</td>
                             <td style="padding-top: 6px;" v-if="info.userPicture" @click="bigShow">
-                                <div class="img_box" :style="{backgroundImage: 'url(' + picRandom(info.userPicture) + ')', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', transform: 'rotate(' + deg(info.userPicture) + ')'}"></div>
+                                <div class="img_box" :style="{
+                                    backgroundImage: 'url(' + picRandom(info.userPicture) + ')',
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center',
+                                    backgroundRepeat: 'no-repeat',
+                                    transform: 'rotate(' + deg(info.userPicture) + ')'
+                                 }"></div>
                             </td>
                             <td v-else>尚未上传照片</td>
                         </tr>
@@ -45,7 +39,15 @@
             </div>
         </div>
         <div class="imgDiv" v-show="bigImg" @click="back">
-            <div :style="{backgroundImage: 'url(' + picRandom(info.userPicture) + ')', backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', width: '100%', height: pWidth.toString(), transform: 'rotate(' + deg(info.userPicture) + ')'}"></div>
+            <div :style="{
+                backgroundImage: 'url(' + picRandom(info.userPicture) + ')',
+                backgroundSize: 'contain',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                width: '100%',
+                height: pWidth.toString(),
+                transform: 'rotate(' + deg(info.userPicture) + ')'
+            }"></div>
         </div>
     </div>
 </template>

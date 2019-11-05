@@ -115,7 +115,7 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
     .mainSearch .font614{ color: #666;}
     .mainSearch .font614 p{ font-size: 14px;}
 </style>

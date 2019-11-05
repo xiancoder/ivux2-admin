@@ -16,7 +16,7 @@
             <!--<img :src="img + randomNum" class="user_img" id="img">-->
         <!--</viewer>-->
         <div :style="{backgroundImage: 'url(' + img + ')', backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', width: '100%', height: pWidth.toString(), transform: 'rotate(' + deg(angle) + ')'}" @click="upImg" v-show="!imgSrc && img"></div>
-        <div class="tc blue" style="margin-top: 30px" v-show="!imgSrc && img">
+        <div class="textCen blue" style="margin-top: 30px" v-show="!imgSrc && img">
             <i class="fa fa-undo fa-2x" aria-hidden="true" style="margin-right: 30px" @click="left"></i>
             <i class="fa fa-repeat fa-2x" aria-hidden="true" @click="right"></i>
         </div>

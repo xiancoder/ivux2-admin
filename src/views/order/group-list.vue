@@ -15,7 +15,7 @@
         </div>
         <div class="search_blank"></div>
         <div style="padding: 0 15px">
-            <div class="tc" v-if="listData.length === 0|| listData === null">
+            <div class="textCen" v-if="listData.length === 0|| listData === null">
                 <img src="../../img/no-data.png" style="margin-top: 30%;width: 100px">
                 <div style="color: #333333;font-size: 16px">暂无数据</div>
             </div>

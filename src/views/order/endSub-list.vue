@@ -1,6 +1,8 @@
 <template>
     <div class="orderList">
-        <x-header class="header_div" @on-click-back="goHome" :left-options="{backText: '', preventGoBack: true}"><span class="header_title">下属工单</span></x-header>
+        <x-header class="header_div" @on-click-back="goHome" :left-options="{backText: '', preventGoBack: true}">
+            <span class="header_title">下属工单</span>
+        </x-header>
         <div style="height: 47px"></div>
         <tab :select="2" :names="names"></tab>
         <div class="topping" @click="update"><img src="../../img/top.png" alt=""></div>

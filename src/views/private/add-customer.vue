@@ -1,8 +1,3 @@
-<style lang='less'>
-    .vux-popup-header-right{ color: #0094eb!important;}
-    .vux-popup-picker-placeholder { color: #777!important;}
-    .vux-popup-picker-value{ color: #333!important;}
-</style>
 <template>
     <div>
         <x-header :left-options="{backText: ''}" class="header_fix">客户信息<a slot="right" style="color: #fff" @click="addCustomer">保存</a></x-header>
@@ -220,5 +215,7 @@ export default {
 }
 </script>
 <style scoped>
-    .disNone{display: none;}
+    .vux-popup-header-right{ color: #0094eb!important;}
+    .vux-popup-picker-placeholder { color: #777!important;}
+    .vux-popup-picker-value{ color: #333!important;}
 </style>

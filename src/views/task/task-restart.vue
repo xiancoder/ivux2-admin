@@ -34,9 +34,7 @@
     </div>
 </template>
 <script>
-import Vue from 'vue'
-import {Group, Cell, XInput, PopupPicker, AlertPlugin, Loading, Datetime, Popup, Search, Icon} from 'vux'
-Vue.use(AlertPlugin)
+import {Group, Cell, XInput, PopupPicker, Loading, Datetime, Popup, Search, Icon} from 'vux'
 export default {
     name: 'task-restart',
     components: {Group, Cell, XInput, Popup, Search, PopupPicker, Loading, Datetime, Icon},

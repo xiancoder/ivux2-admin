@@ -48,10 +48,10 @@
                 </cell>
             </group>
         </div>
-        <div class="divide tc blue" @click="addApply">+ 添加加班人员及时间</div>
+        <div class="divide textCen blue" @click="addApply">+ 添加加班人员及时间</div>
         <group gutter="0">
             <x-textarea v-model="reason" placeholder="请输入加班事由" :max="50" style="font-size: 14px">
-                <div slot="label" style="padding-right: 10px" class="color_333"><span class="red">* </span>加班事由</div>
+                <div slot="label" style="padding-right: 10px" class="color333"><span class="red">* </span>加班事由</div>
             </x-textarea>
         </group>
         <div class="grey_line"></div>

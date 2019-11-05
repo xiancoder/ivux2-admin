@@ -1,6 +1,9 @@
 <template>
     <div class="orderList">
-        <x-header class="header_div" @on-click-back="goHome" :left-options="{backText: '', preventGoBack: true}"><span class="header_title">我的工单</span><img style="width: 25px;" @click="toRelease(-1)" src="../../img/add-new.png" slot="right" alt=""></x-header>
+        <x-header class="header_div" @on-click-back="goHome" :left-options="{backText: '', preventGoBack: true}">
+            <span class="header_title">我的工单</span>
+            <img style="width: 25px;" @click="toRelease(-1)" src="../../img/add-new.png" slot="right" alt="">
+        </x-header>
         <div style="height: 47px"></div>
         <tab :select="3" :names="names"></tab>
         <div class="topping" @click="update"><img src="../../img/top.png" alt=""></div>

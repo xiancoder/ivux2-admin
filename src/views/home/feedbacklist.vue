@@ -44,7 +44,7 @@
 <script>
 import {XTable, LoadMore, Scroller, Divider, Group} from 'vux'
 export default {
-    name: 'feedback-list',
+    name: 'feedbacklist',
     components: {
         XTable, LoadMore, Scroller, Divider, Group
     },

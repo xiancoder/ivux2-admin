@@ -1,10 +1,13 @@
 <template>
     <div>
-        <x-header :left-options="{showBack: false}" class="header_white"><span class="header_title">通知</span></x-header>
+        <x-header :left-options="{showBack: false}" class="header_white">
+            <span class="header_title">通知</span>
+        </x-header>
         <div class="header_blank" style="border-bottom: 1px solid #d7d7d7"></div>
         <div class="grey_search">
             <search v-model="keyword" cancel-text @on-change="searchNotice()"
-                    :auto-fixed="false" placeholder="搜索消息标题、内容"></search>
+                :auto-fixed="false" placeholder="搜索消息标题、内容">
+            </search>
         </div>
         <div class="no_follow" v-show="noticeList.length === 0 && mark">
             <div><img src="../../img/no_follow.png"></div>
@@ -12,7 +15,8 @@
         </div>
         <scroller lock-x  @on-scroll-bottom="onScrollBottom" ref="scrollerBottom" :scroll-bottom-offst="154" height="-154">
             <div style="padding-left: 75px">
-                <div class="notice_model" v-for="(notice, index) in noticeList" :key="index" @click="toInfo(notice.appJumpUrl, notice.id, notice.megTitel)">
+                <div class="notice_model" v-for="(notice, index) in noticeList" :key="index"
+                    @click="toInfo(notice.appJumpUrl, notice.id, notice.megTitel)">
                     <div class="notice_icon orderMsg">
                         <img src="../../img/notice-order.png" v-if="notice.megTitel === '工单消息'">
                         <img src="../../img/notice-vacation.png" v-else-if="isProcess(notice.megTitel)">
@@ -38,12 +42,11 @@
 </template>
 <script>
 import Cookies from 'js-cookie'
-import bottomMenu from '../components/bottom-menu.vue'
 import {Tabbar, TabbarItem, Scroller, LoadMore, Divider, Search} from 'vux'
 import {setTimeout} from 'timers'
 export default {
     name: 'notice-list',
-    components: { Tabbar, TabbarItem, Scroller, LoadMore, Divider, bottomMenu, Search },
+    components: { Tabbar, TabbarItem, Scroller, LoadMore, Divider, Search },
     data () {
         return {
             mark: false,

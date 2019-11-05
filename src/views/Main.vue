@@ -1,14 +1,17 @@
 <template>
     <div>
         <keep-alive>
-            <router-view v-if="$route.meta.keepAlive"></router-view>
+            <router-view v-if="$route.meta.keepAlive">
+            </router-view>
         </keep-alive>
-        <router-view v-if="!$route.meta.keepAlive"></router-view>
-        <bottom-menu :select="select+1" :unReadNum="$store.state.unReadNum" v-if="menu_show"></bottom-menu>
+        <router-view v-if="!$route.meta.keepAlive">
+        </router-view>
+        <bottom-menu :select="select+1" :unReadNum="$store.state.unReadNum" v-if="menu_show">
+        </bottom-menu>
     </div>
 </template>
 <script>
-import bottomMenu from './components/bottom-menu.vue'
+import bottomMenu from '@C/bottom-menu.vue'
 export default {
     components: {bottomMenu},
     data () {

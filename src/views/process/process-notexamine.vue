@@ -1,13 +1,3 @@
-<style scoped>
-    .pad15{ padding: 0 15px;}
-    .textLef{ text-align: left;}
-    .textRig{ text-align: right;}
-    .overhide{ overflow: hidden; text-overflow: ellipsis; white-space: nowrap;display: inline-block;}
-    .wid50{display: inline-block; width: 50%;}
-    .wid48{display: inline-block; width: 48%;}
-    .wid100{ width: 100%;}
-    .lineH26{ line-height: 26px;}
-</style>
 <template>
     <group class="my-group">
         <x-header @on-click-back="goHome" :left-options="{backText: '', preventGoBack: true}" style="background-color: #0094eb">我的人事流程</x-header>

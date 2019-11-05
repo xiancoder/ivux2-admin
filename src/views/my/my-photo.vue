@@ -1,6 +1,9 @@
 <template>
     <div>
-        <x-header class="fix_header" :left-options="{backText: ''}" :right-options="{showMore: true}" @on-click-more="addImg" style="background-color: #0094eb">我的头像</x-header>
+        <x-header class="fix_header" :left-options="{backText: ''}" :right-options="{showMore: true}"
+            @on-click-more="addImg" style="background-color: #0094eb">
+            我的头像
+        </x-header>
         <div class="mask" :style="{minHeight: bodyHeight+'px'}">
             <div class="photo_center">
                 <img :src="src + randomNum" style="max-width: 100%" v-show="userInfo.userPhoto">
@@ -11,7 +14,6 @@
     </div>
 </template>
 <script>
-
 export default {
     name: 'my-photo',
     components: { },

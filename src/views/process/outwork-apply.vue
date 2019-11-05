@@ -1,14 +1,3 @@
-<style>
-    .font14 .weui-cells{ font-size: 14px; padding: 10px 15px; line-height: 25px;}
-    .font14 .vux-checker-box{ margin-left: 20px;display: inline-block;}
-</style>
-<style scoped>
-    .demo2-item { width: 16px; height: 16px; border: 1px solid #ccc; border-radius: 50%; line-height: 40px; vertical-align: middle;}
-    .demo2-item-selected { background: #0094eb;}
-    .hei10{ background-color: #f5f7f9; height: 10px;}
-    .color666{ color: #666;}
-    .marR20{ margin-right: 20px;}
-</style>
 <template>
     <div>
         <x-header :left-options="{backText: ''}" class="header_fix">外出申请<a slot="right" style="color: #fff" @click="applyPost">提交</a></x-header>
@@ -176,3 +165,10 @@ export default {
     }
 }
 </script>
+<style scoped>
+    .font14 .weui-cells{ font-size: 14px; padding: 10px 15px; line-height: 25px;}
+    .font14 .vux-checker-box{ margin-left: 20px;display: inline-block;}
+    .demo2-item { width: 16px; height: 16px; border: 1px solid #ccc; border-radius: 50%; line-height: 40px; vertical-align: middle;}
+    .demo2-item-selected { background: #0094eb;}
+    .hei10{ background-color: #f5f7f9; height: 10px;}
+</style>

@@ -1,10 +1,3 @@
-<style lang='less'>
-    .follow_search1{ background-color: #f9f9f9; padding: 15px;}
-    .follow_search1 .weui-cells{ margin-top: 0; border-radius: 17px;}
-    .follow_search1 .weui-cells:before{ border: none;}
-    .follow_search1 .weui-cells:after{ border: none;}
-    .follow_input1{ height: 16px; font-size: 14px; padding: 5px 15px; color: #999999;}
-</style>
 <template>
     <group class="my-group">
         <x-header :left-options="{backText: ''}" style="background-color: #0094eb">添加关联客户
@@ -54,14 +47,9 @@
     </group>
 </template>
 <script>
-import Vue from 'vue'
-import {LoadingPlugin} from 'vux'
-import {Loading, Group, Cell, Badge, Search, XInput, XTable, XButton, AlertPlugin, ConfirmPlugin} from 'vux'
-Vue.use(ConfirmPlugin)
-Vue.use(AlertPlugin)
-Vue.use(LoadingPlugin)
+import {Loading, Group, Cell, Badge, Search, XInput, XTable, XButton} from 'vux'
 export default {
-    components: { Group, Cell, Badge, Search, XInput, XTable, XButton, ConfirmPlugin, Loading },
+    components: { Group, Cell, Badge, Search, XInput, XTable, XButton, Loading },
     mounted: function () {
         // this.getInfo()
     },
@@ -118,3 +106,10 @@ export default {
     }
 }
 </script>
+<style scoped>
+    .follow_search1{ background-color: #f9f9f9; padding: 15px;}
+    .follow_search1 .weui-cells{ margin-top: 0; border-radius: 17px;}
+    .follow_search1 .weui-cells:before{ border: none;}
+    .follow_search1 .weui-cells:after{ border: none;}
+    .follow_input1{ height: 16px; font-size: 14px; padding: 5px 15px; color: #999999;}
+</style>

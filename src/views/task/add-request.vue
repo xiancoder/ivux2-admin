@@ -22,11 +22,9 @@
     </div>
 </template>
 <script>
-import Vue from 'vue'
 import axios from 'axios'
-import {Group, Cell, AlertPlugin, Loading, Icon} from 'vux'
-Vue.use(AlertPlugin)
-import VueHtml5Editor1 from '@/plugins/vue-html5-editor'
+import {Group, Cell, Loading, Icon} from 'vux'
+import {VueHtml5Editor1} from '@/plugins/vue-html5-editor'
 const VueHtml5Editor = VueHtml5Editor1()
 export default {
     name: 'add-request',
@@ -65,7 +63,7 @@ export default {
                     title: '提示',
                     content: '追加内容不能为空！'
                 })
-            }  else {
+            } else {
                 var fd = new FormData()
                 fd.append('id', this.$route.query.taskId)
                 fd.append('taskAddContent', this.addContent)

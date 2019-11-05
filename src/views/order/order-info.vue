@@ -16,19 +16,19 @@
                             <span>发件人</span>
                             <span>{{response.founderName}}</span>
                             <span>{{response.date}}</span>
-                            <span class="tr" @click="showState">阅读状态</span>
+                            <span class="textRig" @click="showState">阅读状态</span>
                         </div>
                         <div class="receive" style="margin-bottom: 10px;">
                             <div>接收人</div>
                             <div>{{response.receiverName}}</div>
                         </div>
                         <div v-if="response.correlationName" class="receive">
-                            <div class="tl" style="width: 20px;">抄</div>
-                            <div class="tr" style="width: 20px;">送</div>
+                            <div class="textLef" style="width: 20px;">抄</div>
+                            <div class="textRig" style="width: 20px;">送</div>
                             <div>{{response.correlationName}}</div>
                         </div>
                     </div>
-                    <div class="remark_text tl borNone">
+                    <div class="remark_text textLef borNone">
                         <div :style="{width: textWid + 'px'}" v-html="response.workContent" class="task_content overHidden"></div>
                     </div>
                     <div class="enclosure" v-if="response.workEnCopy.length>0">

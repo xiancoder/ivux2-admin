@@ -1,7 +1,3 @@
-<style lang='less'>
-    .is_public .weui-icon-circle{ font-size: 18px;}
-    .is_public .weui-icon-success{ font-size: 18px;}
-</style>
 <template>
     <div>
         <x-header :left-options="{backText: ''}" class="header_fix">
@@ -194,3 +190,7 @@ export default {
     }
 }
 </script>
+<style scoped>
+    .is_public .weui-icon-circle{ font-size: 18px;}
+    .is_public .weui-icon-success{ font-size: 18px;}
+</style>

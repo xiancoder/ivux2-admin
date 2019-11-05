@@ -9,62 +9,25 @@
             </div>
             <div class="applicant_data">
                 <table>
-                    <tr>
-                        <td>提交时间</td>
-                        <td>{{info.createdTimeStr}}</td>
-                    </tr>
-                    <tr>
-                        <td>所在部门</td>
-                        <td>{{info.departments}}</td>
-                    </tr>
-                    <tr>
-                        <td>所在职位</td>
-                        <td>{{info.postName}}</td>
-                    </tr>
+                    <tr> <td>提交时间</td> <td>{{info.createdTimeStr}}</td> </tr>
+                    <tr> <td>所在部门</td> <td>{{info.departments}}</td> </tr>
+                    <tr> <td>所在职位</td> <td>{{info.postName}}</td> </tr>
                 </table>
                 <table style="margin-top: 10px">
-                    <tr>
-                        <td>加班日期</td>
-                        <td>{{info.overTimeDate}}</td>
-                    </tr>
-                    <tr>
-                        <td>事由</td>
-                        <td>{{info.reason}}</td>
-                    </tr>
+                    <tr> <td>加班日期</td> <td>{{info.overTimeDate}}</td> </tr>
+                    <tr> <td>事由</td> <td>{{info.reason}}</td> </tr>
                 </table>
                 <table style="margin-top: 10px;">
-                    <tr>
-                        <td>加班人</td>
-                        <td>{{info.leaveList[0].userName | arrToString}}</td>
-                    </tr>
-                    <tr>
-                        <td>加班时间</td>
-                        <td>{{info.leaveList[0].date}}</td>
-                    </tr>
-                    <tr>
-                        <td>时长(小时)</td>
-                        <td>{{info.leaveList[0].time}}</td>
-                    </tr>
+                    <tr> <td>加班人</td> <td>{{info.leaveList[0].userName | arrToString}}</td> </tr>
+                    <tr> <td>加班时间</td> <td>{{info.leaveList[0].date}}</td> </tr>
+                    <tr> <td>时长(小时)</td> <td>{{info.leaveList[0].time}}</td> </tr>
                 </table>
                 <table v-for="(row, index) in info.leaveList" :key="index" v-if="index !== 0 && showAll === 1">
-                    <tr>
-                        <td>加班人</td>
-                        <td>{{row.userName | arrToString}}</td>
-                    </tr>
-                    <tr>
-                        <td>加班时间</td>
-                        <td>{{row.date}}</td>
-                    </tr>
-                    <tr>
-                        <td>时长(小时)</td>
-                        <td>{{row.time}}</td>
-                    </tr>
+                    <tr> <td>加班人</td> <td>{{row.userName | arrToString}}</td> </tr>
+                    <tr> <td>加班时间</td> <td>{{row.date}}</td> </tr>
+                    <tr> <td>时长(小时)</td> <td>{{row.time}}</td> </tr>
                 </table>
-                <p
-                    v-if="info.leaveList.length !== 1"
-                    style="margin-top: 10px;"
-                    class="showAll"
-                    @click="showAllFun">
+                <p v-if="info.leaveList.length !== 1" style="margin-top: 10px;" class="showAll" @click="showAllFun">
                     {{showAll === 1 ? '收起' : '展开'}}
                     <img style="width: 16px;height: 16px;margin-left: 10px;" :class="showAll ? '' : 'tfm180'" src="../../img/showArrow.png" />
                 </p>

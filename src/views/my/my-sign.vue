@@ -1,6 +1,8 @@
 <template>
     <div>
-        <x-header @on-click-back="toMy" :left-options="{backText: '', preventGoBack: true}" style="background-color: #0094eb">维护落款</x-header>
+        <x-header @on-click-back="toMy" :left-options="{backText: '', preventGoBack: true}" style="background-color: #0094eb">
+            维护落款
+        </x-header>
         <div style="padding: 0 15px">
             <div class="sign_cell" @click="toSignPass" v-show="img !== ''">
                 <div style="float: left;margin-left: 10px">修改授权密码</div>
@@ -17,7 +19,6 @@
     </div>
 </template>
 <script>
-
 export default {
     name: 'my-sign',
     components: { },

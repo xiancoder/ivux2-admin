@@ -1,7 +1,3 @@
-<style scoped lang="less">
-    .customer_mark span{ background-color: #FF4844; color: white; }
-    .info-btns{ float: left; width: 110px; padding: 0; font-size: 15px; border-radius: 18px; margin: 15px 5px 0 5px; color: #0094EB;}
-</style>
 <template>
     <div>
         <x-header @on-click-back="goList" :left-options="{backText: '', preventGoBack: true}" style="background-color: #0094eb">客户信息</x-header>
@@ -198,3 +194,7 @@ export default {
     }
 }
 </script>
+<style scoped>
+    .customer_mark span{ background-color: #FF4844; color: white; }
+    .info-btns{ float: left; width: 110px; padding: 0; font-size: 15px; border-radius: 18px; margin: 15px 5px 0 5px; color: #0094EB;}
+</style>

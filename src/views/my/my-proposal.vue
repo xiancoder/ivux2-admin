@@ -1,14 +1,9 @@
-<style>
-    .proposal .weui-cells{ margin-top: 0px !important;}
-    .proposal .vux-no-group-title{ margin-top: 0px !important;}
-    .proposal .weui-cells .vux-label{ font-size: 14px !important;}
-    .proposal .weui-cells .vux-cell-placeholder{ font-size: 14px !important;}
-    .proposal .weui-cells .vux-cell-value{ font-size: 14px !important;}
-    .proposal .weui-cell__bd .weui-textarea{ font-size: 14px !important;}
-</style>
 <template>
     <div class="proposal">
-        <x-header class="back1" :left-options="{backText: ''}">吐槽与建议<a slot="right" style="color: #fff" @click="savePsd">保存</a></x-header>
+        <x-header class="back1" :left-options="{backText: ''}">
+            吐槽与建议
+            <a slot="right" style="color: #fff" @click="savePsd">保存</a>
+        </x-header>
         <group>
             <popup-radio title="类型" :options="types" v-model="type_id" placeholder="请选择类型"></popup-radio>
         </group>
@@ -68,5 +63,11 @@ export default {
 }
 </script>
 <style scoped>
+    .proposal .weui-cells{ margin-top: 0px !important;}
+    .proposal .vux-no-group-title{ margin-top: 0px !important;}
+    .proposal .weui-cells .vux-label{ font-size: 14px !important;}
+    .proposal .weui-cells .vux-cell-placeholder{ font-size: 14px !important;}
+    .proposal .weui-cells .vux-cell-value{ font-size: 14px !important;}
+    .proposal .weui-cell__bd .weui-textarea{ font-size: 14px !important;}
     .back1{ background-color: #0094eb;}
 </style>

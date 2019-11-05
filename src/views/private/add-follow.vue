@@ -1,6 +1,9 @@
 <template>
     <div>
-        <x-header :left-options="{backText: ''}" style="background-color: #0094eb">写跟进<a slot="right" style="color: #fff" @click="addFollow">保存</a></x-header>
+        <x-header :left-options="{backText: ''}" style="background-color: #0094eb"
+            写跟进
+            <a slot="right" style="color: #fff" @click="addFollow">保存</a>
+        </x-header>
         <div class="add_cusName" style="padding: 16px 0 16px 15px;line-height: 18px;font-size: 16px;color: #333;border-bottom: 1px solid #e1e1e1">
             <span style="display: inline-block;border-left: 2px solid #0094eb">&nbsp;</span>{{cusName}}
         </div>

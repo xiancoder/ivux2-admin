@@ -70,10 +70,8 @@
     </div>
 </template>
 <script>
-// 引入组件
-
-import ccInfo from '../components/ccInfo.vue'
-import nodeInfo from '../components/nodeInfo.vue'
+import ccInfo from '../components/ccInfo.vue' // 引入组件
+import nodeInfo from '../components/nodeInfo.vue' // 引入组件
 export default {
     name: 'change-info',
     components: { ccInfo, nodeInfo }, // 组件声明

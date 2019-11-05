@@ -1,10 +1,3 @@
-<style>
-    .my_info .weui-cells{ font-size: 14px; margin-top: 0; }
-    .my_info .weui-cell{ height: 30px; }
-    .my_info .weui-cell:before{ left: 0; }
-    .my_info .vux-cell-primary{ color: #333; }
-    .my_info .weui-cell__ft{ color: #666; }
-</style>
 <template>
     <div>
         <x-header :left-options="{backText: ''}" style="background-color: #0094eb">我的信息</x-header>
@@ -63,6 +56,11 @@ export default {
 }
 </script>
 <style scoped>
+    .my_info .weui-cells{ font-size: 14px; margin-top: 0; }
+    .my_info .weui-cell{ height: 30px; }
+    .my_info .weui-cell:before{ left: 0; }
+    .my_info .vux-cell-primary{ color: #333; }
+    .my_info .weui-cell__ft{ color: #666; }
     .my_photo{ width: 60px; height: 60px; border-radius: 30px;}
     .name_photo{display: inline-block; width: 60px; height: 60px; line-height: 60px; border-radius: 30px; text-align: center; background-color: #fff; color: #0094eb;}
 </style>

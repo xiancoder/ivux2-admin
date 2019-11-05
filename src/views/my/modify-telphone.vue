@@ -1,10 +1,3 @@
-<style>
-    .tel .weui-cells{ font-size: 16px; margin-top: 0;}
-    .tel .weui-cell{ height: 35px; padding-right: 0;}
-    .tel .weui-cells:after{ border: none;}
-    .tel .vux-cell-primary{ color: #333;}
-    .tel .weui-cell__ft{ color: #666;}
-</style>
 <template>
     <div>
         <x-header :left-options="{backText: ''}" style="background-color: #0094eb">修改电话<a slot="right" style="color: #fff" @click="saveTel">保存</a></x-header>
@@ -74,3 +67,10 @@ export default {
     }
 }
 </script>
+<style scoped>
+    .tel .weui-cells{ font-size: 16px; margin-top: 0;}
+    .tel .weui-cell{ height: 35px; padding-right: 0;}
+    .tel .weui-cells:after{ border: none;}
+    .tel .vux-cell-primary{ color: #333;}
+    .tel .weui-cell__ft{ color: #666;}
+</style>

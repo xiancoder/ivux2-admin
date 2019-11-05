@@ -123,10 +123,8 @@
     </div>
 </template>
 <script>
-import Vue from 'vue'
-import VueHtml5Editor from 'vue-html5-editor'
 import {Group, Cell, XInput, Loading, XTextarea, Datetime, Popup, Search, Icon, Alert, Actionsheet} from 'vux'
-import VueHtml5Editor1 from '@/plugins/vue-html5-editor'
+import {VueHtml5Editor1} from '@/plugins/vue-html5-editor'
 const VueHtml5Editor = VueHtml5Editor1()
 export default {
     name: 'task-info',

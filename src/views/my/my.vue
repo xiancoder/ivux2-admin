@@ -10,28 +10,18 @@
             </div>
         </div>
         <div class="content">
-            <div @click="toPassword">
-                <img src="../../img/password.png" alt="">
-                修改密码
-            </div>
-            <div @click="toImg">
-                <img style="width: 26px;" src="../../img/photo.png" alt="">
-                认证照片
-            </div>
-            <div @click="toSign">
-                <img src="../../img/inscription.png" alt="">
-                设置落款
-            </div>
+            <div @click="toPassword"> <img src="../../img/password.png" alt=""> 修改密码 </div>
+            <div @click="toImg"> <img style="width: 26px;" src="../../img/photo.png" alt=""> 认证照片 </div>
+            <div @click="toSign"> <img src="../../img/inscription.png" alt=""> 设置落款 </div>
         </div>
         <div class="logout" @click="userLogout">退出系统</div>
     </div>
 </template>
 <script>
 import Cookies from 'js-cookie'
-import bottomMenu from '../components/bottom-menu.vue'
 export default {
     name: 'my',
-    components: {bottomMenu},
+    components: {},
     data () {
         return {
             randomNum: ' ? t=' + Math.ceil(Math.random() * 10000),

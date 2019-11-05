@@ -2,23 +2,23 @@
 <template>
     <div>
         <x-header @on-click-back="goHome" :left-options="{backText: '', preventGoBack: true}" style="background-color: #0094eb">测试</x-header>
-        <div class="tc" style="padding-top: 20px">
+        <div class="textCen" style="padding-top: 20px">
             <p style="margin-bottom: 20px">触发次数：{{debounceNum}}</p>
             <button @click="deNum" class="btn">debounce</button> <button @click="debounce" class="btn" style="background-color: #ec8b89">保存配置</button>
             <div class="check_container">
-                <div style="line-height: 35px" class="color_333">等待延迟（ms）</div>
+                <div style="line-height: 35px" class="color333">等待延迟（ms）</div>
                 <checker v-model="delay" type="radio" default-item-class="unSelect" selected-item-class="isSelect">
                     <checker-item value="500">500</checker-item>
                     <checker-item value="1500">1500</checker-item>
                     <checker-item value="3000">3000</checker-item>
                 </checker>
-                <div style="line-height: 35px" class="color_333">最大延迟（ms）</div>
+                <div style="line-height: 35px" class="color333">最大延迟（ms）</div>
                 <checker v-model="maxDelay" @on-change="getMax" type="radio" default-item-class="unSelect" selected-item-class="isSelect">
                     <checker-item value="0">无</checker-item>
                     <checker-item value="1000">1000</checker-item>
                     <checker-item value="3000">3000</checker-item>
                 </checker>
-                <div style="line-height: 35px" class="color_333">触发时机</div>
+                <div style="line-height: 35px" class="color333">触发时机</div>
                 <checker v-model="point" @on-change="getOpt" type="radio" default-item-class="unSelect" selected-item-class="isSelect">
                     <checker-item value="0">延迟尾</checker-item>
                     <checker-item value="1">延迟头</checker-item>
@@ -26,17 +26,17 @@
             </div>
         </div>
         <div class="grey_line"></div>
-        <div class="tc" style="padding-top: 20px">
+        <div class="textCen" style="padding-top: 20px">
             <p style="margin-bottom: 20px">触发次数：{{throttleNum}}</p>
             <button @click="thNum" class="btn">throttle</button> <button @click="throttle" class="btn" style="background-color: #ec8b89">保存配置</button>
             <div class="check_container">
-                <div style="line-height: 35px" class="color_333">等待延迟（ms）</div>
+                <div style="line-height: 35px" class="color333">等待延迟（ms）</div>
                 <checker v-model="thDelay" type="radio" default-item-class="unSelect" selected-item-class="isSelect">
                     <checker-item value="500">500</checker-item>
                     <checker-item value="1500">1500</checker-item>
                     <checker-item value="3000">3000</checker-item>
                 </checker>
-                <div style="line-height: 35px" class="color_333">触发时机</div>
+                <div style="line-height: 35px" class="color333">触发时机</div>
                 <checker v-model="pointTh" @on-change="getOptTh" type="radio" default-item-class="unSelect" selected-item-class="isSelect">
                     <checker-item value="0">延迟尾</checker-item>
                     <checker-item value="1">延迟头</checker-item>
@@ -46,7 +46,6 @@
     </div>
 </template>
 <script>
-
 import {PopupPicker, debounce, throttle, Checker, CheckerItem, Qrcode} from 'vux'
 export default {
     name: 'invoice',

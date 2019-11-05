@@ -1,9 +1,12 @@
 <template>
     <div>
-        <x-header :left-options="{backText: ''}" style="background-color: #0094eb">跟进记录</x-header>
+        <x-header :left-options="{backText: ''}" style="background-color: #0094eb">
+            跟进记录
+        </x-header>
         <div class="follow_search">
             <search v-model="keyWord" cancel-text @on-change="searchFollow()"
-                    :auto-fixed="false" @on-cancel="searchFollow()" @on-clear="searchFollow()" placeholder="请输入商务姓名、客户名称"></search>
+                :auto-fixed="false" @on-cancel="searchFollow()" @on-clear="searchFollow()" placeholder="请输入商务姓名、客户名称">
+            </search>
         </div>
         <scroller lock-x  @on-scroll-bottom="onScrollBottom" ref="scrollerBottom" :scroll-bottom-offst="100" height="-100">
             <div style="padding: 0 15px 0 25px">

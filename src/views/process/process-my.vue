@@ -1,23 +1,8 @@
-<style scoped>
-    .myprocessTable tr td:before{ border: none;}
-    table tr{ border-bottom: 1px solid #e0e0e0;}
-    .pad15{ box-sizing: border-box; padding: 0 15px;}
-    .textLef{ text-align: left;}
-    .textRig{ text-align: right;}
-    table tr td{ line-height: 26px;}
-    .overhide{ overflow: hidden; text-overflow: ellipsis; white-space: nowrap;display: inline-block;}
-    tbody tr td{ border: none;}
-    .color999{ color: #999;}
-    .wid50{display: inline-block; width: 50%;}
-    .wid48{display: inline-block; width: 48%;}
-    .wid100{ width: 100%;}
-    .color1{ color: rgb(3, 149, 236);}
-    .color2{ color: rgb(36, 177, 136);}
-    .color3{ color: red;}
-</style>
 <template>
     <group class="my-group">
-        <x-header @on-click-back="goHome" :left-options="{backText: '', preventGoBack: true}" style="background-color: #0094eb">我的人事流程</x-header>
+        <x-header @on-click-back="goHome" :left-options="{backText: '', preventGoBack: true}" style="background-color: #0094eb">
+            我的人事流程
+        </x-header>
         <tab active-color="#0094eb" :animate="false">
             <tab-item selected @on-item-click="onItemClick">我申请的</tab-item>
             <tab-item @on-item-click="onItemClick">待我审核的</tab-item>
@@ -333,3 +318,8 @@ export default {
     }
 }
 </script>
+<style scoped>
+    .myprocessTable tr td:before{ border: none;}
+    table tr{ border-bottom: 1px solid #e0e0e0;}
+    table tr td{ line-height: 26px; border: none;}
+</style>

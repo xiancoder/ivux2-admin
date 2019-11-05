@@ -10,32 +10,14 @@
             </div>
             <div class="applicant_data">
                 <table>
-                    <tr>
-                        <td>所属项目</td>
-                        <td>{{info.projectName}}</td>
-                    </tr>
-                    <tr>
-                        <td>所在部门</td>
-                        <td>{{info.department}}</td>
-                    </tr>
-                    <tr>
-                        <td>所属职位</td>
-                        <td>{{info.post}}</td>
-                    </tr>
-                    <tr>
-                        <td>申请时间</td>
-                        <td>{{info.createdTime}}</td>
-                    </tr>
+                    <tr> <td>所属项目</td> <td>{{info.projectName}}</td> </tr>
+                    <tr> <td>所在部门</td> <td>{{info.department}}</td> </tr>
+                    <tr> <td>所属职位</td> <td>{{info.post}}</td> </tr>
+                    <tr> <td>申请时间</td> <td>{{info.createdTime}}</td> </tr>
                 </table>
                 <table style="margin-top: 10px" v-show="showAll === 1">
-                    <tr>
-                        <td>企业名称</td>
-                        <td>{{info.companyName}}</td>
-                    </tr>
-                    <tr>
-                        <td>是否首次合作</td>
-                        <td>{{info.isFirst === 1 ? '是' : '否'}}</td>
-                    </tr>
+                    <tr> <td>企业名称</td> <td>{{info.companyName}}</td> </tr>
+                    <tr> <td>是否首次合作</td> <td>{{info.isFirst === 1 ? '是' : '否'}}</td> </tr>
                 </table>
                 <p style="margin-top: 10px;" class="showAll" @click="showAllFun">
                     {{showAll === 1 ? '收起' : '展开'}}
@@ -51,8 +33,6 @@
     </div>
 </template>
 <script>
-// 引入组件
-
 import ccInfo from '../components/ccInfo.vue'
 import nodeInfo from '../components/nodeInfo.vue'
 export default {

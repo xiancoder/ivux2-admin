@@ -16,9 +16,7 @@
     </div>
 </template>
 <script>
-import Vue from 'vue'
-import {Group, Cell, AlertPlugin, Popup, Search} from 'vux'
-Vue.use(AlertPlugin)
+import {Group, Cell, Popup, Search} from 'vux'
 export default {
     name: 'change-leader',
     components: {Group, Cell, Popup, Search},

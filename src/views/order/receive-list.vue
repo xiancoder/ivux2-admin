@@ -211,6 +211,6 @@ export default {
     }
 }
 </script>
-<style scoped lang='less'>
+<style scoped>
     .myprocessTable tr td:before{ border: none;}
 </style>

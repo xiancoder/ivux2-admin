@@ -110,24 +110,7 @@ export default {
                 pageIndex: 1
             },
             loadOne: 0, // 解决下拉触发多次
-            statusData: [
-                {
-                    id: -1,
-                    name: '不限'
-                },
-                {
-                    id: 0,
-                    name: '审核中'
-                },
-                {
-                    id: 1,
-                    name: '被驳回'
-                },
-                {
-                    id: 2,
-                    name: '已通过'
-                }
-            ]
+            statusData: [ { id: -1, name: '不限' }, { id: 0, name: '审核中' }, { id: 1, name: '被驳回' }, { id: 2, name: '已通过' } ]
         }
     },
     methods: {
@@ -316,16 +299,3 @@ export default {
     }
 }
 </script>
-<style scoped>
-    .pad15{ padding: 0 15px;}
-    .textLef{ text-align: left;}
-    .textRig{ text-align: right;}
-    .overhide{ overflow: hidden; text-overflow: ellipsis; white-space: nowrap;display: inline-block;}
-    .wid50{display: inline-block; width: 50%;}
-    .wid48{display: inline-block; width: 48%;}
-    .wid100{ width: 100%;}
-    .lineH26{ line-height: 26px;}
-    .color1{ color: rgb(3, 149, 236);}
-    .color2{ color: rgb(36, 177, 136);}
-    .color3{ color: red;}
-</style>

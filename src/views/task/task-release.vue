@@ -53,10 +53,9 @@
     </div>
 </template>
 <script>
-import Vue from 'vue'
 import axios from 'axios'
 import {Group, Cell, XInput, PopupPicker, Loading, Datetime, Popup, Search, Icon} from 'vux'
-import VueHtml5Editor1 from '@/plugins/vue-html5-editor'
+import {VueHtml5Editor1} from '@/plugins/vue-html5-editor'
 const VueHtml5Editor = VueHtml5Editor1()
 export default {
     name: 'task-release',

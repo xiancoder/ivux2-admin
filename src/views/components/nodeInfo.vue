@@ -21,7 +21,7 @@
                     <span style="margin-left: 4px;color: #24b188;" v-if="row[0].status === 3">已审阅</span>
                     <span style="margin-left: 4px;color: red;" v-if="row[0].status === 1">已驳回</span>
                     <span class="time_right" v-if="row[0].status !== 0">{{row[0].createdTimeStr}}</span>
-                    <p v-if="(row[0].status === 1 || row[0].status === 2) && row[0].rejectReason" style="padding-left: 57px;line-height: 20px;margin-bottom: 5px" :class="row[0].status === 1 ? 'colRed' :'col8'">{{row[0].rejectReason}}</p>
+                    <p v-if="(row[0].status === 1 || row[0].status === 2) && row[0].rejectReason" style="padding-left: 57px;line-height: 20px;margin-bottom: 5px" :class="row[0].status === 1 ? 'red' :'color8'">{{row[0].rejectReason}}</p>
                     <img v-if="info.approverList.length - 1 !== index && index<approvalNode" class="info_buleArrow" :class="(row[0].status === 1 || row[0].status === 2) && row[0].rejectReason ? 'top62' : ''" src="../../img/dBuleArrow.png" />
                     <img v-if="info.approverList.length - 1 !== index && index >= approvalNode" class="info_buleArrow" src="../../img/dGrayArrow.png" />
                 </div>
@@ -35,7 +35,7 @@
                         <span style="margin-left: 4px;color: #24b188;" v-if="list.status === 2">已同意</span>
                         <span style="margin-left: 4px;color: red;" v-if="list.status === 1">已驳回</span>
                         <span class="time_right" v-if="list.status !== 0">{{list.createdTimeStr}}</span>
-                        <p style="padding-left: 57px;line-height: 20px;" :class="list.status === 1 ? 'colRed' :'col8'" v-if="(list.status === 1 || list.status === 2) && list.rejectReason">{{list.rejectReason}}</p>
+                        <p style="padding-left: 57px;line-height: 20px;" :class="list.status === 1 ? 'red' :'color8'" v-if="(list.status === 1 || list.status === 2) && list.rejectReason">{{list.rejectReason}}</p>
                     </div>
                     <img v-if="info.approverList.length - 1 !== index && index<approvalNode" class="info_buleArrowComplex" src="../../img/dBuleArrow.png" />
                     <img v-if="info.approverList.length - 1 !== index && index >= approvalNode" class="info_buleArrowComplex" src="../../img/dGrayArrow.png" />
@@ -65,18 +65,6 @@ export default {
             // 拿到审批节点的下标
             deep: true,
             handler (newVal) {
-                // if (newVal.status === 0 || newVal.status === 1) {
-                //     for (let x = 0; x <newVal.approverList.length; x++) {
-                //         for (let y = 0; y < newVal.approverList[x].length; y++) {
-                //             if (newVal.approverList[x][y].status === 0 || newVal.approverList[x][y].status === 1) {
-                //                 this.approvalNode = x
-                //                 return
-                //             }
-                //         }
-                //     }
-                // } else {
-                //     this.approvalNode = newVal.approverList.length
-                // }
                 for (let x = 0; x < newVal.approverList.length; x++) {
                     for (let y = 0; y < newVal.approverList[x].length; y++) {
                         if (newVal.approverList[x][y].status === 0 || newVal.approverList[x][y].status === 1) {
@@ -100,6 +88,4 @@ export default {
     .borderBlue{ border: 1px dashed #0395ec; padding: 5px;}
     .hei_auto{ min-height: 70px; height: auto !important;}
     .top62{ top: 62% !important;}
-    .col8{ color: #24b188;}
-    .colRed{ color: red;}
 </style>

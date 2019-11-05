@@ -11,14 +11,8 @@ export default {
     // dsf-2019-10-25 tab切换组件
     name: 'tab',
     props: {
-        select: {
-            type: Number,
-            default: () => null
-        },
-        names: {
-            type: Array,
-            default: () => []
-        }
+        select: { type: Number, default: () => null },
+        names: { type: Array, default: () => [] }
     },
     data () {
         return {

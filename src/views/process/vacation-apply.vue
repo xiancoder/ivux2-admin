@@ -30,11 +30,11 @@
             </group>
         </div>
         <div style="padding: 16px 0px 16px 0px;font-size: 12px;text-align: center;border-top: 1px solid #f1f1f1;">提示：请假时长以半小时为单位, 若有误请自行修改</div>
-        <div class="divide tc blue" @click="addApply" v-show="applyList.length === 1">+ 添加请假类型</div>
+        <div class="divide textCen blue" @click="addApply" v-show="applyList.length === 1">+ 添加请假类型</div>
         <div class="grey_line" v-show="applyList.length === 2"></div>
         <group gutter="0">
             <x-textarea v-model="reason" placeholder="请输入请假事由" :max="50" style="font-size: 14px">
-                <div slot="label" style="padding-right: 10px" class="color_333"><span class="red">* </span>请假事由</div>
+                <div slot="label" style="padding-right: 10px" class="color333"><span class="red">* </span>请假事由</div>
             </x-textarea>
         </group>
         <!-- 图片证明根据当前存在的申请类型来判断展示与否 -->
@@ -71,16 +71,16 @@
         <!-- 请假审批人全部流程 -->
         <div class="scroll_container">
             <div style="padding: 10px 15px">审批人</div>
-            <div class="node_error red tc" v-if="!this.nodeStatus">
+            <div class="node_error red textCen" v-if="!this.nodeStatus">
                 <div>请联系人事配置审批流程</div>
                 <div class="hei20"></div>
             </div>
             <div style="width: 100%;overflow: hidden;" v-else v-for="(row, index) in approvalNode" :key="index">
                 <div style="padding: 10px 15px">{{row.dayName}}</div>
                 <nav class="scroll_list">
-                    <div class="inline_block nodeDiv" :class="row2.length>1 ? 'paddR54' : ''" v-for="(row2, index2) in row.users" :key="index2">
+                    <div class="inline_block nodeDiv" :class="row2.length>1 ? 'padR54' : ''" v-for="(row2, index2) in row.users" :key="index2">
                         <div :class="row2.length>1 ? 'nodeBorder' : ''" style="display: flex;">
-                            <div class="node2 tc"  v-for="(row3, index3) in row2" :key="index3" >
+                            <div class="node2 textCen"  v-for="(row3, index3) in row2" :key="index3" >
                                 <img :src="row3.photo" v-show="row3.photo !== ''" class="photo_img">
                                 <span class="first_name" v-show="row3.photo === ''">{{row3.userName | firstName}}</span>
                                 <br>{{row3.userName}}
@@ -498,7 +498,6 @@ export default {
 <style scoped>
     .timeSelect{ width: 40px; height: 25px; border-top: 0; border-right: 0; border-left: 0; border-bottom: 1px solid #ccc; text-align: center; outline: 0;}
     .nodeDiv{ position: relative; padding-right: 44px;}
-    .paddR54{ padding-right: 54px;}
     .nodeBorder{ border: 1px dashed rgb(3, 149, 236); padding: 6px; margin-left: 16px;}
     .node2{ flex: 1; padding: 0 15px; width: 45px;}
     .node_to2{ position: absolute; right: 14px; top: 15px; width: 20px;}

@@ -58,9 +58,7 @@
     </group>
 </template>
 <script>
-import Vue from 'vue'
-import {Group, Badge, ButtonTab, XTable, Swipeout, SwipeoutItem, Cell, XButton, SwipeoutButton, ButtonTabItem, AlertPlugin} from 'vux'
-Vue.use(AlertPlugin)
+import {Group, Badge, ButtonTab, XTable, Swipeout, SwipeoutItem, Cell, XButton, SwipeoutButton, ButtonTabItem} from 'vux'
 export default {
     components: {Group, Badge, ButtonTab, Swipeout, SwipeoutItem, Cell, XButton, SwipeoutButton, ButtonTabItem, XTable},
     mounted: function () {

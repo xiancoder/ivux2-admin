@@ -35,9 +35,7 @@
     </div>
 </template>
 <script>
-import Vue from 'vue'
-import {Group, Cell, AlertPlugin, Popup, Search, Icon} from 'vux'
-Vue.use(AlertPlugin)
+import {Group, Cell, Popup, Search, Icon} from 'vux'
 export default {
     name: 'response-edit',
     components: {Group, Cell, Popup, Search, Icon},

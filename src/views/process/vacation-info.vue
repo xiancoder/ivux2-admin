@@ -350,13 +350,7 @@ export default {
 <style scoped>
     .hei_auto{ min-height: 70px; height: auto !important;}
     .top62{ top: 62% !important;}
-    .posR{ position: relative;}
     .hei10{ height: 10px; background: #f5f6f8;}
-    .marL4{ margin-left: 4px;}
-    .colec{ color: #0395ec;}
-    .colcc{ color: #cccccc;}
-    .col8{ color: #24b188;}
-    .colRed{ color: red;}
     .mask{ position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 999; background: #000; opacity: .2; /* 元素永远不会成为鼠标事件的target */ pointer-events: none;}
     .recall{ width: 130px; height: 130px; border: 1px solid #4a4848; border-radius: 100%; color: #4a4848; text-align: center; line-height: 130px; font-size: 28px; position: absolute; top: 64px; right: 24px;transform: rotate(30deg);}
     .copier{ color: #666; font-size: 14px; width: 90%; margin: 0 auto; border-top: 1px solid #f0f0f0; padding-top: 10px;}
