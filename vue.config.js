@@ -46,23 +46,8 @@ module.exports = {
         proxy: {
             // 匹配代理的url
             '/api': {
-                target: 'http://172.30.30.205:10071/',
-                pathRewrite: {'^/api': '/api'},
-                changeOrigin: true
-            },
-            '/Login': {
-                target: 'http://172.30.30.205:10071/',
-                pathRewrite: {'^/Login': '/Login'},
-                changeOrigin: true
-            },
-            '/fllowup': { // 用于图片和文件(跟进记录)
-                target: 'http://172.30.30.205:10071/',
-                pathRewrite: {'^/fllowup': '/fllowup'},
-                changeOrigin: true
-            },
-            '/file': { // 用于文件下载(失败的导入文件)
-                target: 'http://172.30.30.205:10071/',
-                pathRewrite: {'^/file': '/file'},
+                target: 'http://localhost:4010/',
+                pathRewrite: {'^/api': '/apioa'},
                 changeOrigin: true
             }
         }

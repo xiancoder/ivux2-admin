@@ -105,5 +105,52 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-    @import '../style/login.less';
+.user_name .weui-cells{
+    margin-top: 0;
+    &:before{
+        border: none;
+    }
+}
+.user_password .weui-cells:before{
+    border: none;
+}
+.input_active .weui-cells:after{
+    border-color: #2599e4;
+}
+.options{
+    font-size: 13px; height: 40px; line-height: 40px;
+    .weui-icon-circle{
+        font-size: 18px;
+    }
+    .weui-icon-success{
+        font-size: 18px;
+    }
+}
+.xxxx{
+    margin-bottom: 10px;height:100px;
+}
+.login_container{
+    padding: 0 15%; text-align: center;
+}
+.logo_container{
+    padding: 40px 0 20px 0; font-size: 18px; color: #9A9A9A;
+    img{
+        width: 30%;
+    }
+}
+.icon_focus{
+    color: #2599e4;
+}
+.login_icon{
+    margin-right: 10px;
+}
+.login_button{
+    margin-top: 30px; background-color: #0094eb; line-height: 36px; border-radius: 18px; color: #ffffff;
+}
+.qq_login{
+    font-size: 13px; color: #9A9A9A; margin-top: 15px;
+    img{
+        width: 50px;
+    }
+}
 </style>
