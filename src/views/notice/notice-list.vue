@@ -7,17 +7,17 @@
                     :auto-fixed="false" placeholder="搜索消息标题、内容"></search>
         </div>
         <div class="no_follow" v-show="noticeList.length === 0 && mark">
-            <div><img src="../../img/no_follow.png"></div>
+            <div><img src="/static/img.icon/no_follow.png"></div>
             没有通知
         </div>
         <scroller lock-x  @on-scroll-bottom="onScrollBottom" ref="scrollerBottom" :scroll-bottom-offst="154" height="-154">
             <div style="padding-left: 75px">
                 <div class="notice_model" v-for="(notice, index) in noticeList" :key="index" @click="toInfo(notice.appJumpUrl, notice.id, notice.megTitel)">
                     <div class="notice_icon orderMsg">
-                        <img src="../../img/notice-order.png" v-if="notice.megTitel === '工单消息'">
-                        <img src="../../img/notice-vacation.png" v-else-if="isProcess(notice.megTitel)">
-                        <img src="../../img/notice-invoice.png" v-else-if="notice.megTitel === '发票领取'">
-                        <img src="../../img/notice-other.png" v-else>
+                        <img src="/static/img.icon/notice-order.png" v-if="notice.megTitel === '工单消息'">
+                        <img src="/static/img.icon/notice-vacation.png" v-else-if="isProcess(notice.megTitel)">
+                        <img src="/static/img.icon/notice-invoice.png" v-else-if="notice.megTitel === '发票领取'">
+                        <img src="/static/img.icon/notice-other.png" v-else>
                     </div>
                     <span class="notice_status" v-if="!notice.isRead"></span>
                     <div class="notice_msg">

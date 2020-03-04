@@ -1,14 +1,16 @@
 import Main from '@/views/Main.vue'
 import loginPage from '@/views/login.vue'
-import homePage from '@/views/home/home.vue'
 import downloadPage from '@/views/home/download.vue'
 
-export const loginRouter = { path: '/login', name: 'login', meta: { title: 'Login - 登录' }, component: loginPage };
-export const downloadRouter = { path: '/download', name: 'download', meta: { title: 'download - 下载apk' }, component: downloadPage };
+import home from './routers.home'
+
+export const loginRouter = { path: '/login', name: 'login', meta: { title: 'Login - 登录' }, component: loginPage }
+export const downloadRouter = { path: '/download', name: 'download', meta: { title: 'download - 下载apk' }, component: downloadPage }
 export const mainRouter = {
-    path: '/', name: 'main', redirect: '/login', component: Main,
+    path: '/', redirect: '/login', component: Main,
     children: [
-        {path: 'home', name: 'home_index', component: homePage},
+        home,
+
         // 反馈意见列表
         {path: 'feedback-list', name: 'feedback-list', component: () => import('@/views/home/feedback-list.vue')},
         // 发票统计
@@ -165,34 +167,12 @@ export const mainRouter = {
         // 发票申请详情
         {path: 'business/invoice', name: 'invoice-info', component: () => import('@/views/business/invoice-info.vue')},
         // 广告维护申请详情
-        {path: 'business/maintain', name: 'maintain-info', component: () => import('@/views/business/maintain-info.vue')},
-        // 已发工单--我的工单
-        {path: 'order/send-list', name: 'send-list', component: () => import('@/views/order/send-list.vue')},
-        // 已收工单--我的工单
-        {path: 'order/receive-list', name: 'receive-list', component: () => import('@/views/order/receive-list.vue')},
-        // 草稿箱--我的工单
-        {path: 'order/drafts-list', name: 'drafts-list', component: () => import('@/views/order/drafts-list.vue')},
-        // 已删除--我的工单
-        {path: 'order/end-list', name: 'end-list', component: () => import('@/views/order/end-list.vue')},
-        // 未完结列表--下属工单
-        {path: 'order/unEndSub-list', name: 'unEndSub-list', component: () => import('@/views/order/unEndSub-list.vue')},
-        // 已完结列表--下属工单
-        {path: 'order/endSub-list', name: 'endSub-list', component: () => import('@/views/order/endSub-list.vue')},
-        // 工单详情
-        {path: 'order/order-info', name: 'order-info', component: () => import('@/views/order/order-info.vue')},
-        // 工单发布
-        {path: 'order/release', name: 'order-release', component: () => import('@/views/order/order-release.vue')},
-        // 工单回复
-        {path: 'order/reply', name: 'order-reply', component: () => import('@/views/order/order-reply.vue')},
-        // 组列表
-        {path: 'order/group-list', name: 'group-list', component: () => import('@/views/order/group-list.vue')}
-        // 组添加/编辑
-        // {path: 'order/group-edit', name: 'group-edit', component: () => import('@/views/order/group-edit.vue')},
+        {path: 'business/maintain', name: 'maintain-info', component: () => import('@/views/business/maintain-info.vue')}
     ]
-};
+}
 
 export const routers = [
     loginRouter,
     downloadRouter,
     mainRouter
-];
+]
