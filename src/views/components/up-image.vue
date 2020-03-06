@@ -49,13 +49,13 @@ export default {
         },
         getObjectURL (file) {
             var url = null
-            if (window.createObjectURL !=undefined) {
+            if (window.createObjectURL) {
                 // basic
                 url = window.createObjectURL(file)
-            } else if (window.URL !=undefined) {
+            } else if (window.URL) {
                 // mozilla(firefox)
                 url = window.URL.createObjectURL(file)
-            } else if (window.webkitURL !=undefined) {
+            } else if (window.webkitURL) {
                 // webkit or chrome
                 url = window.webkitURL.createObjectURL(file)
             }
@@ -116,27 +116,22 @@ export default {
             }
         },
         getRoundedCanvas (sourceCanvas) {
-                var canvas = document.createElement('canvas')
-                var context = canvas.getContext('2d')
-                var width = sourceCanvas.width
-                var height = sourceCanvas.height
-                canvas.width = width
-                canvas.height = height
-                context.imageSmoothingEnabled = true
-                context.drawImage(sourceCanvas, 0, 0, width, height)
-                context.globalCompositeOperation = 'destination-in'
-                context.beginPath()
-                context.arc( width / 2, height / 2,
-                        Math.min(width, height) / 2,
-                        0,
-                        2 * Math.PI,
-                        true
-                )
-                context.fill()
-                return canvas
+            var canvas = document.createElement('canvas')
+            var context = canvas.getContext('2d')
+            var width = sourceCanvas.width
+            var height = sourceCanvas.height
+            canvas.width = width
+            canvas.height = height
+            context.imageSmoothingEnabled = true
+            context.drawImage(sourceCanvas, 0, 0, width, height)
+            context.globalCompositeOperation = 'destination-in'
+            context.beginPath()
+            context.arc(width / 2, height / 2, Math.min(width, height) / 2, 0, 2 * Math.PI, true)
+            context.fill()
+            return canvas
         },
         postImg () {
-                // 这边写图片的上传
+            // 这边写图片的上传
         }
     },
     mounted () {
@@ -144,12 +139,12 @@ export default {
         var self = this
         var image = document.getElementById('image')
         this.cropper = new Cropper(image, {
-                aspectRatio: 1 / 1,
-                viewMode: 1, background: false,
-                zoomable: false,
-                ready: function () {
-                        self.croppable = true
-                }
+            aspectRatio: 1 / 1,
+            viewMode: 1, background: false,
+            zoomable: false,
+            ready: function () {
+                self.croppable = true
+            }
         })
     }
 }

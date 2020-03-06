@@ -43,7 +43,7 @@
 </template>
 <script>
 import axios from 'axios'
-import {Group, Cell, XInput, XTextarea, PopupPicker, Loading} from 'vux'
+import {Group, Cell, XTextarea, PopupPicker, Loading} from 'vux'
 export default {
     name: 'add-follow',
     components: {Group, Cell, XTextarea, PopupPicker, Loading},

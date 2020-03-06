@@ -1,135 +1,144 @@
 <template>
     <div>
-        <x-header :left-options="{showBack: false}" class="header_white"><span class="header_title">VUX-资料库</span></x-header>
-        <div class="header_blank"></div>
-        <div style="padding: 0 6px">
-            <img src="/static/img.banner/1.png" style="width: 100%">
-        </div>
-        <div style="margin-top: 10px">
-            <div @click="toTest" class="area_title">学习记录</div>
-            <grid :cols="4" :show-lr-borders="false" :show-vertical-dividers="false" class="icon_box">
-                <grid-item link="/order/receive-list"> <img src="/static/img.icon/my-order.png"> 我的工单 </grid-item>
-                <grid-item link="/order/receive-list"> <img src="/static/img.icon/my-order.png"> 我的工单 </grid-item>
-                <grid-item link="/order/receive-list"> <img src="/static/img.icon/my-order.png"> 我的工单 </grid-item>
-                <grid-item link="/order/receive-list"> <img src="/static/img.icon/my-order.png"> 我的工单 </grid-item>
-            </grid>
-        </div>
-        <div>
-            <div @click="toTest" class="area_title">工单管理</div>
-            <grid :cols="4" :show-lr-borders="false" :show-vertical-dividers="false" class="icon_box">
-                <grid-item link="/order/receive-list"> <img src="/static/img.icon/my-order.png"> 我的工单 </grid-item>
-                <grid-item link="/order/release?home=1"> <img src="/static/img.icon/release-order.png"> 发工单 </grid-item>
-                <grid-item link="/order/group-list"> <img src="/static/img.icon/group-manage.png"> 组查看 </grid-item>
-                <grid-item link="/order/unEndSub-list"> <img src="/static/img.icon/sub-order.png"> 下属工单 </grid-item>
-            </grid>
-        </div>
-        <!--工单管理所有人都有权限，默认显示-->
-        <div>
-            <div class="area_title">考勤管理</div>
-            <grid :cols="4" :show-lr-borders="false" :show-vertical-dividers="false" class="icon_box">
-                <div v-if="!childrenName.includes('商务流程')">
-                    <grid-item link="/process/unused-holidays"> <img src="/static/img.icon/remain-vacation.png"> 剩余假期 </grid-item>
-                    <grid-item link="/process/vacation-apply"> <img src="/static/img.icon/vacation-apply.png"> 请假 </grid-item>
-                    <grid-item link="/process/overtime-apply"> <img src="/static/img.icon/overtime-apply.png"> 加班 </grid-item>
-                    <grid-item link="/process/noCheck-apply"> <img src="/static/img.icon/uncheck-apply.png"> 未打卡 </grid-item>
-                    <grid-item link="/process/outwork-apply"> <img src="/static/img.icon/outwork-apply.png"> 外出 </grid-item>
-                    <grid-item link="/process/busTrip-apply"> <img src="/static/img.icon/bustrip-apply.png"> 出差 </grid-item>
-                    <grid-item link="/process/breastfeed-apply" v-if="gender === 2"> <img src="/static/img.icon/breastfeed-apply.png"> 哺乳假 </grid-item>
+        <x-header :left-options="{showBack: false, preventGoBack: true}" class="header_box">
+            <span class="header_title">用户登录</span>
+        </x-header>
+        <div style="height:50px;"></div>
+        <scroller v-show="response.list.length>0" class="pad15" ref="scroll" height="-195"
+            lock-x :scroll-bottom-offst="200" @on-scroll-bottom="loadData()">
+            <div>
+                <div v-if="!response.list.length" style="color: #9a9a9a;margin-top: 100px;text-align: center;">
+                    <p> 暂无数据</p>
                 </div>
-                <grid-item link="/process/process-my"> <img src="/static/img.icon/my-process.png"> 考勤流程 </grid-item>
-            </grid>
-        </div>
-        <div v-if="menuData.includes('客户管理')">
-            <div class="area_title">客户管理</div>
-            <grid :cols="4" :show-lr-borders="false" :show-vertical-dividers="false" class="icon_box">
-                <grid-item link="/public/list" v-if="childrenName.includes('公海')"> <img src="/static/img.icon/public-customer.png"> 公海 </grid-item>
-                <grid-item link="/private/list" v-if="childrenName.includes('我的客户')"> <img src="/static/img.icon/my-customer.png"> 我的客户 </grid-item>
-                <grid-item link="/contact/contactList" v-if="childrenName.includes('联系人')"> <img src="/static/img.icon/contact-list.png"> 联系人 </grid-item>
-                <grid-item link="/follow/home" v-if="childrenName.includes('跟进记录')"> <img src="/static/img.icon/follow-list.png"> 跟进记录 </grid-item>
-                <grid-item link="/under/list" v-if="childrenName.includes('下属客户')"> <img src="/static/img.icon/sub-customer.png"> 下属客户 </grid-item>
-            </grid>
-        </div>
-        <div v-if="childrenName.includes('商务流程')">
-            <div class="area_title">统计监控</div>
-            <grid :cols="4" :show-lr-borders="false" :show-vertical-dividers="false" class="icon_box">
-                <grid-item link="/business/list"> <img src="/static/img.icon/business-process.png"> 商务流程 </grid-item>
-                <grid-item link="/charts"> <img src="/static/img.icon/customer-total.png"> 客户统计 </grid-item>
-                <grid-item link="/invoice"> <img src="/static/img.icon/invoice-total.png"> 发票统计 </grid-item>
-            </grid>
-        </div>
-        <div class="tabbar_blank"></div>
+                <x-table :cell-bordered="false" :content-bordered="true">
+                    <thead>
+                        <tr style="background-color: #F7F7F7">
+                            <th style="text-align: left;">&nbsp;&nbsp;路由</th>
+                            <th style="width:60px;text-align: right;">操作&nbsp;&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(row) in response.list" :key="row.id">
+                            <td style="text-align: left;"> &nbsp;&nbsp;{{row.title || '-'}} <!-- <span style="font-size:12px;">({{row.name || '-'}})</span> --> </td>
+                            <td style="text-align: right;"> <span @click="gotoPage(row.path)" style="color: #4A8BFF;">跳转</span>&nbsp;&nbsp; </td>
+                        </tr>
+                    </tbody>
+                </x-table>
+                <load-more v-show="loading" tip="loading"></load-more>
+                <divider v-show="noMore && response.list.length>0">没有更多数据</divider>
+            </div>
+        </scroller>
+        <menu-bottom :select="1"></menu-bottom>
     </div>
 </template>
 <script>
-import {removeOrder} from '../../libs/common.js'
-import Cookies from 'js-cookie'
-import bottomMenu from '../components/bottom-menu.vue'
-import {Grid, GridItem, Tabbar, TabbarItem} from 'vux'
+import noData from '@/components/no-data'
+import router from '@/router/routers.home'
+import menuBottom from '@/components/menu-bottom.vue'
+import '@/plugins/vux-table'
 export default {
-    name: 'home',
-    components: { Grid, GridItem, Tabbar, TabbarItem, bottomMenu },
+    components: { noData, menuBottom },
     data () {
         return {
-            menuData: [],
-            childrenName: [],
-            seeList: false,
-            gender: 1
+            groupTotal: 0, // 总群数
+            fullTotal: 0, // 已满群数
+            userTotal: 0, // 群总人数
+            names: [
+                {name: '实时群', path: '/realTimeQun'},
+                {name: '已满群', path: '/gratifiedQun'}
+            ],
+            pageIndex: 1,
+            response: {
+                list: [],
+                rowcount: null
+            },
+            first: 1, // 是否首次加载
+            firstload: true, // 首次加载loading
+            loading: false,
+            noMore: false,
+            loadOne: 0 // 解决下拉触发多次
         }
     },
-    computed: { // 计算属性
-    },
     methods: {
-        callJsFunction (str) {
-            Cookies.set('type', str)
+        getList () {
+            return false
+            this.$get('api/system/realTime_list', {
+                type: 1,
+                pageIndex: this.pageIndex,
+                pageSize: 15
+            }).then(res => {
+                this.first++
+                if (this.first === 2) {
+                    this.firstload = false
+                }
+                let data = res.data.data.list;
+                this.response.list = [...this.response.list, ...data]
+                this.response.rowcount = res.data.data.rowcount
+                this.loading = false
+                if (this.pageIndex * 15 >= this.response.rowcount) {
+                    this.loadOne = 1
+                    this.noMore = true
+                } else {
+                    this.loadOne = 0
+                }
+                this.$nextTick(() => {
+                    if (this.pageIndex > 1) {
+                        this.$refs.scroll.reset()
+                    }
+                })
+            })
         },
-        toTest () {
-            // this.$router.push({name: 'test'})
-            if (this.seeList) {
-                this.$router.push({name: 'feedback-list'})
+        // 下拉刷新
+        loadData () {
+            if (++this.loadOne === 1) {
+                this.loading = true
+                this.pageIndex++
+                this.getList()
             }
         },
-        checkPic () {
-            this.$get('api/my/base_info', {
-            }).then((res) => {
-                this.gender = res.data.data.result.sex
-                if (!res.data.data.result.userPicture) {
-                    let self = this
-                    this.$vux.alert.show({
-                        title: '提示',
-                        content: '欢迎使用云袭OA，请上传真实的个人正面照片，通过身份认证后才能正常进入云袭之家！',
-                        onhide () {
-                            self.$router.push({name: 'modify-picture'})
+        // 删除
+        del (index, id) {
+            const that = this
+            this.$vux.confirm.show({
+                content: '<strong>确定要删除该群吗？</strong>',
+                onConfirm () {
+                    that.$get('api/system/realTime_del', {id: id}).then(res => {
+                        if (res.data.data === 1) {
+                            that.$vux.alert.show({ content: '操作成功' })
+                            that.response.list.splice(index, 1)
+                        } else {
+                            that.$vux.alert.show({ content: res.data.msg || '操作失败' })
                         }
                     })
                 }
             })
+        },
+        toAddQun (val) {
+            if (val === 0) {
+                this.$router.push({path: '/editQun'})
+            } else {
+                this.$router.push({path: '/editQun', query: {id: val}})
+            }
+        },
+
+        gotoPage (path) {
+            this.$router.push({path})
         }
     },
     mounted () {
-        // 将要给原生调用的方法挂载到 window 上面
-        window.callJsFunction = this.callJsFunction
-        this.$get('api/system/menulist', {
-        }).then((res) => {
-            let menuList = res.data.data.list.listMenu
-            for (let i = 0; i < menuList.length; i++) {
-                this.menuData.push(menuList[i].auth_name)
-                for (let k = 0; k < menuList[i].children.length; k++) {
-                    this.childrenName.push(menuList[i].children[k].auth_name)
-                }
-            }
-            this.seeList = res.data.data.list.listPages.length > 0
-        })
-        this.checkPic()
-        Cookies.remove('timeCheck'); // 清除登录超时标记
-        removeOrder();// 清空工单缓存
+        this.response.list = router.children
+        this.response.rowcount = router.children.length
+        this.loading = false
+        this.noMore = true
     }
 }
 </script>
 <style scoped>
-    .area_title{ color: #292C39; padding: 0 12px; font-size: 16px; font-weight: 600;}
-    .icon_box{ padding: 15px 3%; font-size: 13px;}
-    .weui-grids:before{ border: none;}
-    .weui-grid:after{ border: none;}
-    .weui-grid{ color: #333; padding: 7px; text-align: center;}
-    .weui-grid img{ width: 80%;display: block; margin: 0 auto;}
+    .total{
+        margin-top: 15px;
+        padding: 0 15px;
+    }
+    .vux-table.vux-table-no-content-bordered tr:last-child td:before {
+        border-bottom-width: 0;
+    }
 </style>

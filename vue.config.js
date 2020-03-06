@@ -1,9 +1,8 @@
 const vuxLoader = require('vux-loader')
 const path = require('path')
-
-const resolve = dir => {
-    return path.join(__dirname, dir)
-}
+const mockDateBefore = require('./mock/before')
+const mockDateAfter = require('./mock/after')
+const resolve = dir => { return path.join(__dirname, dir) }
 
 module.exports = {
     // 如果你不需要使用eslint，把lintOnSave设为false即可
@@ -43,13 +42,14 @@ module.exports = {
         historyApiFallback: true,
         stats: { colors: true },
         port: 4012, // 设置访问的端口号
-        proxy: {
-            // 匹配代理的url
+        /* proxy: {
             '/api': {
                 target: 'http://localhost:4010/',
                 pathRewrite: {'^/api': '/apioa'},
                 changeOrigin: true
             }
-        }
+        }*/
+        before: mockDateBefore,
+        after: mockDateAfter
     }
 }

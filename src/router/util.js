@@ -17,7 +17,7 @@ export const makeTwoLevelRouteItem = (config, parentName) => {
     const path = config.path
     config.name = parentName + '_' + path
     config.path = '/' + parentName + '/' + path
-    config.component = () => import('@V/' + parentName + '/' + path + '.vue')
+    if (!config.component) config.component = () => import('@V/' + parentName + '/' + path + '.vue')
     config.meta = { keepAlive: config.keepAlive || false }
     return config
 }

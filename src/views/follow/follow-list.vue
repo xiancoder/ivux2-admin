@@ -48,7 +48,7 @@
     </div>
 </template>
 <script>
-import {XInput, Group, Scroller, LoadMore, Divider, Search} from 'vux'
+import {Scroller, LoadMore, Divider, Search} from 'vux'
 export default {
     name: 'follow-list',
     components: {Scroller, LoadMore, Divider, Search},

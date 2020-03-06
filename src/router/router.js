@@ -1,22 +1,22 @@
 import Main from '@/views/Main.vue'
 import loginPage from '@/views/login.vue'
-import downloadPage from '@/views/home/download.vue'
+// import downloadPage from '@/views/home/download.vue'
 
 import home from './routers.home'
 
 export const loginRouter = { path: '/login', name: 'login', meta: { title: 'Login - 登录' }, component: loginPage }
-export const downloadRouter = { path: '/download', name: 'download', meta: { title: 'download - 下载apk' }, component: downloadPage }
+// export const downloadRouter = { path: '/download', name: 'download', meta: { title: 'download - 下载apk' }, component: downloadPage }
 export const mainRouter = {
     path: '/', redirect: '/login', component: Main,
     children: [
         home,
 
         // 反馈意见列表
-        {path: 'feedback-list', name: 'feedback-list', component: () => import('@/views/home/feedback-list.vue')},
+        // {path: 'feedback-list', name: 'feedback-list', component: () => import('@/views/home/feedback-list.vue')},
         // 发票统计
-        {path: 'invoice', name: 'invoice', component: () => import('@/views/home/invoice.vue')},
+        // {path: 'invoice', name: 'invoice', component: () => import('@/views/home/invoice.vue')},
         // 统计报表
-        {path: 'charts', name: 'charts', component: () => import('@/views/home/charts.vue')},
+        // {path: 'charts', name: 'charts', component: () => import('@/views/home/charts.vue')},
         // 公海列表
         {path: 'public/list', name: 'public-list', component: () => import('@/views/public/public-list.vue')},
         // 公海客户信息
@@ -173,6 +173,6 @@ export const mainRouter = {
 
 export const routers = [
     loginRouter,
-    downloadRouter,
+    // downloadRouter,
     mainRouter
 ]

@@ -29,13 +29,6 @@ export default {
         sessionStorage.setItem('phoneHeight', phoneHei)
         const phoneWid = document.documentElement.clientWidth || document.body.clientWidth
         sessionStorage.setItem('phoneWidth', phoneWid)
-        // 未读消息条数
-        this.$get('api/message/have', {
-        }).then((res) => {
-            const n = res.data.data.res
-            const unReadNum = n === 0 ? '' : n + ''
-            this.$store.commit('setUnReadNum', unReadNum)
-        })
     }
 }
 </script>
