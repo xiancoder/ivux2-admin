@@ -25,7 +25,7 @@
             </div>
             <group gutter="0" class="info_container">
                 <x-address title="" v-model="modal.address" :list="addressData" placeholder="请选择">
-                    <div slot="title" slot-scope="props"><span class="red">* </span><span class="color_333">选择地区</span></div>
+                    <div slot="title"><span class="red">* </span><span class="color_333">选择地区</span></div>
                 </x-address>
             </group>
             <group gutter="0">

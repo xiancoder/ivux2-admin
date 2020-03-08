@@ -99,7 +99,7 @@
     </group>
 </template>
 <script>
-import {TransferDom, Popup, Checker, XTable, LoadMore, Scroller, CheckerItem, Group, Cell, Divider, XButton, XSwitch, Search, ChinaAddressData} from 'vux'
+import {Popup, Checker, XTable, LoadMore, Scroller, CheckerItem, Group, Cell, Divider, XButton, XSwitch, Search} from 'vux'
 export default {
     components: {XTable, LoadMore, Scroller, Divider, Popup, Group, Cell, XSwitch, XButton, Search, Checker, CheckerItem},
     data () {
@@ -194,7 +194,7 @@ export default {
             })
             this.getList('', 1)
         },
-        getList: function (page_size, v) {
+        getList: function (pagesize, v) {
             if (v === 1) {
                 this.onFetching = true
             }
@@ -207,8 +207,8 @@ export default {
                 'page_index': 1,
                 'page_size': 15
             }
-            if (page_size) {
-                pa.page_size = page_size
+            if (pagesize) {
+                pa.page_size = pagesize
             }
             this.$get('api/customer/get_list_dept', pa).then((res) => {
                 this.listData = res.data.data.list

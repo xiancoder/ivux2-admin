@@ -67,8 +67,7 @@ export default {
                     })
                     self.isEdit = true
                     self.imgFile = this.files[0]
-                    reads(this.files[0])
-                    function reads (fil) {
+                    const reads = function (fil) {
                         var reader = new FileReader()
                         reader.readAsDataURL(fil)
                         reader.onload = function () {
@@ -76,6 +75,7 @@ export default {
                             self.$vux.loading.hide()
                         }
                     }
+                    reads(this.files[0])
                 }
             }
         },

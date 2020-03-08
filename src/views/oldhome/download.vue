@@ -25,7 +25,7 @@ export default {
         },
         type () {
             var ua = navigator.userAgent.toLowerCase()
-            if (ua.match(/iPhone\sOS/i) === 'iphone os' || ua.match(/iPad/i) == 'ipad') {// ios
+            if (ua.match(/iPhone\sOS/i) === 'iphone os' || ua.match(/iPad/i) === 'ipad') {// ios
                 window.location.href = 'http:// oa-wap.yunxi.cn/#/login'
             }
         }

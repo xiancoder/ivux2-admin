@@ -8,6 +8,7 @@ import {router} from '@/router'
 import 'vux/src/styles/reset.less'
 import 'vux/src/styles/1px.less'
 import '@/style/overflow.less'
+import '@/style/utils.less'
 
 // 问题是 vue 项目默认启动生产模式
 Vue.config.productionTip = false

@@ -1,9 +1,13 @@
-import Vue from 'vue';
-import axios from 'axios';
-import Cookies from 'js-cookie';
+import Vue from 'vue'
+import axios from 'axios'
+import Cookies from 'js-cookie'
 
-import {AlertPlugin} from 'vux';
-Vue.use(AlertPlugin);
+import system from './api.system' // 系统
+
+Vue.prototype.$api = { // 挂载api
+    system
+}
+
 // 取消请求
 // let CancelToken = axios.CancelToken
 // 设置默认请求头，如果不需要可以取消这一步

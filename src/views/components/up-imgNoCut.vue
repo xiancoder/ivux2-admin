@@ -37,9 +37,7 @@ export default {
         },
         // change 事件
         change (e) {
-            this.$vux.loading.show({
-                text: 'Loading'
-            })
+            this.$vux.loading.show({ text: 'Loading' })
             let files = e.target.files || e.dataTransfer.files
             if (!files.length) return
             this.picValue = files[0]
@@ -68,13 +66,13 @@ export default {
         // 获取完整图片 ( 拿到本地图片 )
         getObjectURL (file) {
             let url = null
-            if (window.createObjectURL !=undefined) {
+            if (window.createObjectURL) {
                 // basic
                 url = window.createObjectURL(file)
-            } else if (window.URL !=undefined) {
+            } else if (window.URL) {
                 // mozilla(firefox)
                 url = window.URL.createObjectURL(file)
-            } else if (window.webkitURL !=undefined) {
+            } else if (window.webkitURL) {
                 // webkit or chrome
                 url = window.webkitURL.createObjectURL(file)
             }
