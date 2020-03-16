@@ -4,7 +4,7 @@
             <span class="header_title">用户登录</span>
         </x-header>
         <div style="height:50px;"></div>
-        <scroller v-show="response.list.length>0" class="pad15" ref="scroll" height="-195"
+        <scroller v-show="response.list.length>0" class="pad15" ref="scroll" height="-105"
             lock-x :scroll-bottom-offst="200" @on-scroll-bottom="loadData()">
             <div>
                 <div v-if="!response.list.length" style="color: #9a9a9a;margin-top: 100px;text-align: center;">
@@ -34,6 +34,7 @@
 <script>
 import noData from '@/components/no-data'
 import router from '@/router/routers.home'
+import exp from '@/router/routers.exp'
 import menuBottom from '@/components/menu-bottom.vue'
 import '@/plugins/vux-table'
 export default {
@@ -126,8 +127,8 @@ export default {
         }
     },
     mounted () {
-        this.response.list = router.children
-        this.response.rowcount = router.children.length
+        this.response.list = [...router.children, ...exp.children]
+        this.response.rowcount = this.response.list.length
         this.loading = false
         this.noMore = true
     }

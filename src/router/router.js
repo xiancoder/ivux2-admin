@@ -3,6 +3,7 @@ import loginPage from '@/views/login.vue'
 // import downloadPage from '@/views/home/download.vue'
 
 import home from './routers.home'
+import exp from './routers.exp'
 
 export const loginRouter = { path: '/login', name: 'login', meta: { title: 'Login - 登录' }, component: loginPage }
 // export const downloadRouter = { path: '/download', name: 'download', meta: { title: 'download - 下载apk' }, component: downloadPage }
@@ -10,6 +11,7 @@ export const mainRouter = {
     path: '/', redirect: '/login', component: Main,
     children: [
         home,
+        exp,
 
         // 反馈意见列表
         // {path: 'feedback-list', name: 'feedback-list', component: () => import('@/views/home/feedback-list.vue')},

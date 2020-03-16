@@ -37,8 +37,10 @@
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "postcss-pxtorem": "^4.0.1",
+    "vconsole": "^3.3.4",
     "vue-loader": "^14.2.2",
     "vue-template-compiler": "^2.5.17",
+    "vue-video-player": "^5.0.2",
     "vux-loader": "^1.2.9"
   },
   "eslintConfig": {
@@ -60,7 +62,9 @@
       "autoprefixer": {},
       "postcss-pxtorem": {
         "rootValue": 16,
-        "propList": ["*"]
+        "propList": [
+          "*"
+        ]
       }
     }
   },
