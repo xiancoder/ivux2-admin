@@ -27,15 +27,10 @@ module.exports = function (apiRouter) {
                 { 'id': 4, 'nickname': '小' + pageIndex, 'header': 'http://q1.qlogo.cn/g?b=qq&nk=2546066152&s=100', 'role': 2 },
                 { 'id': 5, 'nickname': '小' + pageIndex, 'header': 'http://q1.qlogo.cn/g?b=qq&nk=2546066152&s=100', 'role': 2 },
                 { 'id': 6, 'nickname': '小' + pageIndex, 'header': 'http://q1.qlogo.cn/g?b=qq&nk=2546066152&s=100', 'role': 2 },
-                { 'id': 7, 'nickname': '小' + pageIndex, 'header': 'http://q1.qlogo.cn/g?b=qq&nk=2546066152&s=100', 'role': 2 },
-                { 'id': 8, 'nickname': '小' + pageIndex, 'header': 'http://q1.qlogo.cn/g?b=qq&nk=2546066152&s=100', 'role': 2 },
-                { 'id': 9, 'nickname': '小' + pageIndex, 'header': 'http://q1.qlogo.cn/g?b=qq&nk=2546066152&s=100', 'role': 2 },
-                { 'id': 10, 'nickname': '小' + pageIndex, 'header': 'http://q1.qlogo.cn/g?b=qq&nk=2546066152&s=100', 'role': 3 },
-                { 'id': 11, 'nickname': '小' + pageIndex, 'header': 'http://q1.qlogo.cn/g?b=qq&nk=2546066152&s=100', 'role': 3 },
-                { 'id': 12, 'nickname': '小' + pageIndex, 'header': 'http://q1.qlogo.cn/g?b=qq&nk=2546066152&s=100', 'role': 3 },
-                { 'id': 13, 'nickname': '小' + pageIndex, 'header': 'http://q1.qlogo.cn/g?b=qq&nk=2546066152&s=100', 'role': 3 },
-                { 'id': 14, 'nickname': '小' + pageIndex, 'header': 'http://q1.qlogo.cn/g?b=qq&nk=2546066152&s=100', 'role': 3 },
-                { 'id': 15, 'nickname': '小' + pageIndex, 'header': 'http://q1.qlogo.cn/g?b=qq&nk=2546066152&s=100', 'role': 3 }
+                { 'id': 7, 'nickname': '小' + pageIndex, 'header': 'http://q1.qlogo.cn/g?b=qq&nk=2546066152&s=100', 'role': 3 },
+                { 'id': 8, 'nickname': '小' + pageIndex, 'header': 'http://q1.qlogo.cn/g?b=qq&nk=2546066152&s=100', 'role': 3 },
+                { 'id': 9, 'nickname': '小' + pageIndex, 'header': 'http://q1.qlogo.cn/g?b=qq&nk=2546066152&s=100', 'role': 3 },
+                { 'id': 10, 'nickname': '小' + pageIndex, 'header': 'http://q1.qlogo.cn/g?b=qq&nk=2546066152&s=100', 'role': 3 }
             ],
             "rowcount": 45, //共多少条数据
         }

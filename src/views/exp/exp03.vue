@@ -2,14 +2,15 @@
     <div>
         <x-header :left-options="{showBack:true,backText:'',preventGoBack:true}" class="header_box header_fix">
             <span class="header_title">基础数据</span>
-            <span slot="right" @click="toAddQun(0)">添加推广群</span>
+            <span slot="right" style="color: #F7F7F7" @click="toAddQun(0)">添加推广群</span>
         </x-header>
-        <div style="height:65px;"></div>
+        <div style="height:50px;"></div>
         <div class="total">共计创建{{groupTotal}}个群，已满 {{fullTotal}}个群，群总人数{{userTotal}}</div>
         <tab :select="2" :names="names"></tab>
         <load-more v-show="firstload" tip="loading"></load-more>
         <no-data v-if="response.list.length===0 && !firstload"></no-data>
-        <scroller v-show="response.list.length>0" class="pad15" ref="scroll" lock-x :scroll-bottom-offst="200" @on-scroll-bottom="loadData()">
+        <scroller v-show="response.list.length>0" class="pad15" ref="scroll" lock-x
+            :scroll-bottom-offst="200" @on-scroll-bottom="loadData()">
             <div>
                 <x-table ref="tableGratified" :cell-bordered="false" :content-bordered="false">
                     <thead>
@@ -20,8 +21,12 @@
                     </thead>
                     <tbody>
                         <tr v-for="row in response.list" :key="row.id">
-                            <td class="nameDiv" :style="{width:phoneWidth*0.7 + 'px'}" style="text-align: left;">&nbsp;&nbsp;{{row.crowdName || '-'}}</td>
-                            <td>{{row.crowdCount}}</td>
+                            <td class="nameDiv" :style="{width:phoneWidth*0.7 + 'px'}" style="text-align: left;">
+                                &nbsp;&nbsp;{{row.crowdName || '-'}}
+                            </td>
+                            <td>
+                                {{row.crowdCount}}
+                            </td>
                         </tr>
                     </tbody>
                 </x-table>

@@ -3,7 +3,6 @@
         <x-header :left-options="{showBack: false, preventGoBack: true}" class="header_box">
             <span class="header_title">用户登录</span>
         </x-header>
-        <div style="height:50px;"></div>
         <scroller v-show="response.list.length>0" class="pad15" ref="scroll" height="-105"
             lock-x :scroll-bottom-offst="200" @on-scroll-bottom="loadData()">
             <div>
@@ -19,8 +18,14 @@
                     </thead>
                     <tbody>
                         <tr v-for="(row) in response.list" :key="row.id">
-                            <td style="text-align: left;"> &nbsp;&nbsp;{{row.title || '-'}} <!-- <span style="font-size:12px;">({{row.name || '-'}})</span> --> </td>
-                            <td style="text-align: right;"> <span @click="gotoPage(row.path)" style="color: #4A8BFF;">跳转</span>&nbsp;&nbsp; </td>
+                            <td style="text-align: left;">
+                                &nbsp;&nbsp;{{row.title || '-'}}
+                                <!-- <span style="font-size:12px;">({{row.name || '-'}})</span> -->
+                            </td>
+                            <td style="text-align:right;">
+                                <span v-if="row.path!='/home/index'" @click="gotoPage(row.path)" style="color: #4A8BFF;">跳转</span>
+                                &nbsp;
+                            </td>
                         </tr>
                     </tbody>
                 </x-table>

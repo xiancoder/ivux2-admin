@@ -1,69 +1,63 @@
 <template>
-    <div>
-        <x-header :left-options="{showBack:true,backText:''}" class="header_box">
+    <div class="tableX">
+        <x-header :left-options="{showBack:true,backText:''}" class="header_box header_fix">
             <span class="header_title">表格页模版01</span>
         </x-header>
         <div style="height:50px;"></div>
         <group class="inlineBox">
-            <x-input title="" class="weui-vcode inlineBoxInput" v-model="frm.id" placeholder="请输入会员ID">
+            <x-input title="" class="weui-vcode inlineBoxInput" v-model="search.id" placeholder="请输入会员ID">
                 <x-button slot="right" type="primary" mini >添加为管理员</x-button>
             </x-input>
         </group>
-        <scroller class="pad15" ref="scroll" height="-100"
-            lock-x :scroll-bottom-offst="200"
-            @on-scroll-bottom="onScrollBottom()">
+        <scroller ref="scroll" height="-100" lock-x :scroll-bottom-offst="200" @on-scroll-bottom="ajaxList()">
             <div>
-                <div v-if="!obj.list.length" style="color: #9a9a9a;margin-top: 100px;text-align: center;">
-                    <p> 暂无数据 </p>
-                </div>
                 <x-table :cell-bordered="false" :content-bordered="true">
                     <tbody>
                         <tr v-for="(row,index) in obj.list" :key="pageIndex+'-'+index">
-                            <td style="width:70px; text-align: left;">
-                                &nbsp;&nbsp;
-                                <img :src="row.header" style="width:40px; border-radius: 50%; vertical-align: bottom;margin:10px 0;" alt="" />
+                            <td class="td1">
+                                &nbsp;
+                                <img :src="row.header" alt="" />
                             </td>
-                            <td style="text-align: left;font-size: 14px;">
-                                &nbsp;&nbsp;
-                                {{row.nickname}}
-                                ( ID: {{row.id}} )
-                                {{['-','超管','管理员','会员'][row.role]}}
+                            <td class="td2">
+                                {{row.nickname}} &nbsp; ( ID: {{row.id}} )
+                                <br />
+                                <span class="role">& &nbsp; {{['-','超管','管理员','会员'][row.role]}}</span>
                             </td>
-                            <td style="width:100px;text-align:right;font-size: 14px;">
+                            <td class="td3">
                                 <span style="color: #2196F3;" @click="delPower(row.id)">删除管理身份</span>
                                 &nbsp;&nbsp;
                             </td>
                         </tr>
                     </tbody>
                 </x-table>
+                <div class="noData" v-if="!obj.list.length"> <p> 暂无数据 </p> </div>
                 <load-more v-show="loading" tip="loading"></load-more>
-                <divider v-show="noMore && obj.list.length>0">没有更多数据</divider>
+                <divider class="noMore" v-show="noMore && obj.list.length>0">没有更多数据</divider>
             </div>
         </scroller>
     </div>
 </template>
 <script>
 import '@/plugins/vux-table'
-import { throttle } from '@/utils/function'
 
 export default {
     data () {
         return {
-            obj: {
+            obj: { // 表格
                 list: [],
                 rowcount: 0
             },
-            frm: {
+            search: { // 搜索项
                 id: ''
             },
             pageIndex: 1,
-            pageSize: 15,
+            pageSize: 10,
             loading: false,
             noMore: false
         }
     },
     methods: {
-        ajaxList () {
+        ajaxList () { // 读取信息 下拉刷新
             if (this.loading || this.noMore) { return false }
             this.loading = true
             this.$get('/api/super/roleList', {
@@ -74,24 +68,22 @@ export default {
                 const data = res.data
                 this.obj.list = [...this.obj.list, ...data.list]
                 this.obj.rowcount = data.rowcount
-                this.loading = false
-                this.pageIndex += 1
-                if (this.pageIndex * this.pageSize >= this.obj.rowcount) {
-                    this.noMore = true
-                }
-                if (this.pageIndex > 1) {
-                    this.$nextTick(() => {
-                        this.$refs.scroll.reset()
-                    })
-                }
+                this.ajaxEnd()
             })
         },
-        // 下拉刷新
-        onScrollBottom: throttle(function () {
-            this.ajaxList()
-        }),
-        // 复原
-        initTable: function () {
+        ajaxEnd () { // ajax结束 [[模版结构不要修改]]
+            this.loading = false
+            this.pageIndex += 1
+            if (this.pageIndex * this.pageSize >= this.obj.rowcount) {
+                this.noMore = true
+            }
+            if (this.pageIndex > 1) {
+                this.$nextTick(() => {
+                    this.$refs.scroll.reset()
+                })
+            }
+        },
+        initTable: function () { // 复原
             this.pageIndex = 1
             this.obj.list = []
             this.obj.rowcount = 0
@@ -99,7 +91,7 @@ export default {
         },
         // 添加
         addPower () {
-            const id = '' + this.frm.id
+            const id = '' + this.search.id
             const that = this
             if (!/^[1-9][0-9]*?$/.test(id)) {
                 that.$vux.alert.show({ content: '请输入合法ID' })
@@ -146,6 +138,19 @@ export default {
     }
 }
 </script>
+<style lang="less" scoped>
+    .tableX {
+        .noData {color: #9a9a9a;margin: 20px;text-align: center;}
+        .noMore {margin: 30px 0 30px 0;height: 80px;}
+    }
+    .vux-table {
+        .td1 {width:60px; text-align: left;}
+        .td1 img {width:40px; border-radius: 50%; vertical-align: bottom;margin:10px 0;}
+        .td2 {text-align: left;font-size: 14px;line-height: 20px;}
+        .td2 .role{font-size: 12px;color:#aaa;}
+        .td3 {width:100px;text-align:right;font-size: 14px;}
+    }
+</style>
 <style>
     .inlineBox {}
     .inlineBox .weui-cells { background: #f2f2f2; margin-top: 0; }

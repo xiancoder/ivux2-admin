@@ -8,7 +8,8 @@ export default makeTwoLevelRoute({
     path: 'home', title: '首页', icon: 'md-globe',
     children: [
         {path: 'index', title: '首页', component: homePage},
-        {path: 'templeteTable', title: '模版列表页'},
+        {path: 'templeteTable', title: '列表页模版'},
+        {path: 'templeteForm', title: '表单页模版'},
         {path: 'templeteUi01', title: '模版UI XHeader'},
         {path: 'templeteUi02', title: '模版UI Actionsheet'},
         {path: 'templeteUi03', title: '模版UI Alert'},
