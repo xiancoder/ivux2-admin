@@ -4,6 +4,7 @@ import loginPage from '@/views/login.vue'
 
 import home from './routers.home'
 import exp from './routers.exp'
+import report from './routers.report'
 
 export const loginRouter = { path: '/login', name: 'login', meta: { title: 'Login - 登录' }, component: loginPage }
 // export const downloadRouter = { path: '/download', name: 'download', meta: { title: 'download - 下载apk' }, component: downloadPage }
@@ -12,7 +13,9 @@ export const mainRouter = {
     children: [
         home,
         exp,
+        report,
 
+        /*
         // 反馈意见列表
         // {path: 'feedback-list', name: 'feedback-list', component: () => import('@/views/home/feedback-list.vue')},
         // 发票统计
@@ -169,7 +172,7 @@ export const mainRouter = {
         // 发票申请详情
         {path: 'business/invoice', name: 'invoice-info', component: () => import('@/views/business/invoice-info.vue')},
         // 广告维护申请详情
-        {path: 'business/maintain', name: 'maintain-info', component: () => import('@/views/business/maintain-info.vue')}
+        {path: 'business/maintain', name: 'maintain-info', component: () => import('@/views/business/maintain-info.vue')} */
     ]
 }
 

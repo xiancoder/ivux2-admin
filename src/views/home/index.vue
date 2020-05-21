@@ -1,7 +1,7 @@
 <template>
     <div>
         <x-header :left-options="{showBack: false, preventGoBack: true}" class="header_box">
-            <span class="header_title">用户登录</span>
+            <span class="header_title">资料库列表</span>
         </x-header>
         <scroller v-show="response.list.length>0" class="pad15" ref="scroll" height="-105"
             lock-x :scroll-bottom-offst="200" @on-scroll-bottom="loadData()">
@@ -40,6 +40,7 @@
 import noData from '@/components/no-data'
 import router from '@/router/routers.home'
 import exp from '@/router/routers.exp'
+import report from '@/router/routers.report'
 import menuBottom from '@/components/menu-bottom.vue'
 import '@/plugins/vux-table'
 export default {
@@ -132,7 +133,7 @@ export default {
         }
     },
     mounted () {
-        this.response.list = [...router.children, ...exp.children]
+        this.response.list = [...router.children, ...exp.children, ...report.children]
         this.response.rowcount = this.response.list.length
         this.loading = false
         this.noMore = true
