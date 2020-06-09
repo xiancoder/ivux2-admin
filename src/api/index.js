@@ -21,6 +21,13 @@ axios.defaults.timeout = 20000
 // 开始设置请求 发起的拦截处理
 // config 代表发起请求的参数的实体
 axios.interceptors.request.use(config => {
+    if (config.method.toLowerCase() === 'get') {
+        // 整理参数 省得两个传参变量傻傻分不清楚
+        config.params = config.params || config.data
+    } else {
+        // 适用于这些请求方法 'PUT', 'POST', 和 'PATCH'
+        config.data = config.data || config.params
+    }
     return config
 }, error => {
     return Promise.reject(error)

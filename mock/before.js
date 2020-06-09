@@ -33,6 +33,8 @@ module.exports = function (apiRouter) {
                 { 'id': 10, 'nickname': '小' + pageIndex, 'header': 'http://q1.qlogo.cn/g?b=qq&nk='+(2546066152+parseInt((0.5-Math.random())*1e8))+'&s=100', 'role': 3 }
             ],
             "rowcount": 45, //共多少条数据
+            'res': '登录成功',
+            'res_code': 1
         }
         const time = +(new Date)
         const result = {code, data, msg, time}

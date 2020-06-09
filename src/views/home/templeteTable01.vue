@@ -14,7 +14,7 @@
             <div>
                 <x-table :cell-bordered="false" :content-bordered="true">
                     <tbody>
-                        <tr v-for="(row,index) in vuxTableList" :key="pageIndex+'-'+index">
+                        <tr v-for="(row,index) in vuxTableList" :key="page.pageIndex+'-'+index">
                             <td class="td1">
                                 &nbsp;
                                 <img :src="row.header" alt="" />
@@ -54,12 +54,12 @@ export default {
                 id: ''
             },
             page: {
-                page_index: 1, // 分页 [[模版结构不要修改]]
-                page_size: 10 // 条数 [[模版结构不要修改]]
+                pageIndex: 1, // 分页 [[模版结构不要修改]]
+                pageSize: 10 // 条数 [[模版结构不要修改]]
             },
             order: {
-                order_key: 'id', // 排序属性 [[模版结构不要修改]]
-                order_rule: true // 排序规则 true降序false升序 [[模版结构不要修改]]
+                orderKey: 'id', // 排序属性 [[模版结构不要修改]]
+                orderRule: true // 排序规则 true降序false升序 [[模版结构不要修改]]
             },
             vuxTableParams: {}, // 请求参数 [[模版结构不要修改]]
             vuxTableList: [], // 表格内容 [[模版结构不要修改]]
@@ -70,10 +70,10 @@ export default {
     },
     methods: {
         initTable () { // 复原 [[模版结构不要修改]]
-            this.page.page_index = 1
+            this.page.pageIndex = 1
             this.vuxTableList = []
             this.vuxTableCount = 0
-            this.ajaxList()
+            this.handleSearch()
         },
         ajaxList () { // 读取信息 [[模版结构不要修改]]
             if (this.vuxTableNoMore) {return false}
@@ -109,11 +109,11 @@ export default {
             this.handlePage(1)
         },
         handleOrder (key) { // 排序 [[模版结构不要修改]]
-            if (this.order.order_key === key) {
-                this.order.order_rule = !this.order.order_rule
+            if (this.order.orderKey === key) {
+                this.order.orderRule = !this.order.orderRule
             } else {
-                this.order.order_key = key
-                this.order.order_rule = true
+                this.order.orderKey = key
+                this.order.orderRule = true
             }
             extend(this.vuxTableParams, this.order) // 继承搜索项
             this.handlePage(1)
