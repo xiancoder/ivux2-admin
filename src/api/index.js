@@ -3,9 +3,11 @@ import axios from 'axios'
 import Cookies from 'js-cookie'
 
 import system from './api.system' // 系统
+import role from './api.role' // 角色
 
 Vue.prototype.$api = { // 挂载api
-    system
+    system,
+    role
 }
 
 // 取消请求

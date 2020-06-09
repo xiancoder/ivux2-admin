@@ -108,7 +108,6 @@ export default {
             demo5: '', // 单选
             demo6: [], // 多选
 
-
             show1: false,
             menus1: {
                 menu1: '北京烤鸭',

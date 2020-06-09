@@ -1,3 +1,168 @@
+'use strict'
+
+// =====================
+// 数组去重唯一化
+// =====================
+// liuyp 2018年12月20日11:28:08
+export const unique = array => {
+    return Array.from(new Set(array))
+}
+
+// =====================
+// 数组去重唯一化(对象数组)
+// =====================
+// liuyp 2019年8月21日15:36:43
+export const uniqueObj = (data, fun) => {
+    var newData = []
+    fun =
+        fun ||
+        function(a, b) {
+            return a === b
+        }
+    for (var i = 0, len = data.length; i < len; i++) {
+        var flag = 1
+        for (var j = 0, len2 = newData.length; j < len2; j++) {
+            if (fun(newData[j], data[i])) {
+                flag = 0
+                break
+            }
+        }
+        if (flag === 1) newData.push(data[i])
+    }
+    return newData
+}
+
+// =====================
+// 数组去重唯一化 (完美版)(推荐)
+// @param arr {array} 待处理数组
+// @param [att] {string} 唯一的属性 可不填
+// =====================
+// liuyp 2019年9月20日11:15:33
+export const arrayUnique = (arr, att) => {
+    let resArr = []
+    let json = {}
+    for (let i = 0; i < arr.length; i++) {
+        if (!att) {
+            if (!json['_' + arr[i]]) {
+                resArr.push(arr[i])
+                json['_' + arr[i]] = 1
+            }
+        } else {
+            if (!json['_' + arr[i][att]]) {
+                resArr.push(arr[i])
+                json['_' + arr[i][att]] = 1
+            }
+        }
+    }
+    json = {}
+    return resArr
+}
+
+// =====================
+// 判断两个数组是否一致
+// 长度顺序和数值 不适用于多维数组
+// 看来要整一个先把多维数组转成简单的数组然后在..进行对比
+// =====================
+// liuyp 2019年9月20日11:10:17
+export const contrast = (arrA, arrB) => {
+    if (!Array.isArray(arrA) || !Array.isArray(arrB)) {
+        return false
+    }
+    if (arrA.length !== arrB.length) {
+        return false
+    }
+    for (let i = 0, l = arrA.length; i < l; i++) {
+        if (arrA[i] !== arrB[i]) {
+            return false
+        }
+    }
+    return true
+}
+
+// =====================
+// 多维数组简化为一维数组
+// 可搭配使用这个方法用来判断多维数组是否一致
+// =====================
+// liuyp 2019年9月20日11:10:17
+export const arrayFlatten = ac => {
+    let array = []
+    let g = ac
+    for (var i = 0; i < g.length; i++) {
+        if (g[i] instanceof Array) {
+            array = array.concat(arrayFlatten(g[i]))
+        } else {
+            array.push(g[i])
+        }
+    }
+    return array
+}
+
+// =====================
+// 过滤/包含确认/交集/差集/并集/补集
+// 新数组,不伤源头
+// =====================
+// liuyp 2018年12月20日11:28:08
+export function arrayFilter(A, fn) {
+    fn = fn || function() {}
+    var arr = []
+    for (var i = 0, l = A.length; i < l; i++) {
+        if (fn(A[i])) {
+            arr.push(A[i])
+        }
+    }
+    return arr
+}
+export function arrayContains(A, V) {
+    var i = A.length
+    while (i--) {
+        if (A[i] === V) {
+            return true
+        }
+    }
+    return false
+}
+export function arrayIntersect(a, b) {
+    return arrayFilter(arrayUnique(a), function(o) {
+        return arrayContains(b, o)
+    })
+}
+export function arrayMinus(a, b) {
+    return arrayFilter(arrayUnique(a), function(o) {
+        return !arrayContains(b, o)
+    })
+}
+export function arrayUnion(a, b) {
+    return arrayUnique(a.concat(b))
+}
+export function arrayComplement(a, b) {
+    return arrayMinus(arrayUnion(a, b), arrayIntersect(a, b))
+}
+
+// =====================
+// 数组洗牌
+// =====================
+// liuyp 2018年12月20日11:28:08
+export function arrayShuffle(o) {
+    // v1.0
+    for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x) {
+        // 666
+    }
+    return o
+}
+
+// =====================
+// forEach 以防万一 便宜方法
+// =====================
+export const forEach = (arr, fn) => {
+    if (!arr.length || !fn) return
+    let i = -1
+    let len = arr.length
+    while (++i < len) {
+        let item = arr[i]
+        fn(item, i, arr)
+    }
+}
+
 /* ================================================================================ *\
 *  |说明|_sortBubble(改进版本)
 *  |说明|冒泡排序(Bubble Sort)
@@ -17,33 +182,36 @@
 *  |说明|当输入的数据是反序时(卧槽 我直接反序不就完了....)
 *  |说明|平均情况:T(n) = O(n2)
 \* ================================================================================ */
-export function sortBubble (arr) {
+export function sortBubble(arr) {
     var low = 0
     var high = arr.length - 1
     var tmp
     var j
-    console.time('冒泡排序耗时');
+    console.time('冒泡排序耗时')
     while (low < high) {
-        for (j = low; j < high; ++j) {// 正向冒泡,找到最大者
+        for (j = low; j < high; ++j) {
+            // 正向冒泡,找到最大者
             if (arr[j] > arr[j + 1]) {
-                tmp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = tmp;
+                tmp = arr[j]
+                arr[j] = arr[j + 1]
+                arr[j + 1] = tmp
             }
         }
-        --high; // 修改high值, 前移一位
-        for (j = high; j > low; --j) {// 反向冒泡,找到最小者
+        --high // 修改high值, 前移一位
+        for (j = high; j > low; --j) {
+            // 反向冒泡,找到最小者
             if (arr[j] < arr[j - 1]) {
-                tmp = arr[j];
-                arr[j] = arr[j - 1];
-                arr[j - 1] = tmp;
+                tmp = arr[j]
+                arr[j] = arr[j - 1]
+                arr[j - 1] = tmp
             }
         }
-        ++low; // 修改low值,后移一位
+        ++low // 修改low值,后移一位
     }
-    console.timeEnd('冒泡排序耗时');
-    return arr;
+    console.timeEnd('冒泡排序耗时')
+    return arr
 }
+
 // var sortArray = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48];
 // 测试 sortBubble(_sortArray) 结果 2,3,4,5,15,19,26,27,36,38,44,46,47,48,50
 /* ================================================================================ *\
@@ -63,22 +231,25 @@ export function sortBubble (arr) {
 *  |说明|最差情况:T(n) = O(n2)
 *  |说明|平均情况:T(n) = O(n2)
 \* ================================================================================ */
-export function sortSelection (arr) {
-    var len = arr.length;
-    var minIndex, temp;
-    console.time('选择排序耗时');
+export function sortSelection(arr) {
+    var len = arr.length
+    var minIndex, temp
+    console.time('选择排序耗时')
     for (var i = 0; i < len - 1; i++) {
-        minIndex = i;
+        minIndex = i
         for (var j = i + 1; j < len; j++) {
-            if (arr[j] < arr[minIndex]) { minIndex = j; } // 寻找最小的数//将最小数的索引保存
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j
+            } // 寻找最小的数//将最小数的索引保存
         }
-        temp = arr[i];
-        arr[i] = arr[minIndex];
-        arr[minIndex] = temp;
+        temp = arr[i]
+        arr[i] = arr[minIndex]
+        arr[minIndex] = temp
     }
-    console.timeEnd('选择排序耗时');
-    return arr;
+    console.timeEnd('选择排序耗时')
+    return arr
 }
+
 // 测试 sortSelection(_sortArray) 结果 2,3,4,5,15,19,26,27,36,38,44,46,47,48,50
 /* ================================================================================ *\
 *  |说明|_sortInsertion
@@ -97,22 +268,29 @@ export function sortSelection (arr) {
 *  |说明|最坏情况:输入数组按降序排列T(n) = O(n2)
 *  |说明|平均情况:T(n) = O(n2)
 \* ================================================================================ */
-export function sortInsertion (array) {
-    console.time('插入排序耗时');
+export function sortInsertion(array) {
+    console.time('插入排序耗时')
     for (var i = 1; i < array.length; i++) {
         var key = array[i]
         var left = 0
         var right = i - 1
         while (left <= right) {
-            var middle = parseInt((left + right) / 2);
-            if (key < array[middle]) { right = middle - 1; } else { left = middle + 1; }
+            var middle = parseInt((left + right) / 2)
+            if (key < array[middle]) {
+                right = middle - 1
+            } else {
+                left = middle + 1
+            }
         }
-        for (var j = i - 1; j >= left; j--) { array[j + 1] = array[j]; }
-        array[left] = key;
+        for (var j = i - 1; j >= left; j--) {
+            array[j + 1] = array[j]
+        }
+        array[left] = key
     }
-    console.timeEnd('插入排序耗时');
-    return array;
+    console.timeEnd('插入排序耗时')
+    return array
 }
+
 // 测试 _sortInsertion(_sortArray) 结果 2,3,4,5,15,19,26,27,36,38,44,46,47,48,50
 /* ================================================================================ *\
 *  |说明|_sortShell
@@ -126,22 +304,27 @@ export function sortInsertion (array) {
 *  |说明|最坏情况:T(n) = O(nlog2 n)
 *  |说明|平均情况:T(n) =O(nlog n)
 \* ================================================================================ */
-export function sortShell (arr) {
+export function sortShell(arr) {
     var len = arr.length
     var temp
-    var gap = 1;
-    console.time('希尔排序耗时');
-    while (gap < len / 5) { gap = gap * 5 + 1; } // 动态定义间隔序列
+    var gap = 1
+    console.time('希尔排序耗时')
+    while (gap < len / 5) {
+        gap = gap * 5 + 1
+    } // 动态定义间隔序列
     for (gap; gap > 0; gap = Math.floor(gap / 5)) {
         for (var i = gap; i < len; i++) {
-            temp = arr[i];
-            for (var j = i - gap; j >= 0 && arr[j] > temp; j -= gap) { arr[j + gap] = arr[j]; }
-            arr[j + gap] = temp;
+            temp = arr[i]
+            for (var j = i - gap; j >= 0 && arr[j] > temp; j -= gap) {
+                arr[j + gap] = arr[j]
+            }
+            arr[j + gap] = temp
         }
     }
-    console.timeEnd('希尔排序耗时');
-    return arr;
+    console.timeEnd('希尔排序耗时')
+    return arr
 }
+
 // 测试 _sortShell(_sortArray) 结果 2,3,4,5,15,19,26,27,36,38,44,46,47,48,50
 /* ================================================================================ *\
 *  |说明|_sort归并排序(Merge Sort)
@@ -154,59 +337,73 @@ export function sortShell (arr) {
 *  |说明|最差情况:T(n) = O(nlogn)
 *  |说明|平均情况:T(n) = O(nlogn)
 \* ================================================================================ */
-export function sortMerge (arr) {
-    console.time('归并排序耗时');
-    var r = mergeSort(arr);
-    console.timeEnd('归并排序耗时');
-    return r;
+export function merge(left, right) {
+    var result = []
+    while (left.length && right.length) {
+        if (left[0] <= right[0]) {
+            result.push(left.shift())
+        } else {
+            result.push(right.shift())
+        }
+    }
+    while (left.length) result.push(left.shift())
+    while (right.length) result.push(right.shift())
+    return result
 }
-export function mergeSort (arr) { // 采用自上而下的递归方法
-    var len = arr.length;
-    if (len < 2) { return arr; }
+export function mergeSort(arr) {
+    // 采用自上而下的递归方法
+    var len = arr.length
+    if (len < 2) {
+        return arr
+    }
     var middle = Math.floor(len / 2)
     var left = arr.slice(0, middle)
     var right = arr.slice(middle)
-    return merge(mergeSort(left), mergeSort(right));
+    return merge(mergeSort(left), mergeSort(right))
 }
-export function merge (left, right) {
-    var result = [];
-    while (left.length && right.length) {
-        if (left[0] <= right[0]) { result.push(left.shift()); } else { result.push(right.shift()); }
-    }
-    while (left.length) result.push(left.shift());
-    while (right.length) result.push(right.shift());
-    return result;
+export function sortMerge(arr) {
+    console.time('归并排序耗时')
+    var r = mergeSort(arr)
+    console.timeEnd('归并排序耗时')
+    return r
 }
-// 测试 _sortMerge(_sortArray) 结果 2,3,4,5,15,19,26,27,36,38,44,46,47,48,50
+
 /* ================================================================================ *\
 *  |说明|_sort快速排序(Quick Sort)
 *  |说明|具体算法描述如下:
 *  |说明|<1>.从数列中挑出一个元素 称为 "基准"(pivot):
-*  |说明|<2>.重新排序数列 所有元素比基准值小的摆放在基准前面 所有元素比基准值大的摆在基准的后面(相同的数可以到任一边)在这个分区退出之后 该基准就处于数列的中间位置这个称为分区(partition)操作:
+*  |说明|<2>.重新排序数列 所有元素比基准值小的摆放在基准前面 所有元素比基准值大的摆在基准的后面(相同的数可以到任一边)
+*  |说明|     在这个分区退出之后 该基准就处于数列的中间位置这个称为分区(partition)操作:
 *  |说明|<3>.递归地(recursive)把小于基准值元素的子数列和大于基准值元素的子数列排序
 *  |说明|算法分析
 *  |说明|最佳情况:T(n) = O(nlogn)
 *  |说明|最差情况:T(n) = O(n2)
 *  |说明|平均情况:T(n) = O(nlogn)
 \* ================================================================================ */
-export function sortQuick (arr) {
-    console.time('快速排序耗时');
-    var r = mergeSort(arr);
-    console.timeEnd('快速排序耗时');
-    return r;
+export function sortQuick(arr) {
+    console.time('快速排序耗时')
+    var r = mergeSort(arr)
+    console.timeEnd('快速排序耗时')
+    return r
 }
-export function quickSort (arr) {
-    if (arr.length <= 1) { return arr; }
-    var pivotIndex = Math.floor(arr.length / 2);
-    var pivot = arr.splice(pivotIndex, 1)[0];
+export function quickSort(arr) {
+    if (arr.length <= 1) {
+        return arr
+    }
+    var pivotIndex = Math.floor(arr.length / 2)
+    var pivot = arr.splice(pivotIndex, 1)[0]
     var left = []
     var right = []
     for (var i = 0; i < arr.length; i++) {
-        if (arr[i] < pivot) { left.push(arr[i]); } else { right.push(arr[i]); }
+        if (arr[i] < pivot) {
+            left.push(arr[i])
+        } else {
+            right.push(arr[i])
+        }
     }
-    return quickSort(left).concat([pivot], quickSort(right));
+    return quickSort(left).concat([pivot], quickSort(right))
 }
-// 测试 _sortQuick(_sortArray) 结果 2,3,4,5,15,19,26,27,36,38,44,46,47,48,50
+
 /* ================================================================================ *\
 *  |说明|_Sort计数排序(Counting Sort)
 *  |说明|具体算法描述如下:
@@ -219,29 +416,29 @@ export function quickSort (arr) {
 *  |说明|最差情况:T(n) = O(n+k)
 *  |说明|平均情况:T(n) = O(n+k)
 \* ================================================================================ */
-export function sortCounting (array) {
+export function sortCounting(array) {
     var len = array.length
     var B = []
     var C = []
     var min = array[0]
     var max = min
-    console.time('计数排序耗时');
+    console.time('计数排序耗时')
     for (var i = 0; i < len; i++) {
-        min = min <= array[i] ? min : array[i];
-        max = max >= array[i] ? max : array[i];
-        C[array[i]] = C[array[i]] ? C[array[i]] + 1 : 1;
+        min = min <= array[i] ? min : array[i]
+        max = max >= array[i] ? max : array[i]
+        C[array[i]] = C[array[i]] ? C[array[i]] + 1 : 1
     }
     for (var j = min; j < max; j++) {
-        C[j + 1] = (C[j + 1] || 0) + (C[j] || 0);
+        C[j + 1] = (C[j + 1] || 0) + (C[j] || 0)
     }
     for (var k = len - 1; k >= 0; k--) {
-        B[C[array[k]] - 1] = array[k];
-        C[array[k]]--;
+        B[C[array[k]] - 1] = array[k]
+        C[array[k]]--
     }
-    console.timeEnd('计数排序耗时');
-    return B;
+    console.timeEnd('计数排序耗时')
+    return B
 }
-// 测试 _sortCounting(_sortArray) 结果 2,3,4,5,15,19,26,27,36,38,44,46,47,48,50
+
 /* ================================================================================ *\
 *  |说明|_sort桶排序(Bucket Sort)
 *  |说明|具体算法描述如下:
@@ -253,8 +450,10 @@ export function sortCounting (array) {
 *  |说明|最差情况:T(n) = O(n+k)
 *  |说明|平均情况:T(n) = O(n2)
 \* ================================================================================ */
-export function sortBucket (array, num) {
-    if (array.length <= 1) { return array; }
+export function sortBucket(array, num) {
+    if (array.length <= 1) {
+        return array
+    }
     var len = array.length
     var buckets = []
     var result = []
@@ -263,35 +462,37 @@ export function sortBucket (array, num) {
     var regex = '/^[1-9]+[0-9]*$/'
     var space
     var n = 0
-    num = num || ((num > 1 && regex.test(num)) ? num : 10);
-    console.time('码桶排序耗时');
+    num = num || (num > 1 && regex.test(num) ? num : 10)
+    console.time('码桶排序耗时')
     for (var i = 1; i < len; i++) {
-        min = min <= array[i] ? min : array[i];
-        max = max >= array[i] ? max : array[i];
+        min = min <= array[i] ? min : array[i]
+        max = max >= array[i] ? max : array[i]
     }
-    space = (max - min + 1) / num;
+    space = (max - min + 1) / num
     for (var j = 0; j < len; j++) {
-        var index = Math.floor((array[j] - min) / space);
-        if (buckets[index]) { //  非空桶 插入排序
-            var k = buckets[index].length - 1;
+        var index = Math.floor((array[j] - min) / space)
+        if (buckets[index]) {
+            //  非空桶 插入排序
+            var k = buckets[index].length - 1
             while (k >= 0 && buckets[index][k] > array[j]) {
-                buckets[index][k + 1] = buckets[index][k];
-                k--;
+                buckets[index][k + 1] = buckets[index][k]
+                k--
             }
-            buckets[index][k + 1] = array[j];
-        } else { // 空桶 初始化
-            buckets[index] = [];
-            buckets[index].push(array[j]);
+            buckets[index][k + 1] = array[j]
+        } else {
+            // 空桶 初始化
+            buckets[index] = []
+            buckets[index].push(array[j])
         }
     }
     while (n < num) {
-        result = result.concat(buckets[n]);
-        n++;
+        result = result.concat(buckets[n])
+        n++
     }
-    console.timeEnd('码桶排序耗时');
-    return result;
+    console.timeEnd('码桶排序耗时')
+    return result
 }
-// 测试 _sortBucket(_sortArray,4) 结果 2,3,4,5,15,19,26,27,36,38,44,46,47,48,50
+
 /* ================================================================================ *\
 *  |说明|_sort基数排序(Radix Sort)
 *  |说明|具体算法描述如下:
@@ -303,28 +504,30 @@ export function sortBucket (array, num) {
 *  |说明|最差情况:T(n) = O(n * k)
 *  |说明|平均情况:T(n) = O(n * k)
 \* ================================================================================ */
-export function sortRadix (arr, maxDigit) {
+// 测试 _sortRadix(_sortArray,2) 结果 2,3,4,5,15,19,26,27,36,38,44,46,47,48,50
+export function sortRadix(arr, maxDigit) {
     var mod = 10
     var dev = 1
     var counter = []
-    console.time('基数排序耗时');
+    console.time('基数排序耗时')
     for (var i = 0; i < maxDigit; i++, dev *= 10, mod *= 10) {
         for (var j1 = 0; j1 < arr.length; j1++) {
-            var bucket = parseInt((arr[j1] % mod) / dev);
-            if (counter[bucket] === null) { counter[bucket] = []; }
-            counter[bucket].push(arr[j1]);
+            var bucket = parseInt((arr[j1] % mod) / dev)
+            if (counter[bucket] === null) {
+                counter[bucket] = []
+            }
+            counter[bucket].push(arr[j1])
         }
-        var pos = 0;
+        var pos = 0
         for (var j2 = 0; j2 < counter.length; j2++) {
-            var value = null;
+            var value = null
             if (counter[j2] !== null) {
                 while ((value = counter[j2].shift()) !== null) {
-                    arr[pos++] = value;
+                    arr[pos++] = value
                 }
             }
         }
     }
-    console.timeEnd('基数排序耗时');
-    return arr;
+    console.timeEnd('基数排序耗时')
+    return arr
 }
-// 测试 _sortRadix(_sortArray,2) 结果 2,3,4,5,15,19,26,27,36,38,44,46,47,48,50

@@ -9,6 +9,7 @@ export default makeTwoLevelRoute({
     children: [
         {path: 'index', title: '首页', component: homePage},
         {path: 'templeteTable', title: '列表页模版'},
+        {path: 'templeteTable01', title: '列表页模版01'},
         {path: 'templeteForm', title: '表单页模版'},
         {path: 'templeteUi01', title: '模版UI XHeader'},
         {path: 'templeteUi02', title: '模版UI Actionsheet'},

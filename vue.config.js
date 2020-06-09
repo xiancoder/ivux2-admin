@@ -48,7 +48,7 @@ module.exports = {
                 pathRewrite: {'^/api': '/apioa'},
                 changeOrigin: true
             }
-        }*/
+        } */
         before: mockDateBefore,
         after: mockDateAfter
     }

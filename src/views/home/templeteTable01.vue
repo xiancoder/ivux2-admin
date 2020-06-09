@@ -10,11 +10,11 @@
                 <x-button slot="right" type="primary" mini >添加为管理员</x-button>
             </x-input>
         </group>
-        <scroller ref="scroll" height="-100" lock-x :scroll-bottom-offst="200" @on-scroll-bottom="ajaxList()">
+        <scroller ref="scroll" height="-100" lock-x :scroll-bottom-offst="200" @on-scroll-bottom="scrollPage()">
             <div>
                 <x-table :cell-bordered="false" :content-bordered="true">
                     <tbody>
-                        <tr v-for="(row,index) in obj.list" :key="pageIndex+'-'+index">
+                        <tr v-for="(row,index) in vuxTableList" :key="pageIndex+'-'+index">
                             <td class="td1">
                                 &nbsp;
                                 <img :src="row.header" alt="" />
@@ -31,12 +31,12 @@
                         </tr>
                     </tbody>
                 </x-table>
-                <div class="noData" v-show="!obj.list.length">
+                <div class="noData" v-show="!vuxTableList.length">
                     暂无数据
                 </div>
-                <load-more v-show="loading" tip="loading">
+                <load-more v-show="vuxTableLoading" tip="加载中...">
                 </load-more>
-                <divider class="noMore" v-show="noMore && obj.list.length>0">
+                <divider class="noMore" v-show="vuxTableNoMore && vuxTableList.length>0">
                     没有更多数据
                 </divider>
             </div>
@@ -45,55 +45,78 @@
 </template>
 <script>
 import '@/plugins/vux-table'
+import {extend, extendF} from '@/utils'
 
 export default {
     data () {
         return {
-            search: { // 搜索项
+            search: { // [[模版结构不要修改]]
                 id: ''
             },
-            obj: { // 表格 [[模版结构不要修改]]
-                list: [],
-                rowcount: 0
+            page: {
+                page_index: 1, // 分页 [[模版结构不要修改]]
+                page_size: 10 // 条数 [[模版结构不要修改]]
             },
-            pageIndex: 1,
-            pageSize: 10,
-            loading: false,
-            noMore: false
+            order: {
+                order_key: 'id', // 排序属性 [[模版结构不要修改]]
+                order_rule: true // 排序规则 true降序false升序 [[模版结构不要修改]]
+            },
+            vuxTableParams: {}, // 请求参数 [[模版结构不要修改]]
+            vuxTableList: [], // 表格内容 [[模版结构不要修改]]
+            vuxTableCount: 0, // 表格条数 [[模版结构不要修改]]
+            vuxTableLoading: false, // 加载中 [[模版结构不要修改]]
+            vuxTableNoMore: false // 没有更多 [[模版结构不要修改]]
         }
     },
     methods: {
-        ajaxList () { // 读取信息 下拉刷新
-            if (this.loading || this.noMore) { return false }
-            this.loading = true
-            this.$get('/api/super/roleList', {
-                pageIndex: this.pageIndex,
-                pageSize: this.pageSize
-            }).then(response => { // response 为完整结构
-                const res = response.data // res 为我方接口结构
-                const data = res.data
-                this.obj.list = [...this.obj.list, ...data.list]
-                this.obj.rowcount = data.rowcount
-                this.ajaxEnd()
-            })
-        },
-        ajaxEnd () { // ajax结束 [[模版结构不要修改]]
-            this.loading = false
-            this.pageIndex += 1
-            if (this.pageIndex * this.pageSize >= this.obj.rowcount) {
-                this.noMore = true
-            }
-            if (this.pageIndex > 1) {
-                this.$nextTick(() => {
-                    this.$refs.scroll.reset()
-                })
-            }
-        },
-        initTable: function () { // 复原
-            this.pageIndex = 1
-            this.obj.list = []
-            this.obj.rowcount = 0
+        initTable () { // 复原 [[模版结构不要修改]]
+            this.page.page_index = 1
+            this.vuxTableList = []
+            this.vuxTableCount = 0
             this.ajaxList()
+        },
+        ajaxList () { // 读取信息 [[模版结构不要修改]]
+            if (this.vuxTableNoMore) {return false}
+            if (this.vuxTableLoading) {return false}
+            this.vuxTableLoading = true
+            extendF(this.search, this.vuxTableParams) // 反继承搜索项
+            this.$api.role
+                .list(this.vuxTableParams)
+                .then(data => {
+                    this.vuxTableList = [...this.vuxTableList, ...data.list]
+                    this.vuxTableCount = data.rowcount
+                    this.vuxTableLoading = false
+                    this.vuxTableNoMore = this.page.index * this.page.size >= parseInt(data.rowcount) // 计算是否还有更多
+                    this.$nextTick(() => { // 用以重新渲染，避免新加的内容无法上拉看到
+                        this.$refs.scroll.reset()
+                    })
+                })
+                .catch(e => {
+                    this.vuxTableLoading = false
+                })
+        },
+        handlePage (page) { // 换页 [[模版结构不要修改]]
+            this.page.index = page || 1
+            extend(this.vuxTableParams, this.page) // 继承搜索项
+            this.ajaxList()
+        },
+        scrollPage () { // 换页 [[模版结构不要修改]]
+            if (this.vuxTableNoMore) {return false}
+            this.handlePage(++this.page.index)
+        },
+        handleSearch () { // 搜索 [[模版结构不要修改]]
+            extend(this.vuxTableParams, this.search) // 继承搜索项
+            this.handlePage(1)
+        },
+        handleOrder (key) { // 排序 [[模版结构不要修改]]
+            if (this.order.order_key === key) {
+                this.order.order_rule = !this.order.order_rule
+            } else {
+                this.order.order_key = key
+                this.order.order_rule = true
+            }
+            extend(this.vuxTableParams, this.order) // 继承搜索项
+            this.handlePage(1)
         },
         // 添加
         addPower () {

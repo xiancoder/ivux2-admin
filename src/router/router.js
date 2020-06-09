@@ -13,7 +13,7 @@ export const mainRouter = {
     children: [
         home,
         exp,
-        report,
+        report
 
         /*
         // 反馈意见列表

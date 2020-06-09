@@ -11,14 +11,14 @@ module.exports = {
         'quotes': ['error', 'single'], // 引号类型 `` '' ''
         'semi': 0, // 语句强制分号结尾
         'import/no-duplicates': 0, // 多行导入
-        'no-extra-semi': 2,//禁止多余的冒号
-        'no-extra-boolean-cast': 2,//禁止不必要的bool转换
+        'no-extra-semi': 2, // 禁止多余的冒号
+        'no-extra-boolean-cast': 2, // 禁止不必要的bool转换
         'no-console': 0, // 禁止使用console
         'no-empty': 2, // 块语句中的内容不能为空
         'no-eq-null': 2, // 禁止对null使用==或!=运算符
         'no-new': 0, // 禁止在使用new构造一个实例后不赋值
         'no-fallthrough': 0, // 禁止switch穿透
-        'comma-dangle': ["error", "never"], // 此规则强制在对象和数组文字中一致地使用尾随逗号。
+        'comma-dangle': ['error', 'never'], // 此规则强制在对象和数组文字中一致地使用尾随逗号。
         'object-curly-spacing': 0, // 对象先后有空格
         'no-useless-escape': 0, // 禁止正则字符转移
         'object-property-newline': 0, // 对象一个属性占一行

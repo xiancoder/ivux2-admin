@@ -75,202 +75,202 @@
     </div>
 </template>
 <script>
-    import tab from '../process/tab.vue'
-    import noData from '../order/no-data'
-    import {Group,XHeader,Tab,TabItem,XTable,Scroller,LoadMore,Divider,Search,Popup,Checker,CheckerItem,Datetime,debounce} from 'vux'
-    export default {
-        name: "process-my",
-        components: {Group,XHeader,Tab,TabItem,XTable,Scroller,LoadMore,Divider,Search,Popup,Checker,CheckerItem,Datetime,tab,noData},
-        data () {
-            return {
-                names: [
-                    {name: '已接收', router: 'report-receive'},
-                    {name: '已发送', router: 'report-send'},
-                    {name: '草稿箱', router: 'report-draft'},
-                    {name: '已删除', router: 'report-delete'},
-                ],
-                workTypeList: [{name: '全部类型', value: -1}, {name: '日报', value: 1}, {name: '周报', value: 2}, {name: '月报', value: 3}],
-                debounceSearch: '',
-                dataArr: [],
-                pageSize: 10,
-                rowcount: null,
-                noMore: false,
-                loading: false,
-                firstload: true,
-                first: 0,
-                tdWidth: document.body.clientWidth - 50,
-                keyword: '',
-                screen: false,
-                condition: 1,
-                search:{
-                    begin: '',
-                    end: '',
-                    workType: -1,
-                    pageIndex: 1,
-                },
-                loadOne: 0//解决下拉触发多次
+import tab from '@/components/tab.vue'
+import noData from '@/components/no-data'
+import {Group, XHeader, Tab, TabItem, XTable, Scroller, LoadMore, Divider, Search, Popup, Checker, CheckerItem, Datetime, debounce} from 'vux'
+export default {
+    name: 'process-my',
+    components: {Group, XHeader, Tab, TabItem, XTable, Scroller, LoadMore, Divider, Search, Popup, Checker, CheckerItem, Datetime, tab, noData},
+    data () {
+        return {
+            names: [
+                {name: '已接收', router: 'report-receive'},
+                {name: '已发送', router: 'report-send'},
+                {name: '草稿箱', router: 'report-draft'},
+                {name: '已删除', router: 'report-delete'}
+            ],
+            workTypeList: [{name: '全部类型', value: -1}, {name: '日报', value: 1}, {name: '周报', value: 2}, {name: '月报', value: 3}],
+            debounceSearch: '',
+            dataArr: [],
+            pageSize: 10,
+            rowcount: null,
+            noMore: false,
+            loading: false,
+            firstload: true,
+            first: 0,
+            tdWidth: document.body.clientWidth - 50,
+            keyword: '',
+            screen: false,
+            condition: 1,
+            search: {
+                begin: '',
+                end: '',
+                workType: -1,
+                pageIndex: 1
+            },
+            loadOne: 0// 解决下拉触发多次
+        }
+    },
+    methods: {
+        init () {
+            const scrollHei = sessionStorage.getItem('phoneHeight') * 1 - 154.5;
+            this.$refs.scroll.styles.height = scrollHei + 'px';
+            if (this.$route.query.pageSize) {
+                this.keyword = this.$route.query.keyword;
+                this.pageSize = parseInt(this.$route.query.pageSize);
+                this.search.begin = this.$route.query.begin;
+                this.search.end = this.$route.query.end;
+                this.search.workType = parseInt(this.$route.query.workType);
+                this.$nextTick(res => {
+                    const scrollHei = sessionStorage.getItem('report_transform');
+                    if (scrollHei) {
+                        const scrollDom = document.querySelector('.xs-container');
+                        scrollDom.style.transform = scrollHei;
+                    }
+                });
+            }
+            this.getList();
+            this.debounceSearch = debounce(this.submiting, 500);
+        },
+        goHome () {
+            this.$router.replace({name: 'home_index'})
+        },
+        toRelease () {
+            this.$router.push({name: 'report-edit'})
+        },
+        openScreen () {
+            this.screen = true;
+        },
+        getList (val) {
+            let para = {
+                'type': 2,
+                'begin': this.search.begin === '' ? null : this.search.begin,
+                'end': this.search.end === '' ? null : this.search.end,
+                'workType': this.search.workType === -1 ? null : this.search.workType,
+                'keyword': this.keyword,
+                'pageIndex': this.search.pageIndex,
+                'pageSize': this.pageSize
+            };
+            this.$get('api/report/report_list', para).then(res => {
+                this.first++;
+                if (this.first === 1) {
+                    this.firstload = false;
+                }
+                let data = res.data.data.list;
+                if (data.length > 0) {
+                    for (let i = 0; i < data.length; i++) {
+                        switch (data[i].workType) {
+                            case 1:
+                                data[i].workTypeName = '日报';
+                                data[i].typeStyle = 'color1';
+                                break;
+                            case 2:
+                                data[i].workTypeName = '周报';
+                                data[i].typeStyle = 'color2';
+                                break;
+                            case 3:
+                                data[i].workTypeName = '月报';
+                                data[i].typeStyle = 'color3';
+                                break;
+                            default:
+                                data[i].workTypeName = '';
+                                data[i].typeStyle = '';
+                        }
+                    }
+                }
+                // if (val === 2) {
+                //     this.dataArr = [...this.dataArr,...data];
+                // } else {
+                this.dataArr = data;
+                // }
+                this.rowcount = res.data.data.rowcount;
+                this.loading = false;
+                this.$nextTick(() => {
+                    this.$refs.scroll.reset();
+                });
+                if (this.pageSize >= this.rowcount) {
+                    this.loadOne = 1;
+                    this.noMore = true;
+                } else {
+                    this.loadOne = 0;
+                }
+                window.location.replace('#/order/report-receive?&keyword=' + this.keyword + '&pageSize=' + this.pageSize +
+                        '&begin=' + this.search.begin + '&end=' + this.search.end + '&workType=' + this.search.workType);
+            })
+        },
+        compare (date1, date2) {
+            let begin = new Date(date1);
+            let end = new Date(date2);
+            return begin.getTime() > end.getTime();
+        },
+        reset () {
+            this.search = {
+                begin: '',
+                end: '',
+                workType: -1,
+                pageIndex: 1
+            };
+            this.pageSize = 10;
+            this.first = 0;
+            this.firstload = true;
+            this.noMore = false;
+            this.loadOne = 1;
+            this.dataArr = [];
+            this.getList();
+            this.screen = false;
+            this.$nextTick(() => {
+                this.$refs.scroll.reset({top: 0});
+            })
+        },
+        ok () {
+            this.pageSize = 10;
+            if (this.compare(this.search.begin, this.search.end)) {
+                this.$vux.toast.show({
+                    type: 'cancel',
+                    text: '开始日期大于结束时间'
+                });
+                return false;
+            }
+            this.screen = false;
+            this.first = 0;
+            this.firstload = true;
+            this.noMore = false;
+            this.loadOne = 1;
+            this.dataArr = [];
+            this.getList();
+            this.$nextTick(() => {
+                this.$refs.scroll.reset({top: 0});
+            })
+        },
+        submiting () {
+            this.pageSize = 10;
+            this.first = 0;
+            this.firstload = true;
+            this.noMore = false;
+            this.loadOne = 1;
+            this.dataArr = [];
+            this.getList();
+            this.$nextTick(() => {
+                this.$refs.scroll.reset({top: 0});
+            })
+        },
+        loadData () {
+            if (++this.loadOne === 1) {
+                this.loading = true;
+                this.pageSize = this.pageSize + 10;
+                this.getList(2);
             }
         },
-        methods: {
-            init () {
-                const scrollHei= sessionStorage.getItem('phoneHeight')*1 - 154.5;
-                this.$refs.scroll.styles.height= scrollHei + 'px';
-                if (this.$route.query.pageSize) {
-                    this.keyword = this.$route.query.keyword;
-                    this.pageSize = parseInt(this.$route.query.pageSize);
-                    this.search.begin = this.$route.query.begin;
-                    this.search.end = this.$route.query.end;
-                    this.search.workType = parseInt(this.$route.query.workType);
-                    this.$nextTick( res => {
-                        const scrollHei= sessionStorage.getItem('report_transform');
-                        if (scrollHei) {
-                            const scrollDom= document.querySelector('.xs-container');
-                            scrollDom.style.transform= scrollHei;
-                        }
-                    });
-                }
-                this.getList();
-                this.debounceSearch = debounce(this.submiting, 500);
-            },
-            goHome () {
-                this.$router.replace({name: 'home_index'})
-            },
-            toRelease () {
-                this.$router.push({name: 'report-edit'})
-            },
-            openScreen () {
-                this.screen = true;
-            },
-            getList (val) {
-                let para = {
-                    "type": 2,
-                    "begin": this.search.begin  === '' ? null : this.search.begin,
-                    "end": this.search.end === '' ? null : this.search.end,
-                    "workType": this.search.workType === -1 ? null : this.search.workType,
-                    "keyword": this.keyword,
-                    "pageIndex": this.search.pageIndex,
-                    "pageSize": this.pageSize
-                };
-                this.$get('api/report/report_list',para).then(res=>{
-                    this.first++;
-                    if(this.first===1){
-                        this.firstload= false;
-                    }
-                    let data= res.data.data.list;
-                    if(data.length > 0){
-                        for(let i = 0; i < data.length; i++){
-                            switch(data[i].workType){
-                                case 1:
-                                    data[i].workTypeName= "日报";
-                                    data[i].typeStyle= "color1";
-                                    break;
-                                case 2:
-                                    data[i].workTypeName= "周报";
-                                    data[i].typeStyle= "color2";
-                                    break;
-                                case 3:
-                                    data[i].workTypeName= "月报";
-                                    data[i].typeStyle= "color3";
-                                    break;
-                                default:
-                                    data[i].workTypeName= "";
-                                    data[i].typeStyle= "";
-                            }
-                        }
-                    }
-                    // if (val === 2) {
-                    //     this.dataArr = [...this.dataArr,...data];
-                    // } else {
-                        this.dataArr = data;
-                    // }
-                    this.rowcount = res.data.data.rowcount;
-                    this.loading = false;
-                    this.$nextTick(()=>{
-                        this.$refs.scroll.reset();
-                    });
-                    if (this.pageSize >= this.rowcount) {
-                        this.loadOne = 1;
-                        this.noMore = true;
-                    } else {
-                        this.loadOne = 0;
-                    }
-                    window.location.replace('#/order/report-receive?&keyword=' + this.keyword + '&pageSize=' + this.pageSize
-                        + '&begin=' + this.search.begin + '&end=' + this.search.end + '&workType=' + this.search.workType);
-                })
-            },
-            compare (date1,date2) {
-                let begin = new Date(date1);
-                let end = new Date(date2);
-                return begin.getTime() > end.getTime();
-            },
-            reset () {
-                this.search = {
-                    begin: '',
-                    end: '',
-                    workType: -1,
-                    pageIndex: 1,
-                };
-                this.pageSize = 10;
-                this.first = 0;
-                this.firstload = true;
-                this.noMore = false;
-                this.loadOne = 1;
-                this.dataArr = [];
-                this.getList();
-                this.screen = false;
-                this.$nextTick( ()=> {
-                    this.$refs.scroll.reset({top:0,});
-                })
-            },
-            ok () {
-                this.pageSize = 10;
-                if (this.compare(this.search.begin,this.search.end)) {
-                    this.$vux.toast.show({
-                        type: 'cancel',
-                        text: '开始日期大于结束时间'
-                    });
-                    return false;
-                }
-                this.screen = false;
-                this.first = 0;
-                this.firstload = true;
-                this.noMore = false;
-                this.loadOne = 1;
-                this.dataArr = [];
-                this.getList();
-                this.$nextTick(()=> {
-                    this.$refs.scroll.reset({top:0,});
-                })
-            },
-            submiting () {
-                this.pageSize = 10;
-                this.first = 0;
-                this.firstload = true;
-                this.noMore = false;
-                this.loadOne = 1;
-                this.dataArr = [];
-                this.getList();
-                this.$nextTick(()=> {
-                    this.$refs.scroll.reset({top:0,});
-                })
-            },
-            loadData () {
-                if (++this.loadOne === 1) {
-                    this.loading = true;
-                    this.pageSize = this.pageSize + 10;
-                    this.getList(2);
-                }
-            },
-            toDetail (id) {
-                const scrollDom = document.querySelector('.xs-container');
-                sessionStorage.setItem('report_transform', scrollDom.style.transform);
-                this.$router.push({name:'report-info',query:{id: id, notice: '0'}})
-            },
-        },
-        mounted () {
-            this.init();
-        },
+        toDetail (id) {
+            const scrollDom = document.querySelector('.xs-container');
+            sessionStorage.setItem('report_transform', scrollDom.style.transform);
+            this.$router.push({name: 'report-info', query: {id: id, notice: '0'}})
+        }
+    },
+    mounted () {
+        this.init();
     }
+}
 </script>
 <style scoped>
     .myprocessTable tr td:before{
