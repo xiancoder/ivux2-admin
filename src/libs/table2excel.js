@@ -49,7 +49,8 @@ function tranform (table, aId, name) {
 
     if (getExplorer() === 'ie') {
         var curTbl = table;
-        var oXL = new ActiveXObject('Excel.Application');
+        var A = window.ActiveXObject
+        var oXL = new A('Excel.Application');
         var oWB = oXL.Workbooks.Add();
         var xlsheet = oWB.Worksheets(1);
         var sel = document.body.createTextRange();

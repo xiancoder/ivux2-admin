@@ -53,7 +53,7 @@ export const scrollTop = (el, from = 0, to, duration = 500, endCallback) => {
             window.webkitRequestAnimationFrame ||
             window.mozRequestAnimationFrame ||
             window.msRequestAnimationFrame ||
-            function(callback) {
+            function (callback) {
                 return window.setTimeout(callback, 1000 / 60)
             }
     }
@@ -81,7 +81,7 @@ export const scrollTop = (el, from = 0, to, duration = 500, endCallback) => {
     scroll(from, to, step)
 }
 
-Math.easeInOutQuad = function(t, b, c, d) {
+Math.easeInOutQuad = function (t, b, c, d) {
     t /= d / 2
     if (t < 1) {
         return (c / 2) * t * t + b
@@ -90,12 +90,12 @@ Math.easeInOutQuad = function(t, b, c, d) {
     return (-c / 2) * (t * (t - 2) - 1) + b
 }
 // requestAnimationFrame for Smart Animating http://goo.gl/sx5sts
-var requestAnimFrame = (function() {
+var requestAnimFrame = (function () {
     return (
         window.requestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
         window.mozRequestAnimationFrame ||
-        function(callback) {
+        function (callback) {
             window.setTimeout(callback, 1000 / 60)
         }
     )
@@ -104,12 +104,12 @@ var requestAnimFrame = (function() {
  * Because it's so fucking difficult to detect the scrolling element, just move them all
  * @param {number} amount
  */
-function move(amount) {
+function move (amount) {
     document.documentElement.scrollTop = amount
     document.body.parentNode.scrollTop = amount
     document.body.scrollTop = amount
 }
-function position() {
+function position () {
     return document.documentElement.scrollTop || document.body.parentNode.scrollTop || document.body.scrollTop
 }
 /**
@@ -117,13 +117,13 @@ function position() {
  * @param {number} duration
  * @param {Function} callback
  */
-export function scrollTo(to, duration, callback) {
+export function scrollTo (to, duration, callback) {
     const start = position()
     const change = to - start
     const increment = 20
     let currentTime = 0
     duration = typeof duration === 'undefined' ? 500 : duration
-    var animateScroll = function() {
+    var animateScroll = function () {
         // increment the time
         currentTime += increment
         // find the value with the quadratic in-out easing function
@@ -147,7 +147,7 @@ export function scrollTo(to, duration, callback) {
 // dom js触发打印功能
 // =====================
 // liuyp 2020年2月6日 15:50:47
-export function print(content, style) {
+export function print (content, style) {
     let html = ''
     if (Object.prototype.toString.call(content).toLowerCase() === '[object array]') {
         content.forEach((one, index) => {
@@ -210,7 +210,7 @@ export const findNodeUpperByClasses = (ele, classes) => {
 // makeDom_创_创建节点
 /* 动态加入文字DIV */
 // =====================
-export function appendDiv(text, elem) {
+export function appendDiv (text, elem) {
     var dNode = document.createTextNode(text)
     var dElem = document.createElement(elem)
     dElem.appendChild(dNode)
@@ -223,7 +223,7 @@ export function appendDiv(text, elem) {
 // 有appendChild的应该也有prependChild吧？
 // document.body.insertBefore(xx, document.body.children.item(0));
 // =====================
-export function insertAfter(newEl, targetEl) {
+export function insertAfter (newEl, targetEl) {
     var parentEl = targetEl.parentNode
     if (parentEl.lastChild === targetEl) {
         parentEl.appendChild(newEl)
@@ -231,22 +231,22 @@ export function insertAfter(newEl, targetEl) {
         parentEl.insertBefore(newEl, targetEl.nextElementSibling || targetEl.nextSibling)
     }
 }
-export function insertBefore(newEl, targetEl) {
+export function insertBefore (newEl, targetEl) {
     var parentEl = targetEl.parentNode
     parentEl.insertBefore(newEl, targetEl)
 }
-export function prependChild(newEl, parentEl) {
+export function prependChild (newEl, parentEl) {
     var r = parentEl.firstChild
     return r && r.nodeType ? void parentEl.insertBefore(newEl, r) : void parentEl.appendChild(newEl)
 }
-export function appendChild(newEl, parentEl) {
+export function appendChild (newEl, parentEl) {
     return parentEl.appendChild(newEl)
 }
 
 // =====================
 // makeDom_增_测试手动插入脚本
 // =====================
-export function appendScript() {
+export function appendScript () {
     var script = document.createElement('script')
     script.src = ''
     document.body.appendChild(script)
@@ -255,14 +255,14 @@ export function appendScript() {
 // =====================
 // makeDom_删_动态移除DOM
 // =====================
-export function remove(elem) {
+export function remove (elem) {
     elem.parentNode && elem.parentNode.removeChild(elem)
 }
 
 // =====================
 // makeDom_改_动态处理属性
 // =====================
-export function Attr(elem, attr, value) {
+export function Attr (elem, attr, value) {
     if (value === undefined) {
         return elem.getAttribute(attr)
     } else if (value === '') {
@@ -273,13 +273,13 @@ export function Attr(elem, attr, value) {
 // =====================
 // makeDom_改_动态处理样式
 // =====================
-export function hasClass(el, k) {
+export function hasClass (el, k) {
     if (!el || !k) {
         return
     }
     return (' ' + el.className + ' ').indexOf(' ' + k + ' ') > -1
 }
-export function addClass(el, k) {
+export function addClass (el, k) {
     if (!el || !k) {
         return
     }
@@ -291,7 +291,7 @@ export function addClass(el, k) {
         el.className = [el.className, k].join(' ')
     }
 }
-export function removeClass(el, k) {
+export function removeClass (el, k) {
     if (!el || !k) {
         return
     }
@@ -303,7 +303,7 @@ export function removeClass(el, k) {
         el.className = (' ' + el.className + ' ').replace(k, '')
     }
 }
-export function toggleClass(el, k) {
+export function toggleClass (el, k) {
     if (!el || !k) {
         return
     }
@@ -314,7 +314,7 @@ export function toggleClass(el, k) {
 // makeDom_断_元素属性
 // 判断siblingNode和dom是否为同一个父元素下的同一级的元素，返回bool值
 // =====================
-export function isSiblingNode(element, siblingNode) {
+export function isSiblingNode (element, siblingNode) {
     if (!siblingNode || !element) return false
     return element.parentNode === siblingNode.parentNode
 }
@@ -326,7 +326,7 @@ export function isSiblingNode(element, siblingNode) {
  * @param {Number} w
  * @param {Number} h
  */
-export function openWindow(url, title, w, h) {
+export function openWindow (url, title, w, h) {
     // Fixes dual-screen position Most browsers Firefox
     const dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : screen.left
     const dualScreenTop = window.screenTop !== undefined ? window.screenTop : screen.top

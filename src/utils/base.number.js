@@ -22,7 +22,7 @@ export const number2Chinese = num => {
     let chnNumChar = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九']
     let chnUnitSection = ['', '万', '亿', '万亿', '亿亿']
     let chnUnitChar = ['', '十', '百', '千']
-    let numToChn = function(num) {
+    let numToChn = function (num) {
         let index = num.toString().indexOf('.')
         if (index === -1) {
             return ''
@@ -35,7 +35,7 @@ export const number2Chinese = num => {
         return a || ''
     }
     // 定义在每个小节的内部进行转化的方法，其他部分则与小节内部转化方法相同
-    function sectionToChinese(section) {
+    function sectionToChinese (section) {
         let str = ''
         let chnstr = ''
         let zero = false
@@ -93,7 +93,7 @@ export const number2Chinese2 = num => {
         .toString()
         .split('')
         .reverse()
-    nums.map(function(a, index) {
+    nums.map(function (a, index) {
         str = keys[a] + (a === 0 ? '' : count[index > 3 ? index - 4 : index]) + (index === '4' ? '万' : '') + str
     })
     return str.replace(/(零(?=零))|(零$)|(零(?=万))/g, '')
@@ -182,7 +182,7 @@ export const money2Chinese = money => {
 // UUID 生成
 // =====================
 // liuyp 2019年6月9日22:00:05
-export const uuid = function(len, radix) {
+export const uuid = function (len, radix) {
     let chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('')
     let uuid = []
     let i
@@ -208,7 +208,7 @@ export const uuid = function(len, radix) {
 // 小数点后位数
 // =====================
 // liuyp 2019年9月20日10:58:12
-const places = function(n) {
+const places = function (n) {
     try {
         return n.toString().split('.')[1].length
     } catch (e) {
@@ -220,7 +220,7 @@ const places = function(n) {
 // 剔除小数点
 // =====================
 // liuyp 2019年9月20日10:58:12
-const noplaces = function(n) {
+const noplaces = function (n) {
     return Number(n.toString().replace('.', ''))
 }
 
@@ -230,7 +230,7 @@ const noplaces = function(n) {
 // 对于小数，前端出现问题的几率还是很多的，尤其在一些电商网站涉及到金额等数据。解决方式：把小数放到位整数（乘倍数），再缩小回原来倍数（除倍数）
 // =====================
 // liuyp 2019年9月20日10:58:12
-export const add = function(/* arguments */) {
+export const add = function (/* arguments */) {
     let args = []
     let l = arguments.length
     if (l === 0) {
@@ -258,7 +258,7 @@ export const add = function(/* arguments */) {
 // 精准减法
 // =====================
 // liuyp 2019年9月20日10:58:12
-export const sub = function(/* arguments */) {
+export const sub = function (/* arguments */) {
     let l = arguments.length
     if (l === 0) {
         return 0
@@ -287,7 +287,7 @@ export const sub = function(/* arguments */) {
 // 精准乘法
 // =====================
 // liuyp 2019年9月20日10:58:12
-export const mul = function(/* arguments */) {
+export const mul = function (/* arguments */) {
     let args = []
     let l = arguments.length
     if (l === 0) {
@@ -315,7 +315,7 @@ export const mul = function(/* arguments */) {
 // 精准除法
 // =====================
 // liuyp 2019年9月20日10:58:12
-export const div = function(bcs, cs) {
+export const div = function (bcs, cs) {
     bcs = parseFloat(bcs)
     cs = parseFloat(cs)
     let t1 = places(bcs)
@@ -329,7 +329,7 @@ export const div = function(bcs, cs) {
 // 数字转换为简写汉字一到十
 // =====================
 // liuyp 2018年12月20日11:28:08
-export const cnNumber = function(num) {
+export const cnNumber = function (num) {
     let n = num + ''
     let cn = ['\u96f6', '\u4e00', '\u4e8c', '\u4e09', '\u56db', '\u4e94', '\u516d', '\u4e03', '\u516b', '\u4e5d']
     for (let i = 0; i < 10; i++) n = n.replace(new RegExp(i, 'g'), cn[i])
@@ -351,7 +351,7 @@ export const cnNumber = function(num) {
 // 校验码: 1 0 X 9 8 7 6 5 4 3  2
 // =====================
 // liuyp 2019年9月20日10:58:12
-export const idCardNumCompute = function(idcardno) {
+export const idCardNumCompute = function (idcardno) {
     // 权重值
     let verify18rights = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2, 1]
     let verify18Checkdigit = '10X98765432'
@@ -369,11 +369,11 @@ export const idCardNumCompute = function(idcardno) {
 // 为了适应浏览器局限宽度来显示数字,需要对数字进行估算显示
 // =====================
 // liuyp 2019年9月20日10:58:12
-export const estimate = function(n, s) {
+export const estimate = function (n, s) {
     s = s || 4
     if (s < 5) s = 5
     n = parseInt(n)
-    function getNum(nl, u) {
+    function getNum (nl, u) {
         let jqxsd = 2 - 2 * u.length
         let zs = n / nl
         if (zs > 1e3) {
@@ -406,7 +406,7 @@ export const estimate = function(n, s) {
     }
     return getNum(1, '')
 }
-export const estimate2 = function(n, s) {
+export const estimate2 = function (n, s) {
     s = s || 4
     if (s < 5) s = 5
     n = parseInt(n)
@@ -449,7 +449,7 @@ export const estimate2 = function(n, s) {
 // 文件大小估算
 // =====================
 // liuyp 2020年3月16日10:29:24
-export const formatFileSize = function(fileSize) {
+export const formatFileSize = function (fileSize) {
     let temp
     if (fileSize < 1024) {
         return fileSize + 'B'
@@ -472,10 +472,10 @@ export const formatFileSize = function(fileSize) {
 // 数字精准比较
 // =====================
 // liuyp 2019年9月20日10:58:12
-const parseFloatRemoveNotNum = function(s) {
+const parseFloatRemoveNotNum = function (s) {
     return parseFloat(s.replace(/[^0-9\.]/g, '') || 0)
 }
-export const compare = function(a, b) {
+export const compare = function (a, b) {
     let ax = parseFloatRemoveNotNum(a)
     let bx = parseFloatRemoveNotNum(b)
     if (ax === bx) {
@@ -484,23 +484,23 @@ export const compare = function(a, b) {
         return ax > bx ? '>' : '<'
     }
 }
-export const gt = function(a, b) {
+export const gt = function (a, b) {
     var r = compare(a, b)
     return r === '>'
 }
-export const gte = function(a, b) {
+export const gte = function (a, b) {
     var r = compare(a, b)
     return r === '>' || r === '='
 }
-export const lt = function(a, b) {
+export const lt = function (a, b) {
     var r = compare(a, b)
     return r === '<'
 }
-export const lte = function(a, b) {
+export const lte = function (a, b) {
     var r = compare(a, b)
     return r === '<' || r === '='
 }
-export const eq = function(a, b) {
+export const eq = function (a, b) {
     var r = compare(a, b)
     return r === '='
 }
@@ -509,7 +509,7 @@ export const eq = function(a, b) {
 // 数字千分金钱
 // 返回一个千分金钱的字符串
 // =====================
-export const thousand = function(num) {
+export const thousand = function (num) {
     // 可用 但过时
     /* let s=(str+""),n=s.valueOf().length%3
     if (n){return s.slice(0,n)+s.slice(n).replace(/(\d{3})/g,',$1')}
@@ -520,7 +520,7 @@ export const thousand = function(num) {
 
 // =====================
 // 四位分隔银行账号 有问题 这个是反向每四个符号一分割的
-export const bankCartNum = function(str, tag, count) {
+export const bankCartNum = function (str, tag, count) {
     /* tag = tag || ' '
     count = count || 4
     let len = str.length
@@ -542,7 +542,7 @@ export const bankCartNum = function(str, tag, count) {
 
 // =====================
 // IP地址的校验
-export const validateIP = function(e) {
+export const validateIP = function (e) {
     let t = 0
     if (e === '0.0.0.0') t = 1
     else if (e === '255.255.255.255') t = 2
@@ -561,7 +561,7 @@ export const validateIP = function(e) {
 
 // =====================
 // IP地址的比较
-export const compareIP = function(ipBegin, ipEnd) {
+export const compareIP = function (ipBegin, ipEnd) {
     let temp1 = ipBegin.split('.')
     let temp2 = ipEnd.split('.')
     for (let i = 0; i < 4; i++) {
@@ -577,7 +577,7 @@ export const compareIP = function(ipBegin, ipEnd) {
 // =====================
 // 保留x位小数
 // 功能：将浮点数四舍五入，取小数点后x位
-export const toDecimal = function(num, pos) {
+export const toDecimal = function (num, pos) {
     let result = parseFloat(num)
     if (isNaN(num)) {
         return 0
@@ -590,7 +590,7 @@ export const toDecimal = function(num, pos) {
 
 // =====================
 // 强制保留2位小数，如：2，会在2后面补上00.即2.00
-export const toDecimalForce = function(num, pos) {
+export const toDecimalForce = function (num, pos) {
     let result = parseFloat(num)
     if (isNaN(num)) {
         return 0
@@ -613,7 +613,7 @@ export const toDecimalForce = function(num, pos) {
 // =====================
 // 一个数字字符串 小数 的 保留两位 格式限定处理
 // 非四舍五入 直接舍
-export const toDecimalFormat = function(s) {
+export const toDecimalFormat = function (s) {
     s = parseFloat(s)
     if (isNaN(s)) {
         return 0

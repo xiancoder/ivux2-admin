@@ -4,14 +4,14 @@
 // 编译 字符串中的中文 方便Cookie保存
 // =====================
 // liuyp 2018年12月20日11:28:08
-function encode(str) {
+function encode (str) {
     return !str
         ? ''
-        : (str + '').replace(/[\u4e00-\u9fa5]/g, function(v) {
-              return escape(v)
-          })
+        : (str + '').replace(/[\u4e00-\u9fa5]/g, function (v) {
+            return escape(v)
+        })
 }
-function decode(str) {
+function decode (str) {
     return unescape(str)
 }
 
@@ -31,13 +31,13 @@ export const setCookie = (name, content, time, path, domain, noEscape) => {
         (path ? '; path=' + path : '; path=/') +
         (domain ? '; domain=' + domain : '')
     if (!content) {
-        del(name)
+        delCookie(name)
     }
 }
 export const getCookie = name => {
     let r = new RegExp('(^| )' + name + '=([^;]*)(;|$)')
     let result = document.cookie.match(r)
-    if (null !== result) {
+    if (result !== null) {
         return decode(result[2])
     }
     return ''
@@ -53,13 +53,13 @@ export const getAllCookie = () => {
     return a2
 }
 export const delCookie = (name, path, domain) => {
-    let n = get(name)
-    if (null === n) return
+    let n = getCookie(name)
+    if (n === null) return
     document.cookie = name + '=' + (path ? '; path=' + path : '; path=/') + (domain ? '; domain=' + domain : '') + ';expires=Fri, 02-Jan-1970 00:00:00 GMT'
 }
 export const delAllCookie = () => {
     let keys = document.cookie.match(/[^ =;]+(?=\=)/g)
     if (keys) {
-        for (let i = keys.length; i--; ) document.cookie = keys[i] + '=0;expires=' + new Date(0).toUTCString()
+        for (let i = keys.length; i--;) document.cookie = keys[i] + '=0;expires=' + new Date(0).toUTCString()
     }
 }

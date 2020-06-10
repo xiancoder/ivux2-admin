@@ -11,6 +11,7 @@ export default makeTwoLevelRoute({
         {path: 'templeteTable', title: '列表页模版'},
         {path: 'templeteTable01', title: '列表页模版01'},
         {path: 'templeteForm', title: '表单页模版'},
+        {path: 'templeteForm01', title: '表单页模版01'},
         {path: 'templeteUi01', title: '模版UI XHeader'},
         {path: 'templeteUi02', title: '模版UI Actionsheet'},
         {path: 'templeteUi03', title: '模版UI Alert'},

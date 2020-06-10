@@ -44,6 +44,7 @@
     </div>
 </template>
 <script>
+// 经验之谈 scroller 里面每个tr的高度必须提前指定清晰 否则内容高度的变化会导致滚动混乱
 import '@/plugins/vux-table'
 import {extend, extendF} from '@/utils'
 
@@ -86,23 +87,26 @@ export default {
                     this.vuxTableList = [...this.vuxTableList, ...data.list]
                     this.vuxTableCount = data.rowcount
                     this.vuxTableLoading = false
-                    this.vuxTableNoMore = this.page.index * this.page.size >= parseInt(data.rowcount) // 计算是否还有更多
-                    this.$nextTick(() => { // 用以重新渲染，避免新加的内容无法上拉看到
-                        this.$refs.scroll.reset()
-                    })
+                    this.vuxTableNoMore = this.page.pageIndex * this.page.pageSize >= parseInt(data.rowcount) // 计算是否还有更多
+                    if (this.vuxTableParams.pageIndex > 1) {
+                        this.$nextTick(() => { // 用以重新渲染，避免新加的内容无法上拉看到
+                            this.$refs.scroll.reset()
+                        })
+                    }
                 })
                 .catch(e => {
                     this.vuxTableLoading = false
                 })
         },
         handlePage (page) { // 换页 [[模版结构不要修改]]
-            this.page.index = page || 1
+            this.page.pageIndex = page || 1
             extend(this.vuxTableParams, this.page) // 继承搜索项
             this.ajaxList()
         },
         scrollPage () { // 换页 [[模版结构不要修改]]
             if (this.vuxTableNoMore) {return false}
-            this.handlePage(++this.page.index)
+            if (this.vuxTableLoading) {return false}
+            this.handlePage(this.page.pageIndex + 1)
         },
         handleSearch () { // 搜索 [[模版结构不要修改]]
             extend(this.vuxTableParams, this.search) // 继承搜索项
@@ -174,7 +178,7 @@ export default {
     }
     .vux-table {
         .td1 {width:60px; text-align: left;}
-        .td1 img {width:40px; border-radius: 50%; vertical-align: bottom;margin:10px 0;}
+        .td1 img {width:40px; height:43px; border-radius: 50%; vertical-align: bottom;margin:10px 0;}
         .td2 {text-align: left;font-size: 14px;line-height: 20px;}
         .td2 .role{font-size: 12px;color:#aaa;}
         .td3 {width:100px;text-align:right;font-size: 14px;}

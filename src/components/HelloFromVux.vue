@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="vux-demo">
-            <img class="logo" src="../assets/vux_logo.png"    @click="go">
+            <img class="logo" src="../assets/vux_logo.png" @click="go">
             <h1> </h1>
         </div>
         <group title="cell demo">
@@ -12,7 +12,7 @@
 <script>
 import {Group, Cell} from 'vux'
 export default {
-    components: { Group, Cell},
+    components: {Group, Cell},
     name: 'Vux',
     data () {
         return {

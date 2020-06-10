@@ -4,7 +4,7 @@
 \*================================================================================ */
 
 // 制作正则表达式
-function createRegexp(op) {
+function createRegexp (op) {
     let args = Array.prototype.slice.call(arguments, 0)
     op = op || ''
     let regText = args.join('')

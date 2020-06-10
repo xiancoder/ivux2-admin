@@ -47,14 +47,14 @@ export const dateFormater = (O, T) => {
     }
     return T
 }
-export function sevenRange(D) {
+export function sevenRange (D) {
     // 获取今天之前一周时间的字符串数组
     const date = D || new Date()
     const today = dateFormater(date)
     const last7 = dateFormater(dateSub(date, 6, 'd'))
     return [last7, today]
 }
-export function todayMouth(D) {
+export function todayMouth (D) {
     // 获取今天年月 YYYY-MM
     const date = D || new Date()
     return dateFormater(date, 'YYYY-MM')
@@ -111,7 +111,7 @@ export const dateSub = (D, N, S) => {
 // =====================
 // liuyp 2019年1月9日11:00:26 收录
 // liuyp 2019年10月3日18:07:32 改正错误
-export const date2xz = function(D) {
+export const date2xz = function (D) {
     let m = D.getMonth() + 1
     let d = D.getDate()
     let i = 0
@@ -132,7 +132,7 @@ export const date2xz = function(D) {
 // 天干地支
 // =====================
 // liuyp 2019年1月9日11:00:26
-export const date2gz = function(D) {
+export const date2gz = function (D) {
     let y = D.getFullYear()
     let i = y - 1900 + 36
     let GZDict = ['\u7532\u4e59\u4e19\u4e01\u620a\u5df1\u5e9a\u8f9b\u58ec\u7678', '\u5b50\u4e11\u5bc5\u536f\u8fb0\u5df3\u5348\u672a\u7533\u9149\u620c\u4ea5']
@@ -143,7 +143,7 @@ export const date2gz = function(D) {
 // 属相
 // =====================
 // liuyp 2019年1月9日11:00:26
-export const date2sx = function(D) {
+export const date2sx = function (D) {
     let y = D.getFullYear()
     let SXDict = '\u9f20\u725b\u864e\u5154\u9f99\u86c7\u9a6c\u7f8a\u7334\u9e21\u72d7\u732a'
     return SXDict.charAt((y - 4) % 12)
@@ -153,7 +153,7 @@ export const date2sx = function(D) {
 // 农历时间
 // =====================
 // liuyp 2019年1月9日11:00:26
-export const date2cnDate = function(D) {
+export const date2cnDate = function (D) {
     D = D || new Date()
     let yy = D.getFullYear()
     let mm = D.getMonth() + 1
@@ -334,7 +334,7 @@ export const date2cnDate = function(D) {
 // 二十四节气(注节气指的是某一天)
 // =====================
 // liuyp 2019年1月9日11:00:26
-export const date2jieqi = function(D) {
+export const date2jieqi = function (D) {
     let yyyy = D.getFullYear()
     let mm = D.getMonth() + 1
     let dd = D.getDate()
@@ -405,7 +405,7 @@ export const date2jieqi = function(D) {
 // 判断是否闰年
 // =====================
 // liuyp 2019年1月9日11:00:26
-export const date2isLeapYear = function(D) {
+export const date2isLeapYear = function (D) {
     let year = D.getFullYear()
     return !!((year & 3) === 0 && (year % 100 || (year % 400 === 0 && year)))
 }
@@ -414,7 +414,7 @@ export const date2isLeapYear = function(D) {
 // 完整输出 "丙申(猴)年 (闰)五月廿 无节气"
 // =====================
 // liuyp 2019年1月9日11:00:26
-export const date2all = function(D) {
+export const date2all = function (D) {
     return (
         date2gz(D) +
         '(' +
@@ -469,7 +469,7 @@ export const easyToday = () => {
 // liuyp 2019年9月20日11:25:25
 export const dateEqual = (u, d1, d2) => {
     let f = ['setMilliseconds', 'setSeconds', 'setMinutes', 'setHours', 'setDate', 'setMonth', 'setYear']
-    let dx = function(x) {
+    let dx = function (x) {
         d1[x](1)
         d2[x](1)
     }
@@ -624,7 +624,7 @@ export const timeLong2 = (date1, date2) => {
 // =====================
 // 是否超时日期
 export const isDateNotBeOverdue = (d, deadline) => {
-    const checkDateTime = function(d) {
+    const checkDateTime = function (d) {
         const _date = new Date(d)
         const Now = deadline ? new Date(deadline) : new Date()
         const DiffTime = _date.getTime() - Now.getTime()

@@ -11,34 +11,34 @@ export const type = obj => {
         .replace(']', '')
         .toLowerCase()
 }
-export function isType(obj, type) {
+export function isType (obj, type) {
     return Object.prototype.toString.call(obj).toLowerCase() === '[object ' + type + ']'
 }
-export function isArray(obj) {
+export function isArray (obj) {
     return isType(obj, 'array')
 }
-export function isBool(obj) {
+export function isBool (obj) {
     return isType(obj, 'boolean')
 }
-export function isDate(obj) {
+export function isDate (obj) {
     return isType(obj, 'date')
 }
-export function isNumber(obj) {
+export function isNumber (obj) {
     return isType(obj, 'number')
 }
-export function isObject(obj) {
+export function isObject (obj) {
     return isType(obj, 'object')
 }
-export function isEmpty(obj) {
+export function isEmpty (obj) {
     return obj === 0 || obj === null || obj.length === 0 || JSON.stringify(obj) === '{}'
 }
-export function isRegExp(obj) {
+export function isRegExp (obj) {
     return isType(obj, 'regexp')
 }
-export function isString(obj) {
+export function isString (obj) {
     return isType(obj, 'string')
 }
-export function isFunction(obj) {
+export function isFunction (obj) {
     return isType(obj, 'function')
 }
 
@@ -83,7 +83,7 @@ export const extendF = (s, f) => {
 // 属性继承自原型链
 // =====================
 // liuyp 2019年11月15日10:55:22
-export function ownProp(a, b) {
+export function ownProp (a, b) {
     return Object.prototype.hasOwnProperty.call(a, b)
 }
 
@@ -129,5 +129,5 @@ export const objEqual = (obj1, obj2) => {
     const keysArr2 = Object.keys(obj2)
     if (keysArr1.length === keysArr2.length) return false
     else if (keysArr1.length === 0 && keysArr2.length === 0) return true
-    /* eslint-disable-next-line */ else return !keysArr1.some(key => obj1[key] != obj2[key])
+    else return !keysArr1.some(key => obj1[key] !== obj2[key])
 }

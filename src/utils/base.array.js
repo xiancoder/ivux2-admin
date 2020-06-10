@@ -16,7 +16,7 @@ export const uniqueObj = (data, fun) => {
     var newData = []
     fun =
         fun ||
-        function(a, b) {
+        function (a, b) {
             return a === b
         }
     for (var i = 0, len = data.length; i < len; i++) {
@@ -102,8 +102,8 @@ export const arrayFlatten = ac => {
 // 新数组,不伤源头
 // =====================
 // liuyp 2018年12月20日11:28:08
-export function arrayFilter(A, fn) {
-    fn = fn || function() {}
+export function arrayFilter (A, fn) {
+    fn = fn || function () {}
     var arr = []
     for (var i = 0, l = A.length; i < l; i++) {
         if (fn(A[i])) {
@@ -112,7 +112,7 @@ export function arrayFilter(A, fn) {
     }
     return arr
 }
-export function arrayContains(A, V) {
+export function arrayContains (A, V) {
     var i = A.length
     while (i--) {
         if (A[i] === V) {
@@ -121,20 +121,20 @@ export function arrayContains(A, V) {
     }
     return false
 }
-export function arrayIntersect(a, b) {
-    return arrayFilter(arrayUnique(a), function(o) {
+export function arrayIntersect (a, b) {
+    return arrayFilter(arrayUnique(a), function (o) {
         return arrayContains(b, o)
     })
 }
-export function arrayMinus(a, b) {
-    return arrayFilter(arrayUnique(a), function(o) {
+export function arrayMinus (a, b) {
+    return arrayFilter(arrayUnique(a), function (o) {
         return !arrayContains(b, o)
     })
 }
-export function arrayUnion(a, b) {
+export function arrayUnion (a, b) {
     return arrayUnique(a.concat(b))
 }
-export function arrayComplement(a, b) {
+export function arrayComplement (a, b) {
     return arrayMinus(arrayUnion(a, b), arrayIntersect(a, b))
 }
 
@@ -142,7 +142,7 @@ export function arrayComplement(a, b) {
 // 数组洗牌
 // =====================
 // liuyp 2018年12月20日11:28:08
-export function arrayShuffle(o) {
+export function arrayShuffle (o) {
     // v1.0
     for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x) {
         // 666
@@ -182,7 +182,7 @@ export const forEach = (arr, fn) => {
 *  |说明|当输入的数据是反序时(卧槽 我直接反序不就完了....)
 *  |说明|平均情况:T(n) = O(n2)
 \* ================================================================================ */
-export function sortBubble(arr) {
+export function sortBubble (arr) {
     var low = 0
     var high = arr.length - 1
     var tmp
@@ -231,7 +231,7 @@ export function sortBubble(arr) {
 *  |说明|最差情况:T(n) = O(n2)
 *  |说明|平均情况:T(n) = O(n2)
 \* ================================================================================ */
-export function sortSelection(arr) {
+export function sortSelection (arr) {
     var len = arr.length
     var minIndex, temp
     console.time('选择排序耗时')
@@ -268,7 +268,7 @@ export function sortSelection(arr) {
 *  |说明|最坏情况:输入数组按降序排列T(n) = O(n2)
 *  |说明|平均情况:T(n) = O(n2)
 \* ================================================================================ */
-export function sortInsertion(array) {
+export function sortInsertion (array) {
     console.time('插入排序耗时')
     for (var i = 1; i < array.length; i++) {
         var key = array[i]
@@ -304,7 +304,7 @@ export function sortInsertion(array) {
 *  |说明|最坏情况:T(n) = O(nlog2 n)
 *  |说明|平均情况:T(n) =O(nlog n)
 \* ================================================================================ */
-export function sortShell(arr) {
+export function sortShell (arr) {
     var len = arr.length
     var temp
     var gap = 1
@@ -337,7 +337,7 @@ export function sortShell(arr) {
 *  |说明|最差情况:T(n) = O(nlogn)
 *  |说明|平均情况:T(n) = O(nlogn)
 \* ================================================================================ */
-export function merge(left, right) {
+export function merge (left, right) {
     var result = []
     while (left.length && right.length) {
         if (left[0] <= right[0]) {
@@ -350,7 +350,7 @@ export function merge(left, right) {
     while (right.length) result.push(right.shift())
     return result
 }
-export function mergeSort(arr) {
+export function mergeSort (arr) {
     // 采用自上而下的递归方法
     var len = arr.length
     if (len < 2) {
@@ -361,7 +361,7 @@ export function mergeSort(arr) {
     var right = arr.slice(middle)
     return merge(mergeSort(left), mergeSort(right))
 }
-export function sortMerge(arr) {
+export function sortMerge (arr) {
     console.time('归并排序耗时')
     var r = mergeSort(arr)
     console.timeEnd('归并排序耗时')
@@ -380,13 +380,13 @@ export function sortMerge(arr) {
 *  |说明|最差情况:T(n) = O(n2)
 *  |说明|平均情况:T(n) = O(nlogn)
 \* ================================================================================ */
-export function sortQuick(arr) {
+export function sortQuick (arr) {
     console.time('快速排序耗时')
     var r = mergeSort(arr)
     console.timeEnd('快速排序耗时')
     return r
 }
-export function quickSort(arr) {
+export function quickSort (arr) {
     if (arr.length <= 1) {
         return arr
     }
@@ -416,7 +416,7 @@ export function quickSort(arr) {
 *  |说明|最差情况:T(n) = O(n+k)
 *  |说明|平均情况:T(n) = O(n+k)
 \* ================================================================================ */
-export function sortCounting(array) {
+export function sortCounting (array) {
     var len = array.length
     var B = []
     var C = []
@@ -450,7 +450,7 @@ export function sortCounting(array) {
 *  |说明|最差情况:T(n) = O(n+k)
 *  |说明|平均情况:T(n) = O(n2)
 \* ================================================================================ */
-export function sortBucket(array, num) {
+export function sortBucket (array, num) {
     if (array.length <= 1) {
         return array
     }
@@ -505,7 +505,7 @@ export function sortBucket(array, num) {
 *  |说明|平均情况:T(n) = O(n * k)
 \* ================================================================================ */
 // 测试 _sortRadix(_sortArray,2) 结果 2,3,4,5,15,19,26,27,36,38,44,46,47,48,50
-export function sortRadix(arr, maxDigit) {
+export function sortRadix (arr, maxDigit) {
     var mod = 10
     var dev = 1
     var counter = []
