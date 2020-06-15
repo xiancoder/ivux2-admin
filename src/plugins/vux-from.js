@@ -8,7 +8,8 @@ import {
     Popup, // 弹出层
     CellFormPreview, // 表单项列表
     XSwitch, // 开关
-    Actionsheet // 选择器
+    Actionsheet, // 选择器
+    CheckIcon // 图标
 } from 'vux'
 
 Vue.component('group', Group)
@@ -22,3 +23,4 @@ Vue.component('cell-form-preview', CellFormPreview)
 Vue.component('group', Group)
 Vue.component('x-switch', XSwitch)
 Vue.component('actionsheet', Actionsheet)
+Vue.component('check-icon', CheckIcon)

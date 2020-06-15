@@ -2,7 +2,8 @@ import Vue from 'vue'
 
 import {
     ToastPlugin, AlertPlugin, LoadingPlugin, ConfirmPlugin, DatetimePlugin,
-    XHeader, XButton
+    XHeader, XButton,
+    Alert
 } from 'vux'
 
 Vue.use(ToastPlugin)
@@ -13,3 +14,4 @@ Vue.use(DatetimePlugin)
 
 Vue.component('x-header', XHeader)
 Vue.component('x-button', XButton)
+Vue.component('alert', Alert)

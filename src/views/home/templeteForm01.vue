@@ -57,9 +57,9 @@ export default {
         // 在ios上 事件无法给到body 自动下发给了body下的有效内容
         // 在android上 屁事没有
         new ClipboardJS('body', {
-            text: function(trigger) {
+            text: function (trigger) {
                 console.log('执行浏览器复制命令')
-                return '哈哈哈哈' + (+new Date)
+                return '哈哈哈哈' + (+new Date())
             }
         });
     }
